@@ -1,0 +1,30 @@
+/* Void — elevation. Hairlines first, shadow only when something floats.
+   Shadow is never the sole indicator of state (Appendix I §I.2.6). */
+
+:root {
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 oklch(0.145 0 0 / 5%);
+  --shadow-sm: 0 1px 3px 0 oklch(0.145 0 0 / 8%), 0 1px 2px -1px oklch(0.145 0 0 / 6%);
+  --shadow-md: 0 4px 10px -2px oklch(0.145 0 0 / 10%), 0 2px 4px -2px oklch(0.145 0 0 / 6%);
+  --shadow-lg: 0 12px 28px -6px oklch(0.145 0 0 / 14%), 0 4px 10px -4px oklch(0.145 0 0 / 8%);
+  --shadow-overlay: 0 24px 56px -12px oklch(0.145 0 0 / 22%);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--border-default);
+
+  --ring-width: var(--border-width-medium);
+  --ring-offset: 2px;
+  --focus-ring: 0 0 0 var(--ring-offset) var(--bg-canvas), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--focus-ring-color);
+  /* Use on a control sitting on a sunken or surface background so the offset
+     gap matches what is actually behind it. */
+  --focus-ring-on-surface: 0 0 0 var(--ring-offset) var(--bg-surface), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--focus-ring-color);
+
+  --blur-panel: 12px;
+  --blur-scrim: 2px;
+}
+
+.dark {
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 30%);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 40%), 0 1px 2px -1px oklch(0 0 0 / 30%);
+  --shadow-md: 0 4px 10px -2px oklch(0 0 0 / 45%), 0 2px 4px -2px oklch(0 0 0 / 35%);
+  --shadow-lg: 0 12px 28px -6px oklch(0 0 0 / 55%), 0 4px 10px -4px oklch(0 0 0 / 40%);
+  --shadow-overlay: 0 24px 56px -12px oklch(0 0 0 / 65%);
+}

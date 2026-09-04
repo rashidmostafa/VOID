@@ -1,0 +1,39 @@
+/* Void — spacing. 4px base; 2px half-step for dense table and chip work. */
+
+:root {
+  --space-0: 0;
+  --space-05: 2px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  --gutter-page: var(--space-6);
+  --gutter-page-lg: var(--space-10);
+
+  /* Control heights. --control-h-md is the default and meets the 44px minimum
+     target on its own. --control-h-sm is 36px and is NOT a touch size: it is
+     admissible only on the pointer-only surfaces listed in readme.md
+     ("Dense surface allowlist"), and only when the control's hit area is
+     expanded to --touch-target-min. */
+  --control-h-sm: 36px;
+  --control-h-md: 44px;
+  --control-h-lg: 52px;
+  --control-pad-x-sm: var(--space-3);
+  --control-pad-x-md: var(--space-4);
+  --control-pad-x-lg: var(--space-5);
+
+  /* Legacy alias */
+  --container-max: var(--layout-max-content);
+  --container-editorial: var(--layout-max-editorial);
+  --container-prose: var(--layout-max-prose);
+}

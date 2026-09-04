@@ -1,0 +1,35 @@
+/* Void — commerce tokens (SRS Appendix I §I.2.4). Prices, badges, rating, trust.
+   In the greyscale palette the sale price is NOT carried by hue: it is the
+   struck-through original plus the SALE badge that make the discount legible, so
+   the token resolves to primary text. The accent palette redefines it. */
+
+:root {
+  --commerce-price: var(--fg-primary);
+  --commerce-price-sale: var(--fg-primary);
+  --commerce-price-original: var(--fg-secondary);
+
+  --commerce-badge-new-bg: var(--neutral-900);
+  --commerce-badge-new-text: var(--neutral-50);
+  --commerce-badge-sale-bg: var(--neutral-0);
+  --commerce-badge-sale-text: var(--neutral-950);
+  --commerce-badge-sale-border: var(--neutral-950);
+  --commerce-badge-lowstock-bg: var(--warning-bg);
+  --commerce-badge-lowstock-text: var(--warning-text);
+  --commerce-badge-lowstock-border: var(--warning-border);
+  --commerce-badge-soldout-bg: var(--bg-surface-sunken);
+  --commerce-badge-soldout-text: var(--fg-secondary);
+  --commerce-badge-soldout-border: var(--border-default);
+
+  --commerce-rating: var(--fg-primary);
+  --commerce-rating-empty: var(--border-strong);
+  --commerce-trust: var(--success-text);
+}
+
+.dark {
+  --commerce-badge-new-bg: var(--neutral-50);
+  --commerce-badge-new-text: var(--neutral-950);
+  --commerce-badge-sale-bg: transparent;
+  --commerce-badge-sale-text: var(--neutral-50);
+  --commerce-badge-sale-border: var(--neutral-50);
+  --commerce-rating-empty: var(--border-strong);
+}

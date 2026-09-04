@@ -1,0 +1,48 @@
+/* Void — layout, stacking, breakpoints, touch targets. */
+
+:root {
+  /* Breakpoints. Values are tokens; the behaviour at each tier is fixed by
+     SRS §9.4 and does not change with the theme. */
+  --breakpoint-xs: 320px;  /* single column, bottom-sheet filters, sticky add-to-cart */
+  --breakpoint-sm: 480px;  /* two-column product grid */
+  --breakpoint-md: 768px;  /* two-column grid, nav drawer */
+  --breakpoint-lg: 1024px; /* 3–4 column grid, persistent filter sidebar */
+  --breakpoint-xl: 1440px; /* four-column at max content width, centred */
+
+  /* Minimum effective interactive target (UI-INV-3 / UI-GLOB-7).
+     Controls shorter than this must expand their hit area to it. */
+  --touch-target-min: 44px;
+
+  /* Stacking — one ordered scale, strictly increasing, no duplicates.
+     Nothing in the system may declare an ad-hoc z-index. */
+  --z-base: 0; /* @kind other */
+  --z-dropdown: 1000; /* @kind other */
+  --z-sticky: 1100; /* @kind other */
+  --z-drawer: 1200; /* @kind other */
+  --z-modal: 1300; /* @kind other */
+  --z-toast: 1400; /* @kind other */
+
+  /* Content widths */
+  --layout-max-content: 1440px;
+  --layout-max-wide: 1680px;
+  --layout-max-prose: 68ch;
+  --layout-max-editorial: 1180px;
+
+  /* Grid */
+  --layout-grid-columns: 12; /* @kind other */
+  --layout-grid-columns-xs: 4; /* @kind other */
+  --layout-grid-gutter: 24px;
+  --layout-grid-gutter-xs: 16px;
+
+  /* Border widths */
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+
+  /* Fixed chrome */
+  --sidebar-width: 248px;
+  --sidebar-width-collapsed: 64px;
+  --topbar-height: 56px;
+  --studio-rail-width: 320px;
+  --studio-tool-rail-width: 64px;
+}

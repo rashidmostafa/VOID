@@ -1,0 +1,86 @@
+/* Void — primitives. Raw values, no meaning attached. Component code must never
+   reference this tier; it exists so the semantic tier has something to point at
+   (SRS Appendix I §I.1). */
+
+:root {
+  /* Neutral — chroma 0 at every step. */
+  --neutral-0: oklch(1 0 0);
+  --neutral-50: oklch(0.985 0 0);
+  --neutral-100: oklch(0.97 0 0);
+  --neutral-200: oklch(0.922 0 0);
+  --neutral-300: oklch(0.87 0 0);
+  --neutral-400: oklch(0.68 0 0);
+  --neutral-450: oklch(0.62 0 0);
+  --neutral-500: oklch(0.58 0 0);
+  --neutral-550: oklch(0.55 0 0);
+  --neutral-600: oklch(0.52 0 0);
+  --neutral-650: oklch(0.46 0 0);
+  --neutral-700: oklch(0.38 0 0);
+  --neutral-750: oklch(0.36 0 0);
+  --neutral-800: oklch(0.30 0 0);
+  --neutral-850: oklch(0.269 0 0);
+  --neutral-900: oklch(0.205 0 0);
+  --neutral-925: oklch(0.16 0 0);
+  --neutral-950: oklch(0.145 0 0);
+
+  /* Status ramps — derived for text and fill duty independently, not borrowed
+     from the chart ramp. Hue held constant within each ramp. */
+  --green-100: oklch(0.96 0.03 155);
+  --green-200: oklch(0.85 0.07 155);
+  --green-400: oklch(0.72 0.15 158);
+  --green-450: oklch(0.80 0.14 158);
+  --green-600: oklch(0.50 0.13 155);
+  --green-700: oklch(0.46 0.13 155);
+  --green-900: oklch(0.40 0.07 158);
+  --green-950: oklch(0.26 0.045 158);
+
+  --amber-100: oklch(0.97 0.045 80);
+  --amber-200: oklch(0.86 0.10 78);
+  --amber-400: oklch(0.82 0.16 80);
+  --amber-450: oklch(0.85 0.14 82);
+  --amber-500: oklch(0.80 0.16 78);
+  --amber-700: oklch(0.44 0.11 70);
+  --amber-900: oklch(0.44 0.08 82);
+  --amber-950: oklch(0.28 0.05 82);
+
+  --red-100: oklch(0.96 0.03 27);
+  --red-200: oklch(0.85 0.08 27);
+  --red-400: oklch(0.75 0.16 25);
+  --red-500: oklch(0.62 0.21 27);
+  --red-600: oklch(0.50 0.20 27);
+  --red-900: oklch(0.42 0.10 25);
+  --red-950: oklch(0.26 0.06 25);
+
+  --blue-100: oklch(0.96 0.03 250);
+  --blue-200: oklch(0.85 0.07 250);
+  --blue-400: oklch(0.80 0.11 245);
+  --blue-500: oklch(0.62 0.16 250);
+  --blue-600: oklch(0.48 0.15 250);
+  --blue-900: oklch(0.42 0.08 250);
+  --blue-950: oklch(0.26 0.05 250);
+
+  /* Signal orange — used only when the accent palette is active (tokens/accent.css). */
+  --signal-100: oklch(0.97 0.035 55);
+  --signal-200: oklch(0.86 0.10 52);
+  --signal-500: oklch(0.66 0.20 50);
+  --signal-550: oklch(0.74 0.19 52);
+  --signal-600: oklch(0.52 0.19 45);
+  --signal-650: oklch(0.78 0.16 55);
+  --signal-900: oklch(0.44 0.11 52);
+  --signal-950: oklch(0.27 0.06 50);
+
+  /* Chart ramp — adjacent-fill data colour only. Never text, chrome or brand. */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+}
+
+.dark {
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+}

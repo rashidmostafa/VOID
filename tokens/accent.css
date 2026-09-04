@@ -1,0 +1,76 @@
+/* Void — accent palette. PRODUCTION DEFAULT, baked in.
+
+   Decided 2026-09-05: signal orange, always on. There is no toggle and no
+   greyscale variant of these tokens. The rejected greyscale alternative is
+   recorded in readme.md ("Palette — decided") and preserved for reference in
+   explorations/accent-decision.html only; nothing switches it on at runtime.
+
+   Accent is signal orange. It does two jobs and no others:
+     --accent-text  oklch(0.52 0.19 45)  5.94:1 on canvas — legible as type
+     --accent-fill  oklch(0.66 0.20 50)  3.33:1 vs canvas, carries dark type at 5.39:1
+   The same hue cannot do both at one lightness, so the roles are split by
+   lightness and the pairing rules below are absolute:
+     · Type on the canvas uses --accent-text. Never --accent-fill.
+     · A fill uses --accent-fill and carries --accent-on-fill (near-black). Never white.
+   Black stays the primary action colour (UI-INV-12 product supremacy); accent
+   marks the commerce and data layer, plus ONE fill for the single most important
+   commerce action in a view.
+
+   Load order: this file must come after neutrals, actions, feedback and commerce
+   in styles.css — it deliberately overrides link, price, badge, rating and
+   indicator roles those files define. */
+
+/* ---- Light ---- */
+:root {
+  --accent-text: var(--signal-600);
+  --accent-fill: var(--signal-500);
+  --accent-on-fill: var(--neutral-900);
+  --accent-bg: var(--signal-100);
+  --accent-border: var(--signal-200);
+
+  /* The marking layer */
+  --fg-link: var(--signal-600);
+  --fg-link-hover: oklch(0.44 0.17 42);
+  --commerce-price-sale: var(--signal-600);
+  --commerce-badge-sale-bg: var(--signal-500);
+  --commerce-badge-sale-text: var(--neutral-900);
+  --commerce-badge-sale-border: var(--signal-500);
+  --commerce-badge-new-bg: var(--neutral-900);
+  --commerce-badge-new-text: var(--neutral-50);
+  --commerce-rating: var(--signal-500);
+
+  /* The one accent fill: primary commerce CTA only (Add to bag, Order this
+     design). Every other action keeps --action-primary-*. */
+  --action-accent-bg: var(--signal-500);
+  --action-accent-text: var(--neutral-900);
+  --action-accent-hover: oklch(0.62 0.20 48);
+  --action-accent-active: oklch(0.58 0.20 46);
+
+  /* Selected/active indicators that were pure black under greyscale. */
+  --indicator-active: var(--signal-600);
+}
+
+/* ---- Dark ---- */
+:root.dark,
+.dark {
+  --accent-text: var(--signal-650);
+  --accent-fill: var(--signal-550);
+  --accent-on-fill: oklch(0.16 0 0);
+  --accent-bg: var(--signal-950);
+  --accent-border: var(--signal-900);
+
+  --fg-link: var(--signal-650);
+  --fg-link-hover: oklch(0.85 0.13 60);
+  --commerce-price-sale: var(--signal-650);
+  --commerce-badge-sale-bg: var(--signal-550);
+  --commerce-badge-sale-text: oklch(0.16 0 0);
+  --commerce-badge-sale-border: var(--signal-550);
+  --commerce-rating: var(--signal-550);
+
+  --action-accent-bg: var(--signal-550);
+  --action-accent-text: oklch(0.16 0 0);
+  --action-accent-hover: oklch(0.78 0.18 54);
+  --action-accent-active: oklch(0.82 0.16 56);
+
+  --indicator-active: var(--signal-650);
+}

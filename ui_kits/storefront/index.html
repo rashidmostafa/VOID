@@ -1,0 +1,89 @@
+<!-- @dsCard group="Storefront" viewport="1440x900" name="Storefront kit" subtitle="Product detail, listing, checkout and account — four states, both schemes, both widths" -->
+<!-- @startingPoint section="Storefront" subtitle="Void storefront — four screens with loading, empty, error and populated states" viewport="1440x900" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Void — storefront kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" href="../../assets/fonts/geist-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/geist-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+.vd-sk{background:var(--bg-surface-sunken);position:relative;overflow:hidden}
+.vd-sk::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,var(--bg-surface),transparent);animation:vd-shimmer 1.4s var(--motion-easing-standard) infinite}
+@keyframes vd-shimmer{100%{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.vd-sk::after{animation:none;opacity:.4}}
+.vd-bar{position:sticky;top:0;z-index:var(--z-toast);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4);padding:var(--space-3) var(--space-5);background:var(--bg-surface);border-block-end:var(--border-width-thin) solid var(--border-strong)}
+.vd-bar fieldset{display:flex;align-items:center;gap:var(--space-1);border:none;margin:0;padding:0}
+.vd-bar legend{float:left;font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--fg-secondary);padding-inline-end:var(--space-2)}
+.vd-bar button{min-height:32px;padding-inline:var(--space-3);background:transparent;border:var(--border-width-thin) solid var(--border-control);border-radius:var(--radius-sm);font:var(--type-ui-dense);color:var(--fg-primary);cursor:pointer;white-space:nowrap;transition:var(--transition-control)}
+.vd-bar button[aria-pressed=true]{background:var(--action-primary-bg);border-color:var(--action-primary-bg);color:var(--action-primary-text)}
+.vd-frame{margin-inline:auto;transition:max-width var(--duration-slow) var(--motion-easing-standard)}
+.vd-frame[data-w="320"]{max-width:320px;border-inline:var(--border-width-thin) solid var(--border-default);min-height:100vh}
+</style>
+</head><body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel" src="Shell.jsx"></script>
+<script type="text/babel" src="ProductDetail.jsx"></script>
+<script type="text/babel" src="ProductListing.jsx"></script>
+<script type="text/babel" src="Checkout.jsx"></script>
+<script type="text/babel" src="Account.jsx"></script>
+<script type="text/babel">
+const { Header, Footer, ProductDetail, ProductListing, Checkout, Account } = window;
+const SCREENS = { detail: ["Product detail", ProductDetail], listing: ["Listing + filters", ProductListing], checkout: ["Checkout", Checkout], account: ["Account", Account] };
+const STATES = ["populated", "loading", "empty", "error"];
+const q = new URLSearchParams(location.search);
+const init = {
+  screen: q.get("screen") || "detail",
+  state: q.get("state") || "populated",
+  scheme: q.get("scheme") || "light",
+  width: q.get("width") || "1440",
+  chrome: q.get("chrome") !== "0",
+};
+
+function Group({ legend, value, options, onChange }) {
+  return (
+    <fieldset><legend>{legend}</legend>
+      {options.map(([v, l]) => <button key={v} type="button" aria-pressed={value === v} onClick={() => onChange(v)}>{l}</button>)}
+    </fieldset>
+  );
+}
+
+function App() {
+  const [s, setS] = React.useState(init);
+  const set = (k) => (v) => setS((p) => ({ ...p, [k]: v }));
+  const [nonce, setNonce] = React.useState(0);
+
+  React.useEffect(() => {
+    document.documentElement.classList.toggle("dark", s.scheme === "dark");
+  }, [s.scheme]);
+
+  const [label, Screen] = SCREENS[s.screen] || SCREENS.detail;
+  const narrow = s.width === "320";
+
+  return (
+    <>
+      {s.chrome ? (
+        <div className="vd-bar">
+          <span style={{ fontFamily: "var(--font-heading)", fontWeight: "var(--weight-medium)", letterSpacing: "var(--tracking-widest)", textTransform: "uppercase", fontSize: "var(--text-sm)" }}>Void</span>
+          <Group legend="Screen" value={s.screen} onChange={set("screen")} options={Object.entries(SCREENS).map(([k, v]) => [k, v[0]])} />
+          <Group legend="State" value={s.state} onChange={set("state")} options={STATES.map((v) => [v, v[0].toUpperCase() + v.slice(1)])} />
+          <Group legend="Scheme" value={s.scheme} onChange={set("scheme")} options={[["light", "Light"], ["dark", "Dark"]]} />
+          <Group legend="Width" value={s.width} onChange={set("width")} options={[["1440", "1440"], ["320", "320"]]} />
+        </div>
+      ) : null}
+      <div className="vd-frame" data-w={s.width}>
+        <Header narrow={narrow} />
+        <main key={nonce + s.screen + s.state + s.width}>
+          <Screen state={s.state} narrow={narrow} onRetry={() => { setS((p) => ({ ...p, state: "populated" })); setNonce((n) => n + 1); }} />
+        </main>
+        <Footer narrow={narrow} />
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body></html>

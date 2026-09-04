@@ -1,0 +1,147 @@
+/* Void — semantic colour. The only colour tier component code may reference.
+   Light is the default scheme; .dark is the alternate. Measured ratios for every
+   pairing here live in guidelines/contrast-report.md. */
+
+:root {
+  /* Surfaces */
+  --bg-canvas: var(--neutral-0);
+  --bg-surface: var(--neutral-0);
+  --bg-surface-raised: var(--neutral-0);
+  --bg-surface-sunken: var(--neutral-100);
+  --bg-sidebar: var(--neutral-50);
+  --bg-overlay: oklch(0.145 0 0 / 55%);
+
+  /* Text — the --fg-* family is colour. The --text-* family is type size. */
+  --fg-primary: var(--neutral-950);
+  --fg-secondary: var(--neutral-600);   /* 5.51:1 canvas · 5.05:1 sunken */
+  --fg-disabled: var(--neutral-400);    /* exempt from contrast (UI-INV-1) */
+  --fg-inverse: var(--neutral-50);
+  --fg-link: var(--neutral-950);
+  --fg-link-hover: var(--neutral-700);
+
+  /* Borders */
+  --border-subtle: var(--neutral-100);
+  --border-default: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  /* Boundary of an interactive control when nothing else defines it —
+     inputs, unfilled checkboxes, outline buttons. 3.64:1 canvas · 3.34:1 sunken. */
+  --border-control: var(--neutral-450);
+
+  /* Actions */
+  --action-primary-bg: var(--neutral-900);
+  --action-primary-text: var(--neutral-50);
+  --action-primary-hover: var(--neutral-800);
+  --action-primary-active: var(--neutral-950);
+  --action-primary-disabled: var(--neutral-200);
+
+  --action-secondary-bg: var(--neutral-100);
+  --action-secondary-text: var(--neutral-900);
+  --action-secondary-hover: oklch(0.94 0 0);
+  --action-secondary-active: var(--neutral-200);
+  --action-secondary-disabled: var(--neutral-100);
+
+  --action-tertiary-bg: transparent;
+  --action-tertiary-text: var(--neutral-950);
+  --action-tertiary-hover: var(--neutral-100);
+  --action-tertiary-active: var(--neutral-200);
+  --action-tertiary-disabled: transparent;
+
+  --action-danger-bg: var(--red-600);
+  --action-danger-text: var(--neutral-50);
+  --action-danger-hover: oklch(0.45 0.20 27);
+  --action-danger-active: oklch(0.41 0.19 27);
+  --action-danger-disabled: var(--red-200);
+
+  /* Focus and selection */
+  --focus-ring-color: var(--neutral-500);   /* 4.28:1 canvas · 3.93:1 input */
+  --selection-bg: var(--neutral-950);
+  --selection-text: var(--neutral-0);
+
+  /* ---- Compatibility aliases. The shadcn-shaped names from the source theme
+     keep working; both spellings resolve to the same value. ---- */
+  --background: var(--bg-canvas);
+  --foreground: var(--fg-primary);
+  --card: var(--bg-surface);
+  --card-foreground: var(--fg-primary);
+  --popover: var(--bg-surface-raised);
+  --popover-foreground: var(--fg-primary);
+  --primary: var(--action-primary-bg);
+  --primary-foreground: var(--action-primary-text);
+  --secondary: var(--action-secondary-bg);
+  --secondary-foreground: var(--action-secondary-text);
+  --muted: var(--bg-surface-sunken);
+  --muted-foreground: var(--fg-secondary);
+  --accent: var(--action-secondary-bg);
+  --accent-foreground: var(--action-secondary-text);
+  --destructive: var(--action-danger-bg);
+  --destructive-foreground: var(--action-danger-text);
+  --border: var(--border-default);
+  --input: var(--border-control);
+  --ring: var(--focus-ring-color);
+  --text-body: var(--fg-primary);
+  --text-muted: var(--fg-secondary);
+  --text-inverse: var(--fg-inverse);
+  --surface-page: var(--bg-canvas);
+  --surface-card: var(--bg-surface);
+  --surface-sunken: var(--bg-surface-sunken);
+  --surface-inverse: var(--action-primary-bg);
+  --line-hairline: var(--border-default);
+  --line-strong: var(--border-strong);
+  --overlay-scrim: var(--bg-overlay);
+
+  --sidebar: var(--bg-sidebar);
+  --sidebar-foreground: var(--fg-primary);
+  --sidebar-primary: var(--action-primary-bg);
+  --sidebar-primary-foreground: var(--action-primary-text);
+  --sidebar-accent: var(--bg-surface-sunken);
+  --sidebar-accent-foreground: var(--fg-primary);
+  --sidebar-border: var(--border-default);
+  --sidebar-ring: var(--focus-ring-color);
+}
+
+.dark {
+  --bg-canvas: var(--neutral-950);
+  --bg-surface: var(--neutral-900);
+  --bg-surface-raised: oklch(0.235 0 0);
+  --bg-surface-sunken: var(--neutral-850);
+  --bg-sidebar: var(--neutral-900);
+  --bg-overlay: oklch(0.145 0 0 / 72%);
+
+  --fg-primary: var(--neutral-50);
+  --fg-secondary: oklch(0.72 0 0);      /* 7.98:1 canvas · 6.09:1 sunken */
+  --fg-disabled: oklch(0.50 0 0);
+  --fg-inverse: var(--neutral-900);
+  --fg-link: var(--neutral-50);
+  --fg-link-hover: oklch(0.80 0 0);
+
+  --border-subtle: oklch(0.28 0 0);
+  --border-default: var(--neutral-750);
+  --border-strong: var(--neutral-650);
+  --border-control: var(--neutral-550);  /* 4.08:1 canvas · 3.11:1 sunken */
+
+  --action-primary-bg: oklch(0.922 0 0);
+  --action-primary-text: var(--neutral-900);
+  --action-primary-hover: oklch(0.84 0 0);
+  --action-primary-active: var(--neutral-0);
+  --action-primary-disabled: var(--neutral-750);
+
+  --action-secondary-bg: var(--neutral-850);
+  --action-secondary-text: var(--neutral-50);
+  --action-secondary-hover: oklch(0.32 0 0);
+  --action-secondary-active: oklch(0.36 0 0);
+  --action-secondary-disabled: var(--neutral-850);
+
+  --action-tertiary-text: var(--neutral-50);
+  --action-tertiary-hover: var(--neutral-850);
+  --action-tertiary-active: oklch(0.32 0 0);
+
+  --action-danger-bg: var(--red-500);
+  --action-danger-text: var(--neutral-925);
+  --action-danger-hover: oklch(0.66 0.20 27);
+  --action-danger-active: oklch(0.70 0.19 27);
+  --action-danger-disabled: var(--red-950);
+
+  --focus-ring-color: oklch(0.72 0 0);   /* 7.98:1 canvas · 6.09:1 sunken */
+  --selection-bg: var(--neutral-50);
+  --selection-text: var(--neutral-950);
+}

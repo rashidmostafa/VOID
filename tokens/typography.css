@@ -1,0 +1,65 @@
+/* Void — typography. Two families, one fluid ramp.
+   --text-base is 16px and is what body copy resolves to (SRS V4 / UI-INV-4).
+   Steps below base are for secondary and dense material only: table cells, chips,
+   eyebrows, table headers — never for body or product copy. */
+
+:root {
+  --font-sans: var(--font-void-sans);
+  --font-mono: var(--font-void-mono);
+  --font-heading: var(--font-sans);
+  --font-bengali: var(--font-void-bengali);
+
+  --text-2xs: 0.6875rem;  /* 11px — eyebrows, table headers, chips */
+  --text-xs: 0.75rem;     /* 12px — field labels, captions */
+  --text-sm: 0.8125rem;   /* 13px — dense table cells, tool rails */
+  --text-ui: 0.875rem;    /* 14px — dense portal UI */
+  --text-base: 1rem;      /* 16px — DEFAULT BODY. Never smaller. */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: clamp(1.25rem, calc(1.15rem + 0.5vw), 1.375rem);
+  --text-2xl: clamp(1.5rem, calc(1.3rem + 1vw), 1.75rem);
+  --text-3xl: clamp(1.75rem, calc(1.4rem + 1.75vw), 2.25rem);
+  --text-4xl: clamp(2.25rem, calc(1.6rem + 3.25vw), 3rem);
+  --text-5xl: clamp(2.5rem, calc(1.4rem + 5.5vw), 4.25rem);
+
+  /* Legacy alias — --text-md was 16px in v1.0 and remains 16px. */
+  --text-md: var(--text-base);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.65;
+  /* Bengali matras and conjuncts need more room than Latin at the same size. */
+  --leading-bengali: 1.8;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  /* 300 and 700 are not subset or shipped. Do not reference them. */
+
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-widest: 0.16em;
+
+  /* Composite roles */
+  --type-display: var(--weight-medium) var(--text-5xl) / var(--leading-tight) var(--font-heading);
+  --type-h1: var(--weight-medium) var(--text-3xl) / var(--leading-snug) var(--font-heading);
+  --type-h2: var(--weight-medium) var(--text-2xl) / var(--leading-snug) var(--font-heading);
+  --type-h3: var(--weight-medium) var(--text-xl) / var(--leading-snug) var(--font-heading);
+  --type-body: var(--weight-regular) var(--text-base) / var(--leading-relaxed) var(--font-sans);
+  --type-ui: var(--weight-regular) var(--text-base) / var(--leading-normal) var(--font-sans);
+  --type-ui-dense: var(--weight-regular) var(--text-ui) / var(--leading-normal) var(--font-sans);
+  --type-ui-sm: var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-sans);
+  --type-label: var(--weight-medium) var(--text-xs) / var(--leading-normal) var(--font-sans);
+  --type-mono: var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-mono);
+}
+
+/* Bengali locale: same ramp, same weights, more leading. */
+:lang(bn),
+[lang="bn"] {
+  --font-sans: var(--font-void-bengali);
+  --font-heading: var(--font-void-bengali);
+  --leading-relaxed: var(--leading-bengali);
+  --leading-normal: 1.6;
+}

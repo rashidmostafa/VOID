@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x220" name="Feedback tones" subtitle="Four tones, four roles each — text, tint, edge, fill. Derived per scheme, never borrowed from the chart ramp." -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;padding:16px 20px;background:var(--bg-canvas)}.k{font:var(--type-mono);font-size:var(--text-2xs);color:var(--fg-secondary)}
+.chip{display:inline-flex;align-items:center;height:24px;padding-inline:8px;border:1px solid;border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:500}
+.sw{display:flex;flex-direction:column;gap:6px}</style></head><body><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
+
+<div class="sw">
+  <span class="chip" style="background:var(--success-bg);color:var(--success-text);border-color:var(--success-border)">Paid</span>
+  <div style="display:flex;align-items:center;justify-content:center;height:28px;background:var(--success-solid);color:var(--success-on-solid);font-size:var(--text-xs);font-weight:500">solid + on-solid</div>
+  <div class="k">--success-text · 5.91:1 on tint</div>
+</div>
+<div class="sw">
+  <span class="chip" style="background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-border)">Awaiting review</span>
+  <div style="display:flex;align-items:center;justify-content:center;height:28px;background:var(--warning-solid);color:var(--warning-on-solid);font-size:var(--text-xs);font-weight:500">solid + on-solid</div>
+  <div class="k">--warning-text · 7.17:1 on tint</div>
+</div>
+<div class="sw">
+  <span class="chip" style="background:var(--error-bg);color:var(--error-text);border-color:var(--error-border)">Payment failed</span>
+  <div style="display:flex;align-items:center;justify-content:center;height:28px;background:var(--error-solid);color:var(--error-on-solid);font-size:var(--text-xs);font-weight:500">solid + on-solid</div>
+  <div class="k">--error-text · 5.79:1 on tint</div>
+</div>
+<div class="sw">
+  <span class="chip" style="background:var(--info-bg);color:var(--info-text);border-color:var(--info-border)">Withdrawal right</span>
+  <div style="display:flex;align-items:center;justify-content:center;height:28px;background:var(--info-solid);color:var(--info-on-solid);font-size:var(--text-xs);font-weight:500">solid + on-solid</div>
+  <div class="k">--info-text · 5.76:1 on tint</div>
+</div>
+</div>
+<div class="k" style="margin-top:14px">A tone's -text role is type on canvas or on its own tint. Its -solid role is a fill and carries -on-solid. Amber fills never carry white type.</div></body></html>

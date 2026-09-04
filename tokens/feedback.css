@@ -1,0 +1,65 @@
+/* Void — feedback tones. Four tones, four roles each. Roles are split because no
+   single value can be legible as text on the canvas AND legible as a fill:
+     .text   type on the canvas or on its own tint      ≥ 4.5:1
+     .bg     tint behind .text                          pairs with .text
+     .border tint edge — decorative, meaning is carried by .text and the tint
+     .solid  filled chip or banner, carries .on-solid   ≥ 4.5:1 */
+
+:root {
+  --success-text: var(--green-700);
+  --success-bg: var(--green-100);
+  --success-border: var(--green-200);
+  --success-solid: var(--green-600);
+  --success-on-solid: var(--neutral-50);
+
+  --warning-text: var(--amber-700);
+  --warning-bg: var(--amber-100);
+  --warning-border: var(--amber-200);
+  --warning-solid: var(--amber-500);
+  /* Amber fills only ever carry dark type — 9.41:1. Never white on amber. */
+  --warning-on-solid: var(--neutral-900);
+
+  --error-text: var(--red-600);
+  --error-bg: var(--red-100);
+  --error-border: var(--red-200);
+  --error-solid: var(--red-600);
+  --error-on-solid: var(--neutral-50);
+
+  --info-text: var(--blue-600);
+  --info-bg: var(--blue-100);
+  --info-border: var(--blue-200);
+  --info-solid: var(--blue-600);
+  --info-on-solid: var(--neutral-50);
+
+  /* Aliases retired from v1.0 — kept so existing components resolve. */
+  --success: var(--success-solid);
+  --success-foreground: var(--success-on-solid);
+  --warning: var(--warning-solid);
+  --warning-foreground: var(--warning-on-solid);
+}
+
+.dark {
+  --success-text: var(--green-450);
+  --success-bg: var(--green-950);
+  --success-border: var(--green-900);
+  --success-solid: var(--green-400);
+  --success-on-solid: oklch(0.13 0 0);
+
+  --warning-text: var(--amber-450);
+  --warning-bg: var(--amber-950);
+  --warning-border: var(--amber-900);
+  --warning-solid: var(--amber-400);
+  --warning-on-solid: var(--neutral-900);
+
+  --error-text: var(--red-400);
+  --error-bg: var(--red-950);
+  --error-border: var(--red-900);
+  --error-solid: var(--red-500);
+  --error-on-solid: oklch(0.13 0 0);
+
+  --info-text: var(--blue-400);
+  --info-bg: var(--blue-950);
+  --info-border: var(--blue-900);
+  --info-solid: var(--blue-500);
+  --info-on-solid: oklch(0.13 0 0);
+}

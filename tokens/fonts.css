@@ -1,0 +1,68 @@
+/* Void — webfonts. Self-hosted only. No third-party origin appears in this file
+   or anywhere else in the token closure (UI-INV-13 / NFR-SEC-20 / rule V8).
+
+   All five .woff2 binaries are present in assets/fonts/ and self-hosted from
+   this origin. See assets/fonts/README.md for the file list, the subsetting
+   commands used to regenerate them, and the licence references.
+
+   Shipped weights, and only these: 400 and 500 for the two Latin faces and for
+   Bengali; 400 for mono. Subsets: Latin basic + Latin-1 for Geist, Bengali block
+   for Anek Bangla. font-display: swap on every face.
+   Preload on the critical path (document <head>, before the stylesheet):
+     <link rel="preload" href="/assets/fonts/geist-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+     <link rel="preload" href="/assets/fonts/geist-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+   Bengali faces are preloaded only when the active locale is bn. */
+
+@font-face {
+  font-family: "Void Sans";
+  src: url("../assets/fonts/geist-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Void Sans";
+  src: url("../assets/fonts/geist-500-latin.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Void Mono";
+  src: url("../assets/fonts/geist-mono-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Void Bengali";
+  src: url("../assets/fonts/anek-bangla-400-bengali.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0964-0965, U+0980-09FF, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+@font-face {
+  font-family: "Void Bengali";
+  src: url("../assets/fonts/anek-bangla-500-bengali.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0964-0965, U+0980-09FF, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+
+:root {
+  --font-void-sans: "Void Sans", ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-void-mono: "Void Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* Bengali stack keeps the Latin face first so Latin runs inside Bengali copy
+     (product names, SKUs, market codes) stay optically consistent. */
+  --font-void-bengali: "Void Bengali", "Void Sans", "Noto Sans Bengali", "Hind Siliguri", sans-serif;
+
+  /* Legacy aliases from the source theme block. */
+  --font-geist-sans: var(--font-void-sans);
+  --font-geist-mono: var(--font-void-mono);
+  --font-bangla: var(--font-void-bengali);
+}

@@ -1,0 +1,26 @@
+/* Void — motion. Short, flat, no bounce. Transforms are reserved for press
+   feedback and the Studio canvas. Nothing exceeds 800ms (UI-INV-8). */
+
+:root {
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0.13, 1); /* @kind other */
+  --motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+
+  --duration-instant: 80ms; /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-normal: 200ms; /* @kind other */
+  --duration-slow: 320ms; /* @kind other */
+  /* image and hero fades only */
+  --duration-editorial: 600ms; /* @kind other */
+  /* Substituted under prefers-reduced-motion (rule V9). */
+  --motion-reduced: 0.01ms; /* @kind other */
+
+  /* Legacy aliases */
+  --ease-standard: var(--motion-easing-standard); /* @kind other */
+  --ease-out: var(--motion-easing-decelerate); /* @kind other */
+  --ease-in: var(--motion-easing-accelerate); /* @kind other */
+  --duration-base: var(--duration-normal); /* @kind other */
+
+  --transition-control: background-color var(--duration-fast) var(--motion-easing-standard), color var(--duration-fast) var(--motion-easing-standard), border-color var(--duration-fast) var(--motion-easing-standard), box-shadow var(--duration-fast) var(--motion-easing-standard), text-decoration-thickness var(--duration-fast) var(--motion-easing-standard); /* @kind other */
+  --press-scale: 0.985; /* @kind other */
+}

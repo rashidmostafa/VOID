@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Dialog, Toast, Tooltip" subtitle="Blocking decisions, transient confirmations, icon labels" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>window.VOID_ICON_SPRITE="../../assets/icons/void-icons.svg"</script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--background)}.row{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap}.col{display:flex;flex-direction:column;gap:var(--space-4)}.lbl{font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--text-muted)}</style>
+</head><body><div id="root"></div><script type="text/babel">
+const NS = window.VoidDesignSystem_980885;
+const { Toast, Tooltip, IconButton, Icon, Button, Card } = NS;
+function Demo(){return (<div className="col">
+  <div className="row" style={{alignItems:'flex-start',gap:'var(--space-5)'}}>
+    <Toast tone="success" title="Added to bag" description="Handloom kurta, size M" onDismiss={()=>{}} action={<Button variant="link" size="sm">View bag</Button>}/>
+    <div className="col" style={{gap:'var(--space-3)'}}>
+      <Toast tone="danger" title="Payout failed" description="bKash rejected the transfer." style={{width:290}}/>
+      <div className="row"><Tooltip label="Mirror artwork"><IconButton variant="outline" icon={<Icon name="flip-horizontal"/>} label="Mirror"/></Tooltip><Tooltip placement="right" label="Duplicate"><IconButton variant="outline" icon={<Icon name="copy"/>} label="Duplicate"/></Tooltip><span className="lbl">hover for tooltip</span></div>
+    </div>
+  </div>
+  <Card padding="none" style={{maxWidth:520,borderRadius:'var(--radius-xl)',boxShadow:'var(--shadow-overlay)'}}>
+    <div style={{padding:'var(--space-5) var(--space-5) 0'}}><div style={{font:'var(--type-h3)'}}>Reject this design?</div><div style={{font:'var(--type-ui-sm)',color:'var(--text-muted)',marginTop:'var(--space-2)'}}>The designer is notified with your note.</div></div>
+    <div style={{display:'flex',justifyContent:'flex-end',gap:'var(--space-3)',padding:'var(--space-5)',marginTop:'var(--space-5)',borderTop:'1px solid var(--border)'}}><Button variant="ghost">Cancel</Button><Button variant="destructive">Reject</Button></div>
+  </Card>
+</div>);}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>
