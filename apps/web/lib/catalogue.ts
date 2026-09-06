@@ -27,7 +27,14 @@ export interface Piece {
   rating?: number;
   reviewCount?: number;
   badge?: { label: string; tone: "new" | "sale" | "lowstock" | "soldout" };
-  fabric: string;
+  /** FR-CAT-19: structured percentage by weight, not a prose string — the
+      customs description and a market's labelling obligations both read it. */
+  fibres: Array<{ name: string; pct: number }>;
+  care: string[];
+  /** Per-size units. 0 is out of stock and stays SELECTABLE (FR-CAT-12). */
+  stock: Record<string, number>;
+  /** Made-to-order lead time in days, as a range. */
+  leadTimeDays: [number, number];
   /** FR-XBRD-6: 6-digit minimum, extensible to what a destination requires. */
   hsCode: string;
   /** FR-XBRD-7: distinct from the shipping origin. */
@@ -48,7 +55,10 @@ export const CATALOGUE: Piece[] = [
     rating: 4.6,
     reviewCount: 38,
     badge: { label: "New in", tone: "new" },
-    fabric: "100% cotton",
+    fibres: [{ name: "Cotton", pct: 100 }],
+    care: ["Cold hand wash", "Dry flat in shade", "Do not bleach"],
+    stock: { S: 4, M: 7, L: 2, XL: 0 },
+    leadTimeDays: [7, 10],
     hsCode: "620520",
     countryOfOrigin: "BD",
     availableIn: ["bd", "in", "uk", "ae"],
@@ -65,7 +75,10 @@ export const CATALOGUE: Piece[] = [
     rating: 4.8,
     reviewCount: 12,
     badge: { label: "Sale", tone: "sale" },
-    fabric: "100% cotton",
+    fibres: [{ name: "Cotton", pct: 100 }],
+    care: ["Dry clean only"],
+    stock: { S: 1, M: 3, L: 2 },
+    leadTimeDays: [10, 14],
     hsCode: "620443",
     countryOfOrigin: "BD",
     availableIn: ["bd", "uk"],
@@ -80,7 +93,10 @@ export const CATALOGUE: Piece[] = [
     sizes: ["M", "L", "XL"],
     rating: 4.4,
     reviewCount: 61,
-    fabric: "100% cotton",
+    fibres: [{ name: "Cotton", pct: 100 }],
+    care: ["Cold hand wash", "Warm iron"],
+    stock: { M: 5, L: 6, XL: 3 },
+    leadTimeDays: [7, 10],
     hsCode: "620520",
     countryOfOrigin: "BD",
     availableIn: ["bd", "in", "uk", "ae"],
@@ -96,7 +112,10 @@ export const CATALOGUE: Piece[] = [
     rating: 4.2,
     reviewCount: 9,
     badge: { label: "2 left", tone: "lowstock" },
-    fabric: "100% cotton",
+    fibres: [{ name: "Cotton", pct: 100 }],
+    care: ["Cold machine wash", "Line dry"],
+    stock: { S: 1, M: 1 },
+    leadTimeDays: [7, 10],
     hsCode: "620462",
     countryOfOrigin: "BD",
     availableIn: ["bd"],
@@ -111,7 +130,10 @@ export const CATALOGUE: Piece[] = [
     sizes: ["One size"],
     rating: 4.9,
     reviewCount: 24,
-    fabric: "70% silk, 30% cotton",
+    fibres: [{ name: "Silk", pct: 70 }, { name: "Cotton", pct: 30 }],
+    care: ["Dry clean only"],
+    stock: { "One size": 12 },
+    leadTimeDays: [3, 5],
     hsCode: "621410",
     countryOfOrigin: "BD",
     availableIn: ["bd", "in", "uk", "ae"],
@@ -125,10 +147,33 @@ export const CATALOGUE: Piece[] = [
     priceBdt: 920_000,
     sizes: ["M", "L", "XL"],
     badge: { label: "Sold out", tone: "soldout" },
-    fabric: "100% cotton",
+    fibres: [{ name: "Cotton", pct: 100 }],
+    care: ["Cold hand wash separately", "Colour will fade"],
+    stock: { M: 0, L: 0, XL: 0 },
+    leadTimeDays: [14, 21],
     hsCode: "620332",
     countryOfOrigin: "BD",
     availableIn: ["bd", "uk"],
+    priceBand: "over-6000",
+  },
+  {
+    /* Deliberately NOT available in the home market. UI-PDP-9 requires a piece
+       unavailable in the active market to say so and offer the markets where it
+       can be bought, rather than 404ing — a fixture in which every piece is
+       available everywhere leaves that path unreachable and untested. */
+    slug: "export-only-wrap-coat",
+    title: "Wrap coat",
+    designer: "Rina Ahmed",
+    sku: "RA-7720-CHR",
+    priceBdt: 1_450_000,
+    sizes: ["S", "M", "L"],
+    fibres: [{ name: "Wool", pct: 80 }, { name: "Cotton", pct: 20 }],
+    care: ["Dry clean only"],
+    stock: { S: 2, M: 4, L: 1 },
+    leadTimeDays: [14, 21],
+    hsCode: "620210",
+    countryOfOrigin: "BD",
+    availableIn: ["uk", "ae"],
     priceBand: "over-6000",
   },
 ];
@@ -174,3 +219,15 @@ export const PRICE_BANDS = [
   { id: "3000-6000", kind: "between" as const, min: 300_000, max: 600_000 },
   { id: "over-6000", kind: "over" as const, min: 600_000 },
 ];
+
+export const pieceBySlug = (slug: string): Piece | undefined =>
+  CATALOGUE.find((p) => p.slug === slug);
+
+/** FR-XBRD-18 / UI-PDP-9: where else a piece can be bought. */
+export const marketsOffering = (piece: Piece, codes: string[]): string[] =>
+  codes.filter((c) => piece.availableIn.includes(c));
+
+export const inStock = (piece: Piece, size: string): boolean => (piece.stock[size] ?? 0) > 0;
+
+export const anyInStock = (piece: Piece): boolean =>
+  Object.values(piece.stock).some((n) => n > 0);

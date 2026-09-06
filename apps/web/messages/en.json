@@ -57,7 +57,48 @@
     "lowStock": "{count, plural, one {# left} other {# left}}",
     "soldOut": "Sold out",
     "from": "From {price}",
-    "sizeLabel": "Size"
+    "sizeLabel": "Size",
+    "customise": "Customise in Void Studio",
+    "customiseNote": "A customised piece is made to order and cannot be returned.",
+    "selectSize": "Select a size",
+    "outOfStock": "Out of stock",
+    "notifyMe": "Email me when it is back",
+    "notifyNote": "We will email you once, when this size is back in stock.",
+    "leadTime": "Made to order in Dhaka. {min}–{max} days.",
+    "crossBorderNote": "Customs clearance can extend this.",
+    "shipsFrom": "Ships from",
+    "soldBy": "Sold by",
+    "returns": "Returns",
+    "returnWindow": "{days} days, unworn, tags on.",
+    "statutoryRight": "You also have a statutory right to withdraw from this purchase.",
+    "sizeUnavailable": "This size is not available.",
+    "seller": {
+      "void_bd": "Void, Bangladesh",
+      "void_foreign_entity": "Void",
+      "merchant_of_record": "Our merchant of record",
+      "vendor": "The vendor"
+    },
+    "sections": {
+      "details": "Details",
+      "materials": "Materials and care",
+      "sizeGuide": "Size guide",
+      "shipping": "Shipping",
+      "returnsSection": "Returns"
+    },
+    "compliance": {
+      "title": "Product information",
+      "fibre-composition": "Fibre composition",
+      "care-instructions": "Care",
+      "country-of-origin": "Country of origin",
+      "trader-identity": "Trader"
+    },
+    "unavailable": {
+      "title": "This piece is not available in {market}.",
+      "body": "It can be bought in the markets below.",
+      "none": "It is not currently available in any market we ship to."
+    },
+    "sizeGuideNote": "Size systems vary by market. The conversion is shown rather than assumed.",
+    "pending": "Not yet available."
   },
   "listing": {
     "title": "New in",

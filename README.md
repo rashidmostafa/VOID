@@ -63,6 +63,31 @@ Two rules worth knowing before you edit anything here:
   which makes the ADR-0001 budget unmeasurable and forecloses the runtime theme swap that UI-SRC-10
   requires. `next/font` is banned for the same reason.
 
+## Routing
+
+Every storefront page lives at `/<market>/<locale>/…`, because a page differs by
+both — price and policy by market, copy by locale — and FR-MKTS-4 requires each to
+be independently indexable and shareable. `middleware.ts` resolves and redirects;
+the precedence itself is a pure, tested function in `@void/market`, not logic in
+the middleware.
+
+Two conventions follow from that, and both matter:
+
+- **Filters and selected options are URL state, never component state.** A URL is
+  shareable, indexable, survives back navigation (UI-GLOB-4), restores on return
+  from a product page (UI-PLP-6), and works with no client JS. Component state
+  gives none of those.
+- **`lang` comes from the route params, not from request headers.** Reading
+  headers in a root layout opts the whole application into dynamic rendering,
+  including the catalogue, which is server rendered specifically to hold an LCP
+  budget. That is why there is no `app/layout.tsx`: the market segment and the
+  review group are separate root layouts.
+
+Money is `Money` — integer minor units plus an ISO-4217 code (DR-GEN-3) — and is
+only ever rendered through `formatMoney`. Never write a currency symbol or an
+amount into a message string: a label like `"Under ৳3,000"` renders a false price
+the moment the market is not BDT, and UI-INV-11 makes a shown price contractual.
+
 ## Adding a component
 
 1. Build it in `packages/ui/src/`. Server Component unless it genuinely needs
