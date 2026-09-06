@@ -46,6 +46,15 @@ jobs:
       - name: Gate 1 — token-literal lint (UI-SRC-9)
         run: npm run gate:lint
 
+      # DEL-2: tests first for anything touching money, market or policy.
+      - name: Gate — requirement tests
+        run: npm run gate:test
+
+      # FR-I18N-14: coverage is a build artefact, and a locale below threshold
+      # must not be selectable in production.
+      - name: Gate — translation coverage
+        run: npm run gate:i18n
+
       # Gate 3 renders the PRERENDERED preview surface, so the build comes first.
       - name: Build
         run: npx next build apps/web
@@ -64,6 +73,15 @@ jobs:
           VOID_REQUIRE_BROWSER: "1"
 
       # V12: a placeholder token set must never be activatable in production.
+      # FR-I18N-14's production half: an untranslated locale must be refused.
+      - name: Gate — untranslated locale refused in production
+        run: |
+          if APP_ENV=production node scripts/gates/i18n-coverage.mjs > /dev/null 2>&1; then
+            echo "::error::FR-I18N-14 did not reject a below-threshold locale under APP_ENV=production."
+            exit 1
+          fi
+          echo "FR-I18N-14 correctly refuses a below-threshold locale in production."
+
       - name: Gate — placeholder refused in production
         run: |
           if APP_ENV=production node packages/tokens/src/validate.mjs \

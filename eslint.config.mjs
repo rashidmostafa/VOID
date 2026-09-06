@@ -32,6 +32,9 @@ export default [
     rules: {
       "void/no-style-literals": "error",
       "void/no-next-font": "error",
+      // A leading underscore marks a parameter kept deliberately — usually to
+      // hold a signature stable while the implementation behind it is pending.
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
   {

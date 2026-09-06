@@ -6,11 +6,19 @@ import { IconButton } from "@void/ui/core/IconButton";
 import { Card, CardHeader } from "@void/ui/core/Card";
 import { Badge } from "@void/ui/core/Badge";
 import { Tag } from "@void/ui/core/Tag";
+import { Toast, ToastRegion } from "@void/ui/feedback/Toast";
+import { Tooltip } from "@void/ui/feedback/Tooltip";
+import { DialogDemo } from "./DialogDemo";
+import { TabsDemo } from "./TabsDemo";
+import { TabLinks } from "@void/ui/navigation/TabLinks";
+import { SideNav } from "@void/ui/navigation/SideNav";
 import { Input } from "@void/ui/forms/Input";
 import { Select } from "@void/ui/forms/Select";
 import { Checkbox } from "@void/ui/forms/Checkbox";
 import { Radio } from "@void/ui/forms/Radio";
 import { Switch } from "@void/ui/forms/Switch";
+import { ProductCard } from "@void/ui/commerce/ProductCard";
+import { marketByCode, money } from "@void/market";
 import { ICON_NAMES } from "@void/tokens/icons";
 
 /* The preview surface UI-SRC-8 asks for.
@@ -114,6 +122,33 @@ function Surface({ state }: { state: AsyncState<string[]> }) {
         </div>
       )}
     </AsyncSurface>
+  );
+}
+
+/* A dismiss control that works without JS: inside a form it submits, outside one
+   it is still a real, focusable, 44px button. */
+function ToastDismiss() {
+  return (
+    <button
+      type="button"
+      aria-label="Dismiss notification"
+      className="void-touch-safe"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flex: "none",
+        border: "none",
+        background: "transparent",
+        color: "var(--fg-secondary)",
+        cursor: "pointer",
+        padding: 0,
+        fontSize: "var(--text-md)",
+        lineHeight: "var(--leading-none)",
+      }}
+    >
+      <span aria-hidden="true">×</span>
+    </button>
   );
 }
 
@@ -306,6 +341,156 @@ export default function Preview() {
           <Switch name="sw-b" label="Email me about restocks" />
           <Switch name="sw-c" label="Small" size="sm" />
           <Switch name="sw-d" label="Unavailable" disabled />
+        </div>
+      </Section>
+
+      <Section title="Tooltip — names things, never explains them">
+        <div style={row}>
+          <Tooltip label="Search">
+            <IconButton icon={<Icon name="search" />} label="Search" variant="outline" />
+          </Tooltip>
+          <Tooltip label="Save to wishlist" placement="bottom">
+            <IconButton icon={<Icon name="heart" />} label="Save to wishlist" variant="outline" />
+          </Tooltip>
+          <Tooltip label="Filters" placement="end">
+            <IconButton icon={<Icon name="sliders-horizontal" />} label="Filters" variant="outline" />
+          </Tooltip>
+        </div>
+      </Section>
+
+      <Section title="Toast — tone selects the announcement, not just the colour">
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+          <Toast title="Saved to your wishlist." dismiss={<ToastDismiss />} />
+          <Toast
+            tone="success"
+            title="Order placed."
+            description="VD-2451. A confirmation is on its way to your email."
+            action={<Button variant="link">View order</Button>}
+            dismiss={<ToastDismiss />}
+          />
+          <Toast
+            tone="warning"
+            title="Delivery may take longer."
+            description="Customs clearance is running two days behind for UK shipments."
+            dismiss={<ToastDismiss />}
+          />
+          <Toast
+            tone="danger"
+            title="bKash rejected the transfer."
+            description="Update the account number and retry."
+            dismiss={<ToastDismiss />}
+          />
+        </div>
+      </Section>
+
+      <Section title="Dialog — native <dialog>, so focus and Escape come from the browser">
+        <DialogDemo />
+      </Section>
+
+      {/* The live region in its real fixed position, so the gate measures it at
+          320 where a 360px toast does not fit. */}
+      <ToastRegion>
+        <Toast
+          tone="success"
+          title="Added to your bag."
+          action={<Button variant="link">View bag</Button>}
+          dismiss={<ToastDismiss />}
+        />
+      </ToastRegion>
+
+      <Section title="Tabs — in-page panels, ARIA pattern with roving tabindex">
+        <TabsDemo />
+      </Section>
+
+      <Section title="TabLinks — the same look for ROUTES, as a nav of links">
+        <TabLinks
+          label="Account sections"
+          current="/preview"
+          items={[
+            { href: "/preview", label: "Orders", count: 3 },
+            { href: "?s=addresses", label: "Addresses" },
+            { href: "?s=designs", label: "My designs" },
+            { href: "?s=settings", label: "Settings" },
+          ]}
+        />
+      </Section>
+
+      <Section title="SideNav — links with aria-current, 44px rows">
+        {/* SideNav is a 248px desktop surface. At 320 the real portal shell swaps
+            it for a bottom bar (readme.md) — that is the shell's job, not this
+            component's — so the preview scrolls it rather than clipping it. */}
+        <div style={{ display: "flex", blockSize: "var(--layout-max-prose)", maxBlockSize: "var(--measure-tight)", border: "var(--border-width-thin) solid var(--border-default)", borderRadius: "var(--radius-lg)", overflowX: "auto" }}>
+          <SideNav
+            label="Back office"
+            current="/preview"
+            brand={<span style={{ font: "var(--type-label)", textTransform: "uppercase", letterSpacing: "var(--tracking-widest)" }}>Void</span>}
+            sections={[
+              {
+                title: "Operations",
+                items: [
+                  { href: "/preview", label: "Orders", icon: <Icon name="package" size="sm" />, badge: 12 },
+                  { href: "?n=customs", label: "Customs queue", icon: <Icon name="globe" size="sm" />, badge: 4 },
+                  { href: "?n=returns", label: "Returns", icon: <Icon name="rotate-ccw" size="sm" /> },
+                ],
+              },
+              {
+                title: "Catalogue",
+                items: [
+                  { href: "?n=products", label: "Products", icon: <Icon name="shirt" size="sm" /> },
+                  { href: "?n=markets", label: "Markets", icon: <Icon name="map-pin" size="sm" /> },
+                ],
+              },
+            ]}
+          />
+          <div style={{ flex: 1, padding: "var(--space-5)", minInlineSize: 0 }}>
+            <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)" }}>
+              Content pane. The sidebar is a navigation landmark of links; the active row carries
+              aria-current=&quot;page&quot;.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="ProductCard — grid tile, price via @void/market">
+        <div style={{ display: "grid", gap: "var(--space-5)", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, var(--measure-tight)), 1fr))" }}>
+          <ProductCard
+            href="?p=1"
+            title="Autumn handloom shirt"
+            designer="Void"
+            sku="VD-2451-BLK"
+            price={money(245_000, "BDT")}
+            market={marketByCode("bd")!}
+            locale="en"
+            sizes={["S", "M", "L", "XL"]}
+            rating={4.6}
+            reviewCount={38}
+            badge="New in"
+            ratingLabel="4.6"
+          />
+          <ProductCard
+            href="?p=2"
+            title="Jamdani panel dress"
+            designer="Rina Ahmed"
+            sku="RA-1180-IND"
+            price={money(685_000, "BDT")}
+            compareAt={money(845_000, "BDT")}
+            market={marketByCode("bd")!}
+            locale="en"
+            sizes={["S", "M", "L"]}
+            badge="Sale"
+            badgeTone="sale"
+          />
+          <ProductCard
+            href="?p=3"
+            title="Indigo field jacket"
+            designer="Void"
+            sku="VD-5120-IND"
+            price={money(920_000, "BDT")}
+            market={marketByCode("bd")!}
+            locale="bn"
+            badge="Sold out"
+            badgeTone="soldout"
+          />
         </div>
       </Section>
 

@@ -1,0 +1,25 @@
+{
+  "source": "en",
+  "totalKeys": 64,
+  "threshold": 95,
+  "locales": {
+    "en": {
+      "coverage": 100,
+      "translated": 64,
+      "identicalToSource": 64,
+      "missing": 0,
+      "orphaned": [],
+      "brokenPlaceholders": [],
+      "selectableInProduction": true
+    },
+    "bn": {
+      "coverage": 0,
+      "translated": 0,
+      "identicalToSource": 1,
+      "missing": 63,
+      "orphaned": [],
+      "brokenPlaceholders": [],
+      "selectableInProduction": false
+    }
+  }
+}

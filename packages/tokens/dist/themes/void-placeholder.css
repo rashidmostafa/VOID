@@ -288,6 +288,19 @@
   --badge-h-md: 24px;
   --badge-dot: 5px;
   --tag-h: 28px;
+  --dialog-sm: 400px;
+  --dialog-md: 520px;
+  --dialog-lg: 720px;
+  --toast-w: 360px;
+  --toast-bar: 3px;
+  --tooltip-offset: 6px;
+  --tab-segmented-h: 28px;
+  --nav-item-h-dense: 34px;
+  --nav-item-h: 44px;
+  --commerce-badge-h: 22px;
+  --size-chip-min: 28px;
+  --rating-bar-w: 56px;
+  --rating-bar-h: 3px;
   --sidebar-width: 248px;
   --sidebar-width-collapsed: 64px;
   --topbar-height: 56px;
@@ -299,6 +312,7 @@
   --z-drawer: 1200;
   --z-modal: 1300;
   --z-toast: 1400;
+  --z-tooltip: 1500;
   --duration-instant: 80ms;
   --duration-fast: 140ms;
   --duration-normal: 200ms;
@@ -311,6 +325,7 @@
   --motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
   --motion-reduced: 0.01ms;
   --press-scale: 0.985;
+  --rise-offset: 6px;
   --blur-panel: 12px;
   --blur-scrim: 2px;
   --opacity-disabled: 0.45;
@@ -599,4 +614,63 @@ a:hover { color: var(--fg-link-hover); text-decoration-thickness: var(--border-w
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/* Dialog. The panel is the native <dialog> element, so it lives in the top layer
+   and needs no z-index; the scrim is its ::backdrop rather than a fixed div.
+   Declared here so the prefers-reduced-motion rule above reaches the animation —
+   a component shipping its own <style> block escapes it. */
+.void-dialog {
+  padding: 0;
+  border: var(--border-width-thin) solid var(--border-default);
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface-raised);
+  color: var(--fg-primary);
+  box-shadow: var(--shadow-overlay);
+  animation: void-rise var(--duration-normal) var(--motion-easing-decelerate);
+}
+.void-dialog::backdrop {
+  /* One of only two transparency uses in the system (readme.md). */
+  background: var(--overlay-scrim);
+  backdrop-filter: blur(var(--blur-scrim));
+  animation: void-fade var(--duration-normal) var(--motion-easing-decelerate);
+}
+@keyframes void-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes void-rise {
+  from { opacity: 0; transform: translateY(var(--rise-offset)); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Product tile. The link covers the whole tile through ::after, so the target is
+   the card while the accessible name stays just the product title — rather than
+   a click handler on an <article>, which is neither focusable nor announced.
+
+   Hover behaviour is readme.md's: the photograph scales 1.03 and the title gains
+   an underline at 3px offset. No lift, no shadow. The size peek reveals on FOCUS
+   as well as hover, because hover-only is unreachable by keyboard and does not
+   exist on touch. Declared here so the central prefers-reduced-motion rule
+   reaches the scale. */
+.void-tile__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.void-tile__media {
+  transition: transform var(--duration-editorial) var(--motion-easing-standard);
+}
+.void-tile:hover .void-tile__media {
+  transform: scale(1.03);
+}
+.void-tile:hover .void-tile__link,
+.void-tile:focus-within .void-tile__link {
+  text-decoration: underline;
+  text-underline-offset: var(--underline-offset);
+}
+.void-tile__sizes {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--motion-easing-standard);
+}
+.void-tile:hover .void-tile__sizes,
+.void-tile:focus-within .void-tile__sizes {
+  opacity: 1;
 }

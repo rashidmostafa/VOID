@@ -1,0 +1,97 @@
+{
+  "$comment": "Source catalogue. FR-I18N-8: no user-facing string is hard-coded anywhere in the codebase. Voice rules from readme.md apply to every value here — sentence case except the uppercase eyebrow layer, second person for the shopper, imperative for actions, no exclamation marks, no emoji. Errors name the object and the fix. Empty states are one line and one action.",
+  "common": {
+    "brand": "Void",
+    "skipToContent": "Skip to content",
+    "loading": "Loading",
+    "close": "Close",
+    "retry": "Try again",
+    "contactSupport": "Contact support"
+  },
+  "market": {
+    "label": "Market",
+    "change": "Change market",
+    "shippingTo": "Shipping to {market}",
+    "scopeNote": "Prices, delivery and policies shown for {market}.",
+    "resolvedFrom": {
+      "explicit": "You chose this market.",
+      "link": "This link is for our {market} market.",
+      "account": "From your account preference.",
+      "shipping-address": "From your shipping address.",
+      "geo": "Detected from your location. Change it if this is wrong.",
+      "accept-language": "Detected from your browser. Change it if this is wrong.",
+      "default": "Showing our default market. Change it if this is wrong."
+    },
+    "deliveryTerms": {
+      "ddp": "Duty and import tax are included in the price you pay.",
+      "dap": "The carrier will ask you for duty and import tax before delivery.",
+      "domestic": "Delivered within Bangladesh."
+    }
+  },
+  "locale": {
+    "label": "Language",
+    "change": "Change language",
+    "untranslated": "This language is not fully translated yet. Untranslated text is shown in English."
+  },
+  "nav": {
+    "primary": "Main",
+    "newIn": "New in",
+    "women": "Women",
+    "men": "Men",
+    "studio": "Void Studio",
+    "designers": "Designers",
+    "search": "Search",
+    "account": "Your account",
+    "bag": "Bag"
+  },
+  "home": {
+    "eyebrow": "New in",
+    "title": "Autumn handloom",
+    "standfirst": "Made to order in Dhaka. 7–10 days.",
+    "shopNewIn": "Shop new in"
+  },
+  "product": {
+    "addToBag": "Add to bag",
+    "sizeGuide": "Size guide",
+    "madeToOrder": "Made to order in Dhaka. {days} days.",
+    "lowStock": "{count, plural, one {# left} other {# left}}",
+    "soldOut": "Sold out",
+    "from": "From {price}",
+    "sizeLabel": "Size"
+  },
+  "listing": {
+    "title": "New in",
+    "resultCount": "{count, plural, =0 {No pieces} one {# piece} other {# pieces}}",
+    "filters": "Filters",
+    "clearFilters": "Clear filters",
+    "sortBy": "Sort by",
+    "loadMore": "Load more",
+    "loadingLabel": "Loading pieces",
+    "empty": {
+      "title": "No pieces match those filters.",
+      "hint": "Removing the price filter returns {count} pieces."
+    },
+    "error": {
+      "title": "The catalogue could not be loaded.",
+      "body": "The connection did not complete. Try again, or contact support with the reference below."
+    },
+    "priceLabel": "Price",
+    "bands": {
+      "under": "Under {price}",
+      "between": "{min} – {max}",
+      "over": "Over {price}"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "That page does not exist.",
+      "body": "The address may be wrong, or the piece may have been withdrawn.",
+      "action": "Go to new in"
+    },
+    "serverError": {
+      "title": "Something on our side failed.",
+      "body": "The page could not be built. Try again, or contact support with the reference below.",
+      "action": "Try again"
+    }
+  }
+}

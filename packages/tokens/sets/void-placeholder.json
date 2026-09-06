@@ -60,7 +60,17 @@
       "size.checkGlyph": "10px — checkbox tick",
       "size.iconButton.*": "32/38/44px — square icon-only control",
       "size.badge.*": "20/24px and a 5px dot",
-      "size.tag": "28px — filter/attribute pill"
+      "size.tag": "28px — filter/attribute pill",
+      "size.dialog.*": "400/520/720px — dialog max widths",
+      "size.toast.*": "360px and a 3px tone bar",
+      "size.tooltipOffset": "6px",
+      "zIndex.tooltip": "1500 — above the toast layer",
+      "motion.riseOffset": "6px — the dialog/toast rise",
+      "size.tabSegmented": "28px — segmented pill, pointer-only",
+      "size.navItem.*": "44px default, 34px dense",
+      "size.commerceBadge": "22px — product tile flag",
+      "size.sizeChip": "28px — size peek chip",
+      "size.ratingBar.*": "56x3px — tile rating bar"
     },
     "notes": [
       "Component code may reference the semantic tier only. The primitive tier exists so semantic tokens have something to point at.",
@@ -1313,6 +1323,75 @@
         "cssVar": "--tag-h",
         "value": "28px",
         "note": "Pill height. An interactive Tag carries .void-touch-safe, because 28px is not a target."
+      },
+      "dialog": {
+        "$comment": "EXTENSION. Dialog max widths. Confirmations and short forms only.",
+        "sm": {
+          "cssVar": "--dialog-sm",
+          "value": "400px"
+        },
+        "md": {
+          "cssVar": "--dialog-md",
+          "value": "520px"
+        },
+        "lg": {
+          "cssVar": "--dialog-lg",
+          "value": "720px"
+        }
+      },
+      "toast": {
+        "$comment": "EXTENSION. Toast width and its tone bar.",
+        "width": {
+          "cssVar": "--toast-w",
+          "value": "360px"
+        },
+        "bar": {
+          "cssVar": "--toast-bar",
+          "value": "3px",
+          "use": "tone accent bar"
+        }
+      },
+      "tooltipOffset": {
+        "cssVar": "--tooltip-offset",
+        "value": "6px",
+        "note": "Gap between the trigger and the tooltip."
+      },
+      "tabSegmented": {
+        "cssVar": "--tab-segmented-h",
+        "value": "28px",
+        "note": "Segmented pill height. Pointer-only: 28px is not a touch target, so the segmented variant is allowlisted to dense portal chrome and the underline variant is the storefront default."
+      },
+      "navItem": {
+        "$comment": "EXTENSION. Sidebar row height. The reference used a bare 34px, which is under the 44px minimum and is NOT on readme.md's dense allowlist (that list names table toolbars, column config, bulk-action bars, saved views, list filters and inline row actions — not navigation). 44px is therefore the default; 34px stays available as `dense` for pointer-only portal chrome.",
+        "dense": {
+          "cssVar": "--nav-item-h-dense",
+          "value": "34px"
+        },
+        "default": {
+          "cssVar": "--nav-item-h",
+          "value": "44px"
+        }
+      },
+      "commerceBadge": {
+        "cssVar": "--commerce-badge-h",
+        "value": "22px",
+        "note": "Editorial flag on a product tile."
+      },
+      "sizeChip": {
+        "cssVar": "--size-chip-min",
+        "value": "28px",
+        "note": "Minimum width of a size chip in the tile's size peek."
+      },
+      "ratingBar": {
+        "$comment": "EXTENSION. The rating bar on a product tile. See ADR-0009: the filled/empty pairing currently fails WCAG 1.4.11 under the accent palette.",
+        "width": {
+          "cssVar": "--rating-bar-w",
+          "value": "56px"
+        },
+        "height": {
+          "cssVar": "--rating-bar-h",
+          "value": "3px"
+        }
       }
     },
     "chrome": {
@@ -1363,6 +1442,11 @@
       "toast": {
         "cssVar": "--z-toast",
         "value": 1400
+      },
+      "tooltip": {
+        "cssVar": "--z-tooltip",
+        "value": 1500,
+        "note": "Above the toast: a tooltip on a control inside a toast must still be readable. Nothing in the system may declare an ad-hoc z-index, so this exists rather than a literal."
       }
     },
     "motion": {
@@ -1428,6 +1512,11 @@
       "pressScale": {
         "cssVar": "--press-scale",
         "value": 0.985
+      },
+      "riseOffset": {
+        "cssVar": "--rise-offset",
+        "value": "6px",
+        "note": "Dialogs and toasts fade and rise 6px at --duration-normal (readme.md, Motion)."
       }
     },
     "blur": {

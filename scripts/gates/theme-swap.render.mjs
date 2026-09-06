@@ -145,24 +145,32 @@ export async function runRendered(themes, playwright) {
 
             // UI-INV-3. A control shorter than 44px is a defect unless it carries
             // .void-touch-safe, which expands the hit area without resizing it.
+            /* The EFFECTIVE target, which is often not the element's own box:
+                 · a visually-hidden native input is not the target — the label
+                   wrapping it is (checkbox, radio, switch)
+                 · a covering ::after enlarges the target without changing the
+                   visual size (.void-touch-safe, and a product tile whose link
+                   covers the whole card)
+               Measuring the box alone reports false failures for both, and
+               skipping them by class name would miss any new pattern. */
+            const px = (v) => (v && v.endsWith("px") ? parseFloat(v) : 0);
             const small = [];
             for (const el of document.querySelectorAll("button, a[href], input, select, [role=button]")) {
-              if (el.classList.contains("void-touch-safe")) continue;
-
-              // A visually-hidden native input is not itself the target — the
-              // label wrapping it is, which is how checkbox, radio and switch
-              // are built. Measure what the finger actually lands on.
               const cs = getComputedStyle(el);
               const hidden = cs.clipPath && cs.clipPath !== "none";
               const target = hidden ? el.closest("label") : el;
               if (!target) continue;
-              if (target.classList.contains("void-touch-safe")) continue;
 
               const r = target.getBoundingClientRect();
               if (r.width === 0 && r.height === 0) continue;
-              if (r.height + 0.5 < touchMin) {
+
+              const after = getComputedStyle(target, "::after");
+              const hasAfter = after.content && after.content !== "none" && after.position === "absolute";
+              const effective = Math.max(r.height, hasAfter ? px(after.blockSize || after.height) : 0);
+
+              if (effective + 0.5 < touchMin) {
                 const what = target.tagName.toLowerCase();
-                small.push(`${what}"${(target.textContent || "").trim().slice(0, 18)}" ${Math.round(r.height)}px`);
+                small.push(`${what}"${(target.textContent || "").trim().slice(0, 18)}" ${Math.round(effective)}px`);
               }
             }
 

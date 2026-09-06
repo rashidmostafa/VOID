@@ -1,0 +1,7 @@
+{
+  "$comment": "Bengali interface copy is NOT YET TRANSLATED, and must not be machine-translated — docs/adr/0007-design-source.md and readme.md both record that decision. The locale itself is wired and correct: the face, leading, conjunct shaping, numerals and bn-BD grouping all work and are verified by the theme-swap gate and the market tests. What is missing is words, and words need a translator. Every key absent here falls back to English (FR-I18N-9) rather than rendering a raw identifier, and the coverage gate reports how far short this file is (FR-I18N-14). Adding plausible-looking Bengali here would make the gate report a translated locale that nobody has read.",
+
+  "common": {
+    "brand": "Void"
+  }
+}

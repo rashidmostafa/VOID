@@ -167,10 +167,33 @@ export default {
         if (name !== "className" && name !== "class") return;
         const v = node.value;
         if (!v) return;
-        if (v.type === "Literal" && typeof v.value === "string") checkClassName(v, v.value);
-        if (v.type === "JSXExpressionContainer") {
-          checkClassName(v.expression, context.sourceCode.getText(v.expression));
-        }
+        if (v.type === "Literal" && typeof v.value === "string") return checkClassName(v, v.value);
+        if (v.type !== "JSXExpressionContainer") return;
+
+        /* Scan only the STRING LITERALS inside the expression, never its source
+           text. `className={[...].join(" ")}` is a JS array literal, and reading
+           it as text makes the opening `[` look like a Tailwind arbitrary value. */
+        const seen = new Set();
+        const walk = (n) => {
+          if (!n || typeof n !== "object" || seen.has(n)) return;
+          seen.add(n);
+          if (n.type === "Literal" && typeof n.value === "string") {
+            checkClassName(n, n.value);
+            return;
+          }
+          if (n.type === "TemplateLiteral") {
+            for (const q of n.quasis) checkClassName(n, q.value.raw);
+            for (const e of n.expressions) walk(e);
+            return;
+          }
+          for (const key of Object.keys(n)) {
+            if (key === "parent") continue;
+            const child = n[key];
+            if (Array.isArray(child)) child.forEach(walk);
+            else if (child && typeof child.type === "string") walk(child);
+          }
+        };
+        walk(v.expression);
       },
 
       TaggedTemplateExpression(node) {

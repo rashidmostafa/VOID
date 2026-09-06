@@ -76,6 +76,16 @@ overflow, no clipped text, no sub-44px target, no console error. A component tha
 is not on the preview page is a component nothing tests; one that is gets sixteen
 renderings for free.
 
+Components are **Server Components unless interaction genuinely requires otherwise** — hover,
+press, focus, checked, disabled and invalid are all CSS. Only three modules are `"use client"`:
+`Dialog` (needs `showModal()`), `Tooltip` (document-level Escape) and `Tabs` (roving focus).
+`ADR-0010` records every place the component layer departs from the design-system reference, and why.
+
+Two pairs look alike and are deliberately not interchangeable. **`Tabs` switches panels within a
+page; `TabLinks` navigates between routes** — `role="tab"` on a navigation link tells assistive tech
+the content is already present, when the page is about to change. **`Badge` is never interactive;
+`Tag` is** — which is why only one of them is exempt from the 44px minimum.
+
 `AsyncSurface` is how UI-GLOB-1 is enforced rather than remembered: every state —
 loading skeleton, empty, error-with-retry, populated — is a required prop, so
 omitting one is a compile error. Use it for anything that loads.

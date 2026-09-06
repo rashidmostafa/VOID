@@ -28,6 +28,12 @@
       ],
       "@void/tokens/*": [
         "../../packages/tokens/dist/*"
+      ],
+      "@void/market": [
+        "../../packages/market/src"
+      ],
+      "@void/market/*": [
+        "../../packages/market/src/*"
       ]
     }
   },

@@ -214,6 +214,19 @@
   --size-badge-height-md: var(--badge-h-md);
   --size-badge-dot: var(--badge-dot);
   --size-tag: var(--tag-h);
+  --size-dialog-sm: var(--dialog-sm);
+  --size-dialog-md: var(--dialog-md);
+  --size-dialog-lg: var(--dialog-lg);
+  --size-toast-width: var(--toast-w);
+  --size-toast-bar: var(--toast-bar);
+  --size-tooltip-offset: var(--tooltip-offset);
+  --size-tab-segmented: var(--tab-segmented-h);
+  --size-nav-item-dense: var(--nav-item-h-dense);
+  --size-nav-item-default: var(--nav-item-h);
+  --size-commerce-badge: var(--commerce-badge-h);
+  --size-size-chip: var(--size-chip-min);
+  --size-rating-bar-width: var(--rating-bar-w);
+  --size-rating-bar-height: var(--rating-bar-h);
   --chrome-sidebar-width: var(--sidebar-width);
   --chrome-sidebar-width-collapsed: var(--sidebar-width-collapsed);
   --chrome-topbar-height: var(--topbar-height);
@@ -225,6 +238,7 @@
   --z-index-drawer: var(--z-drawer);
   --z-index-modal: var(--z-modal);
   --z-index-toast: var(--z-toast);
+  --z-index-tooltip: var(--z-tooltip);
   --motion-duration-instant: var(--duration-instant);
   --motion-duration-fast: var(--duration-fast);
   --motion-duration-normal: var(--duration-normal);
@@ -237,6 +251,7 @@
   --motion-easing-accelerate: var(--motion-easing-accelerate);
   --motion-reduced: var(--motion-reduced);
   --motion-press-scale: var(--press-scale);
+  --motion-rise-offset: var(--rise-offset);
   --blur-panel: var(--blur-panel);
   --blur-scrim: var(--blur-scrim);
   --opacity-disabled: var(--opacity-disabled);
