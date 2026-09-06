@@ -15,13 +15,14 @@
     "gate:tokens": "node packages/tokens/src/validate.mjs",
     "gate:budget": "node scripts/gates/budget.mjs",
     "gate:lint": "eslint --max-warnings 0 apps packages",
-    "gate:theme-swap": "node scripts/gates/theme-swap.mjs",
+    "gate:theme-swap": "VOID_DIST_DIR=.next-build node scripts/gates/theme-swap.mjs",
     "gates": "npm run tokens:generate && npm run gate:drift && npm run gate:tokens && npm run gate:budget && npm run gate:lint && npm run gate:test && npm run gate:i18n && npm run build && npm run gate:dead-utilities && npm run gate:theme-swap",
-    "build": "next build apps/web",
-    "gate:dead-utilities": "node scripts/gates/dead-utilities.mjs",
+    "build": "VOID_DIST_DIR=.next-build next build apps/web",
+    "gate:dead-utilities": "VOID_DIST_DIR=.next-build node scripts/gates/dead-utilities.mjs",
     "gate:test": "vitest run",
     "test": "vitest",
-    "gate:i18n": "node scripts/gates/i18n-coverage.mjs"
+    "gate:i18n": "node scripts/gates/i18n-coverage.mjs",
+    "dev": "next dev apps/web -p 3000"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

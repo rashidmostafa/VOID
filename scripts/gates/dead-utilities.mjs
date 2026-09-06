@@ -19,7 +19,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-const CSS_DIR = "apps/web/.next/static/css";
+const CSS_DIR = `apps/web/${process.env.VOID_DIST_DIR || ".next"}/static/css`;
 if (!existsSync(CSS_DIR)) {
   console.error("dead-utilities: no built CSS — run `npx next build apps/web` first.");
   process.exit(1);

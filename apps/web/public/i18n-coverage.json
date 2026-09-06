@@ -1,12 +1,12 @@
 {
   "source": "en",
-  "totalKeys": 97,
+  "totalKeys": 179,
   "threshold": 95,
   "locales": {
     "en": {
       "coverage": 100,
-      "translated": 97,
-      "identicalToSource": 97,
+      "translated": 179,
+      "identicalToSource": 179,
       "missing": 0,
       "orphaned": [],
       "brokenPlaceholders": [],
@@ -16,7 +16,7 @@
       "coverage": 0,
       "translated": 0,
       "identicalToSource": 1,
-      "missing": 96,
+      "missing": 178,
       "orphaned": [],
       "brokenPlaceholders": [],
       "selectableInProduction": false

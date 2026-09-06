@@ -1,0 +1,6 @@
+{
+  "name": "@void/order",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts"
+}

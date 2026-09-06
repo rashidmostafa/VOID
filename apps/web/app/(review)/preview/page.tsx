@@ -18,6 +18,7 @@ import { Checkbox } from "@void/ui/forms/Checkbox";
 import { Radio } from "@void/ui/forms/Radio";
 import { Switch } from "@void/ui/forms/Switch";
 import { ProductCard } from "@void/ui/commerce/ProductCard";
+import { CostBreakdown } from "@void/ui/commerce/CostBreakdown";
 import { marketByCode, money } from "@void/market";
 import { ICON_NAMES } from "@void/tokens/icons";
 
@@ -491,6 +492,55 @@ export default function Preview() {
             badge="Sold out"
             badgeTone="soldout"
           />
+        </div>
+      </Section>
+
+      <Section title="CostBreakdown — UI-CHK-8, domestic and cross-border">
+        <div style={{ display: "flex", gap: "var(--space-8)", flexWrap: "wrap" }}>
+          <div style={{ flex: "1 1 var(--measure-tight)", minInlineSize: 0 }}>
+            <CostBreakdown
+              market={marketByCode("bd")!}
+              locale="en"
+              open
+              summaryLabel="Cost breakdown"
+              rows={[
+                { key: "g", label: "Goods", amount: money(646_000, "BDT") },
+                { key: "s", label: "Shipping", amount: money(6_000, "BDT") },
+                { key: "t", label: "VAT included in the price", amount: money(84_300, "BDT"), included: true },
+              ]}
+              totalLabel="Total"
+              total={money(652_000, "BDT")}
+              deliveryTerms={{ label: "Delivery terms", statement: "Delivered within Bangladesh." }}
+            />
+          </div>
+          <div style={{ flex: "1 1 var(--measure-tight)", minInlineSize: 0 }}>
+            <CostBreakdown
+              market={marketByCode("bd")!}
+              locale="en"
+              open
+              summaryLabel="Cost breakdown"
+              rows={[
+                { key: "g", label: "Goods", amount: money(2_055_000, "BDT") },
+                { key: "s", label: "Shipping", amount: money(6_000, "BDT") },
+                { key: "d", label: "Duty", amount: money(247_320, "BDT"), onDelivery: true },
+                { key: "t", label: "Import tax", amount: money(461_664, "BDT"), onDelivery: true },
+                { key: "f", label: "Brokerage and disbursement", amount: money(168_000, "BDT"), onDelivery: true },
+              ]}
+              totalLabel="Total"
+              total={money(2_937_984, "BDT")}
+              deliveryTerms={{
+                label: "Delivery terms",
+                statement: "The carrier will ask you for duty and import tax before delivery.",
+              }}
+              wideDisclosure="This estimate uses our own duty table because the rate provider was unavailable. The amount assessed on arrival may differ."
+              payable={{
+                atCheckoutLabel: "You pay now",
+                atCheckout: money(2_061_000, "BDT"),
+                onDeliveryLabel: "The carrier will ask you for",
+                onDelivery: money(876_984, "BDT"),
+              }}
+            />
+          </div>
         </div>
       </Section>
 

@@ -72,19 +72,30 @@ describe("FR-XBRD-6/7 — every piece can clear customs", () => {
   });
 });
 
-describe("DR-GEN-3 — catalogue prices are integer minor units", () => {
+describe("DR-GEN-3 / FR-PAY-10 — prices are integer minor units, converted only with a recorded rate", () => {
+  const NOW = "2026-09-07T09:00:00Z";
+
   it("never produces a float price", () => {
     for (const p of CATALOGUE) {
       expect(Number.isInteger(p.priceBdt)).toBe(true);
-      expect(Number.isInteger(displayPrice(p.priceBdt, bd).amount)).toBe(true);
+      expect(Number.isInteger(displayPrice(p.priceBdt, bd, NOW)!.amount)).toBe(true);
     }
   });
 
-  it("shows BDT until FX exists, rather than an invented conversion", () => {
-    // UK displays GBP, but no rate has been recorded, so the honest output is
-    // the currency the catalogue is actually priced in (UI-INV-11).
+  it("converts into the market's display currency when a rate exists", () => {
     expect(uk.displayCurrency).toBe("GBP");
-    expect(displayPrice(245_000, uk).currency).toBe("BDT");
+    const gbp = displayPrice(245_000, uk, NOW);
+    // ৳2,450.00 at 0.0071 = £17.40, in GBP minor units.
+    expect(gbp).not.toBeNull();
+    expect(gbp!.currency).toBe("GBP");
+    expect(gbp!.amount).toBe(1_740);
+  });
+
+  it("returns nothing — not a taka figure under a foreign label — with no rate", () => {
+    /* UI-INV-11 makes a shown price contractual, so the absence of a rate has to
+       surface as "no price", never as a number in the wrong currency. */
+    const noRate: Market = { ...uk, displayCurrency: "SGD" };
+    expect(displayPrice(245_000, noRate, NOW)).toBeNull();
   });
 });
 

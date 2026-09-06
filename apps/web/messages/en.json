@@ -98,7 +98,8 @@
       "none": "It is not currently available in any market we ship to."
     },
     "sizeGuideNote": "Size systems vary by market. The conversion is shown rather than assumed.",
-    "pending": "Not yet available."
+    "pending": "Not yet available.",
+    "priceUnavailable": "We cannot show a price for this piece in your market yet. No exchange rate has been recorded, and we will not quote you one we have guessed."
   },
   "listing": {
     "title": "New in",
@@ -134,5 +135,100 @@
       "body": "The page could not be built. Try again, or contact support with the reference below.",
       "action": "Try again"
     }
+  },
+  "bag": {
+    "title": "Bag",
+    "empty": "Nothing in your bag.",
+    "emptyAction": "Shop new in",
+    "remove": "Remove {piece}",
+    "checkout": "Go to checkout",
+    "itemCount": "{count, plural, one {# piece} other {# pieces}}"
+  },
+  "summary": {
+    "title": "Order summary",
+    "breakdown": "Cost breakdown",
+    "goods": "Goods",
+    "shipping": "Shipping",
+    "taxIncluded": "VAT included in the price",
+    "taxAdded": "Import tax",
+    "duty": "Duty",
+    "fees": "Brokerage and disbursement",
+    "total": "Total",
+    "payNow": "You pay now",
+    "payOnDelivery": "The carrier will ask you for",
+    "deliveryTermsLabel": "Delivery terms",
+    "wideDisclosure": "This estimate uses our own duty table because the rate provider was unavailable. The amount assessed on arrival may differ.",
+    "unavailable": {
+      "title": "We cannot quote this order yet.",
+      "delivery_terms_unset": "This market's delivery terms have not been set, so we cannot tell you whether duty is included. Nothing has been charged.",
+      "no_rate_source": "No duty rate source is configured for this market. We will not show you a total that leaves duty out.",
+      "fx_required": "We have no recorded exchange rate for this market, and we will not convert your total at a guessed one."
+    }
+  },
+  "checkout": {
+    "title": "Checkout",
+    "step": "Step {n} of {total}",
+    "crossBorderTitle": "Buying from Bangladesh",
+    "sellerOfRecord": "Seller of record",
+    "shipsFrom": "Ships from",
+    "termsBasis": "Delivery terms",
+    "furtherCharges": "Further charges on delivery",
+    "furtherChargesYes": "Yes — the carrier will collect duty and import tax before delivering.",
+    "furtherChargesNo": "No — duty and import tax are included in what you pay now.",
+    "withdrawalTitle": "Your right to withdraw",
+    "withdrawalBody": "You may withdraw from this purchase within {days} days of delivery without giving a reason. To do so, tell us before the period ends. You bear the cost of returning the goods.",
+    "withdrawalExclusion": "A piece customised in Void Studio is made to your order and is excluded from this right.",
+    "paymentTitle": "Payment",
+    "paymentUnavailable": "{method} is not available for this market.",
+    "obligation": "Pay {amount} — this creates a payment obligation",
+    "noPayment": "No payment method is configured for this market yet."
+  },
+  "payment": {
+    "bkash": "bKash",
+    "nagad": "Nagad",
+    "rocket": "Rocket",
+    "card_domestic": "Card",
+    "card_international": "International card",
+    "cod": "Cash on delivery"
+  },
+  "order": {
+    "confirmedTitle": "Order placed.",
+    "confirmedBody": "We have emailed a confirmation to {email}. Nothing else is needed from you now.",
+    "number": "Order",
+    "placed": "Placed",
+    "detail": "Order detail",
+    "notFound": "We cannot find that order.",
+    "notFoundBody": "Check the reference, or contact support with it.",
+    "nextSteps": "What happens next",
+    "nextStepsDomestic": "We make your piece, then hand it to the carrier. You will get a tracking link when it ships.",
+    "nextStepsDdp": "We make your piece and clear it through customs before it reaches you. Duty and import tax are already paid.",
+    "nextStepsDap": "We make your piece and ship it. The carrier will contact you for duty and import tax before delivering.",
+    "estimatedDelivery": "Estimated delivery",
+    "estimatedDeliveryRange": "{min}–{max} days from dispatch",
+    "customsNote": "Customs clearance can extend this.",
+    "timeline": "Progress",
+    "createAccount": "Create an account to track this order",
+    "createAccountNote": "Your order is already placed. An account only saves you typing next time.",
+    "recordedAt": "Recorded on this order",
+    "fxApplied": "Exchange rate",
+    "fxDetail": "{rate} {from} to {to}, from {source}, as of {at}",
+    "sellerOfRecord": "Seller of record",
+    "deliveryTerms": "Delivery terms",
+    "withdrawal": "Right to withdraw",
+    "withdrawalDetail": "{days} days from delivery.",
+    "noWithdrawal": "This market grants no statutory withdrawal right."
+  },
+  "status": {
+    "placed": "Placed",
+    "confirmed": "Confirmed",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "in_transit": "In transit",
+    "customs_clearance": "Customs clearance",
+    "out_for_delivery": "Out for delivery",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "failed": "Failed",
+    "returned": "Returned"
   }
 }

@@ -57,7 +57,13 @@ export default async function Listing({
   // reviewable; a real listing derives it from the query result.
   const forced = one(sp.state);
 
-  const inMarket = availableInMarket(CATALOGUE, market);
+  const now = new Date().toISOString();
+  /* A piece we cannot price cannot be offered. displayPrice returns null when no
+     FX rate exists for this market, and showing a tile with no price — or with a
+     taka figure under a foreign label — would be a false listing (UI-INV-11). */
+  const inMarket = availableInMarket(CATALOGUE, market).filter(
+    (piece) => displayPrice(piece.priceBdt, market, now) !== null
+  );
   const filtered = applyFilters(inMarket, { size, band });
 
   const here = `/c/${slug}`;
@@ -123,7 +129,7 @@ export default async function Listing({
             {PRICE_BANDS.map((b) => {
               // The boundary is an amount; the label is formatted for this
               // market and locale, never written into the copy.
-              const fmt = (minor: number) => formatMoney(displayPrice(minor, market), market, locale);
+              const fmt = (minor: number) => formatMoney(displayPrice(minor, market, now)!, market, locale);
               const label =
                 b.kind === "under"
                   ? t("listing.bands.under", { price: fmt(b.max!) })
@@ -180,8 +186,8 @@ export default async function Listing({
                     title={p.title}
                     designer={p.designer}
                     sku={p.sku}
-                    price={displayPrice(p.priceBdt, market)}
-                    compareAt={p.compareAtBdt ? displayPrice(p.compareAtBdt, market) : undefined}
+                    price={displayPrice(p.priceBdt, market, now)!}
+                    compareAt={p.compareAtBdt ? displayPrice(p.compareAtBdt, market, now)! : undefined}
                     market={market}
                     locale={locale}
                     sizes={p.sizes}

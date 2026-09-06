@@ -91,6 +91,25 @@ export default async function ProductDetail({
   }
 
   const selectedInStock = size ? inStock(piece, size) : undefined;
+  const now = new Date().toISOString();
+  const price = displayPrice(piece.priceBdt, market, now);
+  const compareAt = piece.compareAtBdt ? displayPrice(piece.compareAtBdt, market, now) : null;
+
+  /* No recorded rate means no price. The piece exists and is available here; we
+     simply cannot state what it costs, and stating a number anyway would be the
+     one thing UI-INV-11 forbids outright. */
+  if (!price) {
+    return (
+      <Page market={code} locale={locale} path={here}>
+        <div style={{ paddingBlockStart: "var(--space-10)", maxInlineSize: "var(--measure-default)" }}>
+          <h1 style={{ font: "var(--type-h2)" }}>{piece.title}</h1>
+          <p style={{ font: "var(--type-body)", color: "var(--fg-secondary)", marginBlockStart: "var(--space-3)" }}>
+            {t("product.priceUnavailable")}
+          </p>
+        </div>
+      </Page>
+    );
+  }
 
   return (
     <Page market={code} locale={locale} path={here}>
@@ -146,7 +165,7 @@ export default async function ProductDetail({
             <p
               style={{
                 font: "var(--type-h3)",
-                color: piece.compareAtBdt ? "var(--commerce-price-sale)" : "var(--commerce-price)",
+                color: compareAt ? "var(--commerce-price-sale)" : "var(--commerce-price)",
                 marginBlockStart: "var(--space-3)",
                 display: "flex",
                 alignItems: "baseline",
@@ -154,10 +173,10 @@ export default async function ProductDetail({
                 fontVariantNumeric: "tabular-nums",
               }}
             >
-              {formatMoney(displayPrice(piece.priceBdt, market), market, locale)}
-              {piece.compareAtBdt ? (
+              {formatMoney(price, market, locale)}
+              {compareAt ? (
                 <s style={{ color: "var(--commerce-price-original)", font: "var(--type-ui)" }}>
-                  {formatMoney(displayPrice(piece.compareAtBdt, market), market, locale)}
+                  {formatMoney(compareAt, market, locale)}
                 </s>
               ) : null}
             </p>

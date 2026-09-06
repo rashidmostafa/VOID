@@ -1,4 +1,5 @@
-import { money, type Market, type Money } from "@void/market";
+import { convert, money, type Market, type Money } from "@void/market";
+import { CONVERSION_POLICY, rateFor } from "./fx-rates";
 
 /* A fixture catalogue.
  *
@@ -178,17 +179,17 @@ export const CATALOGUE: Piece[] = [
   },
 ];
 
-/* The catalogue is priced in BDT. A market displaying another currency needs an
-   FX conversion that records the rate and its timestamp on anything it is
-   applied to (FR-PAY-10, FR-PAY-24, DR-GEN-10) — that belongs to the pricing
-   module, which does not exist. Until it does, a non-BDT market shows the BDT
-   price rather than an invented conversion: a wrong price is worse than an
-   obviously foreign one, and UI-INV-11 makes prices contractual. */
-export function displayPrice(minorBdt: number, _market: Market): Money {
-  // Deliberately ignores the market's display currency until FX exists. The
-  // parameter stays so every call site is already passing the market when the
-  // conversion lands, and the signature does not change under them.
-  return money(minorBdt, "BDT");
+/* The catalogue is priced in BDT; a market displaying another currency needs a
+   conversion whose rate, source and timestamp are recorded (FR-PAY-10,
+   DR-GEN-10). `convert` cannot produce an amount without that record, so this
+   returns null when no rate exists rather than showing a taka figure under a
+   foreign label — a false price, which UI-INV-11 forbids.
+   Callers that must render something use `displayPriceOr`. */
+export function displayPrice(minorBdt: number, market: Market, now: string): Money | null {
+  if (market.displayCurrency === "BDT") return money(minorBdt, "BDT");
+  const rate = rateFor("BDT", market.displayCurrency);
+  if (!rate) return null;
+  return convert(money(minorBdt, "BDT"), rate, now, CONVERSION_POLICY).money;
 }
 
 export interface Filters {

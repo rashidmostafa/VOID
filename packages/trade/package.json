@@ -1,0 +1,6 @@
+{
+  "name": "@void/trade",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts"
+}

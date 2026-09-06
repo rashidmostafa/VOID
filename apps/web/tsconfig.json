@@ -34,14 +34,24 @@
       ],
       "@void/market/*": [
         "../../packages/market/src/*"
+      ],
+      "@void/trade": [
+        "../../packages/trade/src"
+      ],
+      "@void/trade/*": [
+        "../../packages/trade/src/*"
+      ],
+      "@void/order": [
+        "../../packages/order/src"
       ]
     }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    ".next-build/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

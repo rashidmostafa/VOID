@@ -30,7 +30,7 @@ const SCHEMES = ["light", "dark"];
 const LOCALES = ["en", "bn"];
 
 const APP = "apps/web";
-const PRERENDERED = join(process.cwd(), APP, ".next/server/app/preview.html");
+const PRERENDERED = join(process.cwd(), APP, process.env.VOID_DIST_DIR || ".next", "server/app/preview.html");
 
 /* Surfaces where the 36px step is never admissible. The dense allowlist in
    readme.md covers pointer-only admin, vendor and Studio chrome; the preview
@@ -103,7 +103,7 @@ export async function runRendered(themes, playwright) {
             }
             // Compiled Tailwind utilities and chunks, straight from the build.
             if (p.startsWith("/_next/")) {
-              const f = join(process.cwd(), APP, ".next", p.replace("/_next/", ""));
+              const f = join(process.cwd(), APP, process.env.VOID_DIST_DIR || ".next", p.replace("/_next/", ""));
               if (existsSync(f)) {
                 const type = p.endsWith(".css") ? "text/css" : p.endsWith(".js") ? "text/javascript" : "application/octet-stream";
                 return route.fulfill({ contentType: type, body: readFileSync(f) });
