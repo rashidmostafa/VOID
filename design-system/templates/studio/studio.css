@@ -1,0 +1,7 @@
+/* Scroll containers for the Studio. The only class-based rules here; everything else is
+   inline. overflow-y is pinned rather than left at visible: once one axis scrolls the
+   other computes to auto, and a fractional row height then latches a phantom scrollbar. */
+.vd-scroll-x,.vd-scroll-y{scrollbar-width:thin}
+.vd-scroll-x::-webkit-scrollbar,.vd-scroll-y::-webkit-scrollbar{width:8px;height:8px}
+.vd-scroll-x::-webkit-scrollbar-thumb,.vd-scroll-y::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:var(--radius-full)}
+.vd-scroll-x::-webkit-scrollbar-track,.vd-scroll-y::-webkit-scrollbar-track{background:transparent}

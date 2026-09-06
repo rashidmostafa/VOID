@@ -1,0 +1,30 @@
+{
+  "name": "void",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "tokens:generate": "node packages/tokens/src/generate.mjs && node packages/tokens/src/generate-icons.mjs && node packages/tokens/src/make-placeholder.mjs && node packages/tokens/src/generate.mjs packages/tokens/sets/void-placeholder.json",
+    "gate:drift": "node scripts/gates/drift.mjs",
+    "gate:tokens": "node packages/tokens/src/validate.mjs",
+    "gate:budget": "node scripts/gates/budget.mjs",
+    "gate:lint": "eslint --max-warnings 0 apps packages",
+    "gate:theme-swap": "node scripts/gates/theme-swap.mjs",
+    "gates": "npm run tokens:generate && npm run gate:drift && npm run gate:tokens && npm run gate:budget && npm run gate:lint && npm run build && npm run gate:dead-utilities && npm run gate:theme-swap",
+    "build": "next build apps/web",
+    "gate:dead-utilities": "node scripts/gates/dead-utilities.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.0",
+    "playwright": "^1.63.0",
+    "typescript-eslint": "^8.19.0"
+  }
+}

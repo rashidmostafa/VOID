@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Storefront" description="Void storefront — eleven screens including help centre and branded 404/500, in four states, two locales, two schemes, at 1440 and 320" -->
+<helmet>
+<title>Void — storefront</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" href="../../assets/fonts/geist-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/geist-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./storefront.css">
+<script>window.VOID_ICON_SPRITE = "../../assets/icons/void-icons.svg"</script>
+<script src="./ds-base.js"></script>
+</helmet>
+<x-import component-from-global-scope="StorefrontExtraRegistry" from="./StorefrontExtra.jsx" hint-size="0px,0px"></x-import>
+<x-import component-from-global-scope="StorefrontApp" from="./StorefrontApp.jsx" screen="{{ screen }}" state="{{ state }}" scheme="{{ scheme }}" width="{{ width }}" locale="{{ locale }}" market="{{ market }}" chrome="{{ chrome }}" hint-size="100%,900px"></x-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;detail&quot;,&quot;listing&quot;,&quot;cart&quot;,&quot;checkout&quot;,&quot;confirm&quot;,&quot;order&quot;,&quot;account&quot;,&quot;help&quot;,&quot;notfound&quot;,&quot;servererror&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;\&quot;home\&quot; | \&quot;detail\&quot; | \&quot;listing\&quot; | \&quot;cart\&quot; | \&quot;checkout\&quot; | \&quot;confirm\&quot; | \&quot;order\&quot; | \&quot;account\&quot; | \&quot;help\&quot; | \&quot;notfound\&quot; | \&quot;servererror\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;populated&quot;,&quot;loading&quot;,&quot;empty&quot;,&quot;error&quot;],&quot;default&quot;:&quot;populated&quot;,&quot;tsType&quot;:&quot;\&quot;populated\&quot; | \&quot;loading\&quot; | \&quot;empty\&quot; | \&quot;error\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;scheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;width&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;1440&quot;,&quot;320&quot;],&quot;default&quot;:&quot;1440&quot;,&quot;tsType&quot;:&quot;\&quot;1440\&quot; | \&quot;320\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;locale&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;bn&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;\&quot;en\&quot; | \&quot;bn\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;market&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bd&quot;,&quot;in&quot;,&quot;ae&quot;,&quot;uk&quot;],&quot;default&quot;:&quot;bd&quot;,&quot;tsType&quot;:&quot;\&quot;bd\&quot; | \&quot;in\&quot; | \&quot;ae\&quot; | \&quot;uk\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;chrome&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Harness&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      screen: p.screen ?? "home",
+      state: p.state ?? "populated",
+      scheme: p.scheme ?? "light",
+      width: p.width ?? "1440",
+      locale: p.locale ?? "en",
+      market: p.market ?? "bd",
+      chrome: p.chrome ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

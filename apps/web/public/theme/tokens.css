@@ -1,0 +1,645 @@
+/* GENERATED — do not edit.
+   Source: packages/tokens/sets/void-default.json (v1.1.0)
+   Regenerate: npm run tokens:generate
+   Editing this file by hand reintroduces the drift the generator exists to prevent. */
+
+/* Self-hosted only. No third-party origin appears in this file (UI-INV-13, V8). */
+@font-face {
+  font-family: "Void Sans";
+  src: url("./fonts/geist-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Void Sans";
+  src: url("./fonts/geist-500-latin.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Void Mono";
+  src: url("./fonts/geist-mono-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Void Bengali";
+  src: url("./fonts/anek-bangla-400-bengali.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0964-0965, U+0980-09FF, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+
+@font-face {
+  font-family: "Void Bengali";
+  src: url("./fonts/anek-bangla-500-bengali.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0964-0965, U+0980-09FF, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+
+/* --- primitive tier. The semantic tier points at these; component code
+   must not (enforced by the token-literal lint rule). --- */
+:root {
+  --neutral-0: oklch(1 0 0);
+  --neutral-50: oklch(0.985 0 0);
+  --neutral-100: oklch(0.97 0 0);
+  --neutral-200: oklch(0.922 0 0);
+  --neutral-300: oklch(0.87 0 0);
+  --neutral-400: oklch(0.68 0 0);
+  --neutral-450: oklch(0.62 0 0);
+  --neutral-500: oklch(0.58 0 0);
+  --neutral-550: oklch(0.55 0 0);
+  --neutral-600: oklch(0.52 0 0);
+  --neutral-650: oklch(0.46 0 0);
+  --neutral-700: oklch(0.38 0 0);
+  --neutral-750: oklch(0.36 0 0);
+  --neutral-800: oklch(0.30 0 0);
+  --neutral-850: oklch(0.269 0 0);
+  --neutral-900: oklch(0.205 0 0);
+  --neutral-925: oklch(0.16 0 0);
+  --neutral-950: oklch(0.145 0 0);
+  --green-100: oklch(0.96 0.03 155);
+  --green-200: oklch(0.85 0.07 155);
+  --green-400: oklch(0.72 0.15 158);
+  --green-450: oklch(0.80 0.14 158);
+  --green-600: oklch(0.50 0.13 155);
+  --green-700: oklch(0.46 0.13 155);
+  --green-900: oklch(0.40 0.07 158);
+  --green-950: oklch(0.26 0.045 158);
+  --amber-100: oklch(0.97 0.045 80);
+  --amber-200: oklch(0.86 0.10 78);
+  --amber-400: oklch(0.82 0.16 80);
+  --amber-450: oklch(0.85 0.14 82);
+  --amber-500: oklch(0.80 0.16 78);
+  --amber-700: oklch(0.44 0.11 70);
+  --amber-900: oklch(0.44 0.08 82);
+  --amber-950: oklch(0.28 0.05 82);
+  --red-100: oklch(0.96 0.03 27);
+  --red-200: oklch(0.85 0.08 27);
+  --red-400: oklch(0.75 0.16 25);
+  --red-500: oklch(0.62 0.21 27);
+  --red-600: oklch(0.50 0.20 27);
+  --red-900: oklch(0.42 0.10 25);
+  --red-950: oklch(0.26 0.06 25);
+  --blue-100: oklch(0.96 0.03 250);
+  --blue-200: oklch(0.85 0.07 250);
+  --blue-400: oklch(0.80 0.11 245);
+  --blue-500: oklch(0.62 0.16 250);
+  --blue-600: oklch(0.48 0.15 250);
+  --blue-900: oklch(0.42 0.08 250);
+  --blue-950: oklch(0.26 0.05 250);
+  --signal-100: oklch(0.97 0.035 55);
+  --signal-200: oklch(0.86 0.10 52);
+  --signal-500: oklch(0.66 0.20 50);
+  --signal-550: oklch(0.74 0.19 52);
+  --signal-600: oklch(0.52 0.19 45);
+  --signal-650: oklch(0.78 0.16 55);
+  --signal-900: oklch(0.44 0.11 52);
+  --signal-950: oklch(0.27 0.06 50);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+}
+
+.dark {
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+}
+
+/* --- semantic tier. The only tier component code may reference. --- */
+:root {
+  --bg-canvas: var(--neutral-0);
+  --bg-surface: var(--neutral-0);
+  --bg-surface-raised: var(--neutral-0);
+  --bg-surface-sunken: var(--neutral-100);
+  --bg-sidebar: var(--neutral-50);
+  --bg-overlay: oklch(0.145 0 0 / 55%);
+  --fg-primary: var(--neutral-950);
+  --fg-secondary: var(--neutral-600);
+  --fg-disabled: var(--neutral-400);
+  --fg-inverse: var(--neutral-50);
+  --fg-link: var(--signal-600);
+  --fg-link-hover: oklch(0.44 0.17 42);
+  --border-subtle: var(--neutral-100);
+  --border-default: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  --border-control: var(--neutral-450);
+  --action-primary-bg: var(--neutral-900);
+  --action-primary-text: var(--neutral-50);
+  --action-primary-hover: var(--neutral-800);
+  --action-primary-active: var(--neutral-950);
+  --action-primary-disabled: var(--neutral-200);
+  --action-secondary-bg: var(--neutral-100);
+  --action-secondary-text: var(--neutral-900);
+  --action-secondary-hover: oklch(0.94 0 0);
+  --action-secondary-active: var(--neutral-200);
+  --action-secondary-disabled: var(--neutral-100);
+  --action-tertiary-bg: transparent;
+  --action-tertiary-text: var(--neutral-950);
+  --action-tertiary-hover: var(--neutral-100);
+  --action-tertiary-active: var(--neutral-200);
+  --action-tertiary-disabled: transparent;
+  --action-danger-bg: var(--red-600);
+  --action-danger-text: var(--neutral-50);
+  --action-danger-hover: oklch(0.45 0.20 27);
+  --action-danger-active: oklch(0.41 0.19 27);
+  --action-danger-disabled: var(--red-200);
+  --action-accent-bg: var(--signal-500);
+  --action-accent-text: var(--neutral-900);
+  --action-accent-hover: oklch(0.62 0.20 48);
+  --action-accent-active: oklch(0.58 0.20 46);
+  --accent-text: var(--signal-600);
+  --accent-fill: var(--signal-500);
+  --accent-on-fill: var(--neutral-900);
+  --accent-bg: var(--signal-100);
+  --accent-border: var(--signal-200);
+  --focus-ring-color: var(--neutral-500);
+  --selection-bg: var(--neutral-950);
+  --selection-text: var(--neutral-0);
+  --success-text: var(--green-700);
+  --success-bg: var(--green-100);
+  --success-border: var(--green-200);
+  --success-solid: var(--green-600);
+  --success-on-solid: var(--neutral-50);
+  --warning-text: var(--amber-700);
+  --warning-bg: var(--amber-100);
+  --warning-border: var(--amber-200);
+  --warning-solid: var(--amber-500);
+  --warning-on-solid: var(--neutral-900);
+  --error-text: var(--red-600);
+  --error-bg: var(--red-100);
+  --error-border: var(--red-200);
+  --error-solid: var(--red-600);
+  --error-on-solid: var(--neutral-50);
+  --info-text: var(--blue-600);
+  --info-bg: var(--blue-100);
+  --info-border: var(--blue-200);
+  --info-solid: var(--blue-600);
+  --info-on-solid: var(--neutral-50);
+  --commerce-price: var(--fg-primary);
+  --commerce-price-sale: var(--signal-600);
+  --commerce-price-original: var(--fg-secondary);
+  --commerce-badge-new-bg: var(--neutral-900);
+  --commerce-badge-new-text: var(--neutral-50);
+  --commerce-badge-sale-bg: var(--signal-500);
+  --commerce-badge-sale-text: var(--neutral-900);
+  --commerce-badge-sale-border: var(--signal-500);
+  --commerce-badge-lowstock-bg: var(--warning-bg);
+  --commerce-badge-lowstock-text: var(--warning-text);
+  --commerce-badge-lowstock-border: var(--warning-border);
+  --commerce-badge-soldout-bg: var(--bg-surface-sunken);
+  --commerce-badge-soldout-text: var(--fg-secondary);
+  --commerce-badge-soldout-border: var(--border-default);
+  --commerce-rating: var(--signal-500);
+  --commerce-rating-empty: var(--border-strong);
+  --commerce-trust: var(--success-text);
+  --indicator-active: var(--signal-600);
+  --font-sans: var(--font-void-sans);
+  --font-heading: var(--font-void-sans);
+  --font-bengali: var(--font-void-bengali);
+  --font-mono: var(--font-void-mono);
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-ui: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, calc(1.15rem + 0.5vw), 1.375rem);
+  --text-2xl: clamp(1.5rem, calc(1.3rem + 1vw), 1.75rem);
+  --text-3xl: clamp(1.75rem, calc(1.4rem + 1.75vw), 2.25rem);
+  --text-4xl: clamp(2.25rem, calc(1.6rem + 3.25vw), 3rem);
+  --text-5xl: clamp(2.5rem, calc(1.4rem + 5.5vw), 4.25rem);
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-medium: 500;
+  --weight-medium: 500;
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.65;
+  --leading-bengali: 1.8;
+  --leading-none: 1;
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-widest: 0.16em;
+  --type-display: var(--weight-medium) var(--text-5xl) / var(--leading-tight) var(--font-heading);
+  --type-h1: var(--weight-medium) var(--text-3xl) / var(--leading-snug) var(--font-heading);
+  --type-h2: var(--weight-medium) var(--text-2xl) / var(--leading-snug) var(--font-heading);
+  --type-h3: var(--weight-medium) var(--text-xl) / var(--leading-snug) var(--font-heading);
+  --type-body: var(--weight-regular) var(--text-base) / var(--leading-relaxed) var(--font-sans);
+  --type-ui: var(--weight-regular) var(--text-base) / var(--leading-normal) var(--font-sans);
+  --type-ui-dense: var(--weight-regular) var(--text-ui) / var(--leading-normal) var(--font-sans);
+  --type-ui-sm: var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-sans);
+  --type-label: var(--weight-medium) var(--text-xs) / var(--leading-normal) var(--font-sans);
+  --type-mono: var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-mono);
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-05: 2px;
+  --radius-none: 0;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-full: 999px;
+  --radius-media: 0;
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 oklch(0.145 0 0 / 5%);
+  --shadow-sm: 0 1px 3px 0 oklch(0.145 0 0 / 8%), 0 1px 2px -1px oklch(0.145 0 0 / 6%);
+  --shadow-md: 0 4px 10px -2px oklch(0.145 0 0 / 10%), 0 2px 4px -2px oklch(0.145 0 0 / 6%);
+  --shadow-lg: 0 12px 28px -6px oklch(0.145 0 0 / 14%), 0 4px 10px -4px oklch(0.145 0 0 / 8%);
+  --shadow-overlay: 0 24px 56px -12px oklch(0.145 0 0 / 22%);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--border-default);
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  --stroke-icon: 1.5px;
+  --layout-max-content: 1440px;
+  --layout-max-wide: 1680px;
+  --layout-max-prose: 68ch;
+  --layout-max-editorial: 1180px;
+  --layout-grid-columns: 12;
+  --layout-grid-columns-xs: 4;
+  --layout-grid-gutter: 24px;
+  --layout-grid-gutter-xs: 16px;
+  --measure-tight: 42ch;
+  --measure-default: 56ch;
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --touch-target-min: 44px;
+  --control-h-sm: 36px;
+  --control-h-md: 44px;
+  --control-h-lg: 52px;
+  --control-pad-x-sm: var(--space-3);
+  --control-pad-x-md: var(--space-4);
+  --control-pad-x-lg: var(--space-5);
+  --spinner-size: 13px;
+  --underline-offset: 3px;
+  --icon-sm: 14px;
+  --icon-md: 16px;
+  --icon-lg: 18px;
+  --icon-xl: 20px;
+  --control-box: 16px;
+  --switch-track-w-sm: 32px;
+  --switch-track-h-sm: 18px;
+  --switch-knob-sm: 12px;
+  --switch-track-w-md: 40px;
+  --switch-track-h-md: 22px;
+  --switch-knob-md: 16px;
+  --switch-knob-inset: 3px;
+  --check-glyph: 10px;
+  --icon-button-sm: 32px;
+  --icon-button-md: 38px;
+  --icon-button-lg: 44px;
+  --badge-h-sm: 20px;
+  --badge-h-md: 24px;
+  --badge-dot: 5px;
+  --tag-h: 28px;
+  --sidebar-width: 248px;
+  --sidebar-width-collapsed: 64px;
+  --topbar-height: 56px;
+  --studio-rail-width: 320px;
+  --studio-tool-rail-width: 64px;
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-drawer: 1200;
+  --z-modal: 1300;
+  --z-toast: 1400;
+  --duration-instant: 80ms;
+  --duration-fast: 140ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+  --duration-editorial: 600ms;
+  --duration-spin: 700ms;
+  --duration-shimmer: 1400ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0.13, 1);
+  --motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --motion-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --motion-reduced: 0.01ms;
+  --press-scale: 0.985;
+  --blur-panel: 12px;
+  --blur-scrim: 2px;
+  --opacity-disabled: 0.45;
+}
+
+.dark {
+  --bg-canvas: var(--neutral-950);
+  --bg-surface: var(--neutral-900);
+  --bg-surface-raised: oklch(0.235 0 0);
+  --bg-surface-sunken: var(--neutral-850);
+  --bg-sidebar: var(--neutral-900);
+  --bg-overlay: oklch(0.145 0 0 / 72%);
+  --fg-primary: var(--neutral-50);
+  --fg-secondary: oklch(0.72 0 0);
+  --fg-disabled: oklch(0.50 0 0);
+  --fg-inverse: var(--neutral-900);
+  --fg-link: var(--signal-650);
+  --fg-link-hover: oklch(0.85 0.13 60);
+  --border-subtle: oklch(0.28 0 0);
+  --border-default: var(--neutral-750);
+  --border-strong: var(--neutral-650);
+  --border-control: var(--neutral-550);
+  --action-primary-bg: oklch(0.922 0 0);
+  --action-primary-text: var(--neutral-900);
+  --action-primary-hover: oklch(0.84 0 0);
+  --action-primary-active: var(--neutral-0);
+  --action-primary-disabled: var(--neutral-750);
+  --action-secondary-bg: var(--neutral-850);
+  --action-secondary-text: var(--neutral-50);
+  --action-secondary-hover: oklch(0.32 0 0);
+  --action-secondary-active: oklch(0.36 0 0);
+  --action-secondary-disabled: var(--neutral-850);
+  --action-tertiary-bg: transparent;
+  --action-tertiary-text: var(--neutral-50);
+  --action-tertiary-hover: var(--neutral-850);
+  --action-tertiary-active: oklch(0.32 0 0);
+  --action-tertiary-disabled: transparent;
+  --action-danger-bg: var(--red-500);
+  --action-danger-text: var(--neutral-925);
+  --action-danger-hover: oklch(0.66 0.20 27);
+  --action-danger-active: oklch(0.70 0.19 27);
+  --action-danger-disabled: var(--red-950);
+  --action-accent-bg: var(--signal-550);
+  --action-accent-text: oklch(0.16 0 0);
+  --action-accent-hover: oklch(0.78 0.18 54);
+  --action-accent-active: oklch(0.82 0.16 56);
+  --accent-text: var(--signal-650);
+  --accent-fill: var(--signal-550);
+  --accent-on-fill: oklch(0.16 0 0);
+  --accent-bg: var(--signal-950);
+  --accent-border: var(--signal-900);
+  --focus-ring-color: oklch(0.72 0 0);
+  --selection-bg: var(--neutral-50);
+  --selection-text: var(--neutral-950);
+  --success-text: var(--green-450);
+  --success-bg: var(--green-950);
+  --success-border: var(--green-900);
+  --success-solid: var(--green-400);
+  --success-on-solid: oklch(0.13 0 0);
+  --warning-text: var(--amber-450);
+  --warning-bg: var(--amber-950);
+  --warning-border: var(--amber-900);
+  --warning-solid: var(--amber-400);
+  --warning-on-solid: var(--neutral-900);
+  --error-text: var(--red-400);
+  --error-bg: var(--red-950);
+  --error-border: var(--red-900);
+  --error-solid: var(--red-500);
+  --error-on-solid: oklch(0.13 0 0);
+  --info-text: var(--blue-400);
+  --info-bg: var(--blue-950);
+  --info-border: var(--blue-900);
+  --info-solid: var(--blue-500);
+  --info-on-solid: oklch(0.13 0 0);
+  --commerce-price: var(--fg-primary);
+  --commerce-price-sale: var(--signal-650);
+  --commerce-price-original: var(--fg-secondary);
+  --commerce-badge-new-bg: var(--neutral-50);
+  --commerce-badge-new-text: var(--neutral-950);
+  --commerce-badge-sale-bg: var(--signal-550);
+  --commerce-badge-sale-text: oklch(0.16 0 0);
+  --commerce-badge-sale-border: var(--signal-550);
+  --commerce-badge-lowstock-bg: var(--warning-bg);
+  --commerce-badge-lowstock-text: var(--warning-text);
+  --commerce-badge-lowstock-border: var(--warning-border);
+  --commerce-badge-soldout-bg: var(--bg-surface-sunken);
+  --commerce-badge-soldout-text: var(--fg-secondary);
+  --commerce-badge-soldout-border: var(--border-default);
+  --commerce-rating: var(--signal-550);
+  --commerce-rating-empty: var(--border-strong);
+  --commerce-trust: var(--success-text);
+  --indicator-active: var(--signal-650);
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 30%);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 40%), 0 1px 2px -1px oklch(0 0 0 / 30%);
+  --shadow-md: 0 4px 10px -2px oklch(0 0 0 / 45%), 0 2px 4px -2px oklch(0 0 0 / 35%);
+  --shadow-lg: 0 12px 28px -6px oklch(0 0 0 / 55%), 0 4px 10px -4px oklch(0 0 0 / 40%);
+  --shadow-overlay: 0 24px 56px -12px oklch(0 0 0 / 65%);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--border-default);
+}
+
+/* --- composite tier: shorthands and the v1.0 aliases, assembled from the
+   semantic tier so they follow a scheme swap without redefinition. --- */
+:root {
+  --font-void-sans: "Void Sans", ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-void-mono: "Void Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-void-bengali: "Void Bengali", "Void Sans", "Noto Sans Bengali", "Hind Siliguri", sans-serif;
+  --font-geist-sans: var(--font-void-sans);
+  --font-geist-mono: var(--font-void-mono);
+  --font-bangla: var(--font-void-bengali);
+  --background: var(--bg-canvas);
+  --foreground: var(--fg-primary);
+  --card: var(--bg-surface);
+  --card-foreground: var(--fg-primary);
+  --popover: var(--bg-surface-raised);
+  --popover-foreground: var(--fg-primary);
+  --primary: var(--action-primary-bg);
+  --primary-foreground: var(--action-primary-text);
+  --secondary: var(--action-secondary-bg);
+  --secondary-foreground: var(--action-secondary-text);
+  --muted: var(--bg-surface-sunken);
+  --muted-foreground: var(--fg-secondary);
+  --accent: var(--action-secondary-bg);
+  --accent-foreground: var(--action-secondary-text);
+  --destructive: var(--action-danger-bg);
+  --destructive-foreground: var(--action-danger-text);
+  --border: var(--border-default);
+  --input: var(--border-control);
+  --ring: var(--focus-ring-color);
+  --text-body: var(--fg-primary);
+  --text-muted: var(--fg-secondary);
+  --text-inverse: var(--fg-inverse);
+  --surface-page: var(--bg-canvas);
+  --surface-card: var(--bg-surface);
+  --surface-sunken: var(--bg-surface-sunken);
+  --surface-inverse: var(--action-primary-bg);
+  --line-hairline: var(--border-default);
+  --line-strong: var(--border-strong);
+  --overlay-scrim: var(--bg-overlay);
+  --sidebar: var(--bg-sidebar);
+  --sidebar-foreground: var(--fg-primary);
+  --sidebar-primary: var(--action-primary-bg);
+  --sidebar-primary-foreground: var(--action-primary-text);
+  --sidebar-accent: var(--bg-surface-sunken);
+  --sidebar-accent-foreground: var(--fg-primary);
+  --sidebar-border: var(--border-default);
+  --sidebar-ring: var(--focus-ring-color);
+  --success: var(--success-solid);
+  --success-foreground: var(--success-on-solid);
+  --warning: var(--warning-solid);
+  --warning-foreground: var(--warning-on-solid);
+  --text-md: var(--text-base);
+  --gutter-page: var(--space-6);
+  --gutter-page-lg: var(--space-10);
+  --container-max: var(--layout-max-content);
+  --container-editorial: var(--layout-max-editorial);
+  --container-prose: var(--layout-max-prose);
+  --radius: 0.625rem;
+  --ring-width: var(--border-width-medium);
+  --ring-offset: 2px;
+  --focus-ring: 0 0 0 var(--ring-offset) var(--bg-canvas), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--focus-ring-color);
+  --focus-ring-on-surface: 0 0 0 var(--ring-offset) var(--bg-surface), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--focus-ring-color);
+  --ease-standard: var(--motion-easing-standard);
+  --ease-out: var(--motion-easing-decelerate);
+  --ease-in: var(--motion-easing-accelerate);
+  --duration-base: var(--duration-normal);
+  --transition-control: background-color var(--duration-fast) var(--motion-easing-standard), color var(--duration-fast) var(--motion-easing-standard), border-color var(--duration-fast) var(--motion-easing-standard), box-shadow var(--duration-fast) var(--motion-easing-standard), text-decoration-thickness var(--duration-fast) var(--motion-easing-standard);
+}
+
+/* Bengali needs more leading for matras and conjuncts (UI-INV-5). */
+:lang(bn), [lang="bn"] {
+  --font-sans: var(--font-void-bengali);
+  --font-heading: var(--font-void-bengali);
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+  --type-display: var(--weight-medium) var(--text-5xl) / var(--leading-tight) var(--font-heading);
+  --type-h1: var(--weight-medium) var(--text-3xl) / var(--leading-snug) var(--font-heading);
+  --type-h2: var(--weight-medium) var(--text-2xl) / var(--leading-snug) var(--font-heading);
+  --type-h3: var(--weight-medium) var(--text-xl) / var(--leading-snug) var(--font-heading);
+  --type-body: var(--weight-regular) var(--text-base) / var(--leading-relaxed) var(--font-sans);
+  --type-ui: var(--weight-regular) var(--text-base) / var(--leading-normal) var(--font-sans);
+  --type-ui-dense: var(--weight-regular) var(--text-ui) / var(--leading-normal) var(--font-sans);
+  --type-ui-sm: var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-sans);
+  --type-label: var(--weight-medium) var(--text-xs) / var(--leading-normal) var(--font-sans);
+  --type-mono: var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-mono);
+}
+
+/* Void — base resets. The only element-level rules in the system.
+   All directional properties are logical so an RTL locale needs no rewrite
+   (UI-INV-7). */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg-canvas);
+  color: var(--fg-primary);
+  font: var(--type-body);
+  letter-spacing: var(--tracking-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-heading); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); }
+p { margin: 0; text-wrap: pretty; }
+img, svg, video { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+code, kbd, pre, samp { font-family: var(--font-mono); }
+
+/* Links are distinguishable by more than colour (Appendix I §I.2.1). */
+a {
+  color: var(--fg-link);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-thin);
+  text-underline-offset: 3px;
+  transition: var(--transition-control);
+}
+a:hover { color: var(--fg-link-hover); text-decoration-thickness: var(--border-width-medium); }
+
+::selection { background: var(--selection-bg); color: var(--selection-text); }
+
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* Any control shorter or narrower than the minimum target expands its hit area
+   without changing its visual size (UI-INV-3). Apply to 36px dense controls. */
+.void-touch-safe { position: relative; }
+.void-touch-safe::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  min-inline-size: var(--touch-target-min);
+  min-block-size: var(--touch-target-min);
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: var(--motion-reduced) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--motion-reduced) !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Indeterminate spinner. Declared here, in the theme's base layer, so the
+   central prefers-reduced-motion rule above reaches it (UI-INV-8) — a component
+   that ships its own <style> block escapes that rule. */
+@keyframes void-spin { to { transform: rotate(360deg); } }
+
+/* Loading skeleton. UI-GLOB-1 requires the loading state to be a skeleton that
+   mirrors the real layout so nothing reflows when data lands — never a spinner
+   alone. Declared here so the prefers-reduced-motion rule above reaches it; the
+   sunken block stays visible when the shimmer is suppressed, because the block
+   is what reserves the space (UI-INV-10). */
+.void-skeleton {
+  background: var(--bg-surface-sunken);
+  position: relative;
+  overflow: hidden;
+}
+.void-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--bg-surface), transparent);
+  animation: void-shimmer var(--duration-shimmer) var(--motion-easing-standard) infinite;
+}
+@keyframes void-shimmer { 100% { transform: translateX(100%); } }
+
+/* Available to assistive technology, not to sight. Used for the label on a
+   loading region, where the visible content is decorative blocks. */
+.void-visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

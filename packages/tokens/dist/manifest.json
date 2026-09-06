@@ -1,0 +1,41 @@
+{
+  "set": "void-default",
+  "version": "1.1.0",
+  "isPlaceholder": false,
+  "tokenCount": 232,
+  "schemes": [
+    "light",
+    "dark"
+  ],
+  "criticalPathFonts": [
+    "geist-400-latin.woff2",
+    "geist-500-latin.woff2"
+  ],
+  "allFonts": [
+    {
+      "file": "geist-400-latin.woff2",
+      "bytes": 12956,
+      "criticalPath": true
+    },
+    {
+      "file": "geist-500-latin.woff2",
+      "bytes": 13296,
+      "criticalPath": true
+    },
+    {
+      "file": "geist-mono-400-latin.woff2",
+      "bytes": 9864,
+      "criticalPath": false
+    },
+    {
+      "file": "anek-bangla-400-bengali.woff2",
+      "bytes": 54216,
+      "criticalPath": false
+    },
+    {
+      "file": "anek-bangla-500-bengali.woff2",
+      "bytes": 48744,
+      "criticalPath": false
+    }
+  ]
+}

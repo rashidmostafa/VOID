@@ -1,0 +1,74 @@
+name: gates
+
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      # Regenerate first: if the committed theme differs from what the contract
+      # produces, every gate after this is measuring a stale artefact.
+      - name: Generate theme from the token contract
+        run: |
+          npm run tokens:generate
+          node packages/tokens/src/make-placeholder.mjs
+          node packages/tokens/src/generate.mjs packages/tokens/sets/void-placeholder.json
+
+      - name: Committed theme matches the contract
+        run: |
+          if ! git diff --quiet -- apps/web/public/theme packages/tokens/dist packages/tokens/sets; then
+            echo "::error::Generated theme differs from the committed one. Run 'npm run tokens:generate' and commit."
+            git diff --stat -- apps/web/public/theme packages/tokens/dist packages/tokens/sets
+            exit 1
+          fi
+
+      - name: Gate — no drift from the design-system reference
+        run: npm run gate:drift
+
+      - name: Gate 2 — token set validator (V1..V12, UI-SRC-11)
+        run: |
+          npm run gate:tokens
+          node packages/tokens/src/validate.mjs packages/tokens/sets/void-placeholder.json
+
+      - name: Gate 4 and 5 — payload budgets (ADR-0001)
+        run: npm run gate:budget
+
+      - name: Gate 1 — token-literal lint (UI-SRC-9)
+        run: npm run gate:lint
+
+      # Gate 3 renders the PRERENDERED preview surface, so the build comes first.
+      - name: Build
+        run: npx next build apps/web
+
+      # Tailwind emits nothing, and no error, for an unknown theme key. This is
+      # the only thing that catches a utility that silently does not apply.
+      - name: Gate — no dead Tailwind utilities
+        run: npm run gate:dead-utilities
+
+      - name: Gate 3 — theme swap (UI-SRC-10)
+        run: npm run gate:theme-swap
+        env:
+          # The rendered half is not optional in CI: skipping it would leave
+          # layout break, text clipping, touch targets and Bengali shaping
+          # unverified.
+          VOID_REQUIRE_BROWSER: "1"
+
+      # V12: a placeholder token set must never be activatable in production.
+      - name: Gate — placeholder refused in production
+        run: |
+          if APP_ENV=production node packages/tokens/src/validate.mjs \
+               packages/tokens/sets/void-placeholder.json > /dev/null 2>&1; then
+            echo "::error::V12 did not reject the placeholder set under APP_ENV=production."
+            exit 1
+          fi
+          echo "V12 correctly refuses the placeholder set in production."

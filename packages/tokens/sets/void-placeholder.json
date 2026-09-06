@@ -1,0 +1,1708 @@
+{
+  "$schema": "https://void.internal/schemas/tokens-1.0.json",
+  "meta": {
+    "name": "void-placeholder",
+    "version": "1.1.0-placeholder",
+    "sourceMode": "placeholder",
+    "sourceRef": null,
+    "licenceRef": null,
+    "isPlaceholder": true,
+    "supportsColorSchemes": [
+      "light",
+      "dark"
+    ],
+    "cssEntry": "styles.css",
+    "cssVarConvention": "Every semantic token below carries an explicit `cssVar`. The dotted name is the contract; the custom property is the emitted artefact. They are deliberately not derivable from one another — the CSS names predate this file and are load-bearing in shipped components, so the mapping is stated rather than computed.",
+    "schemeSelector": {
+      "light": ":root",
+      "dark": ".dark"
+    },
+    "localeSelector": {
+      "bn": ":lang(bn), [lang=\"bn\"]"
+    },
+    "adaptations": [],
+    "extensions": {
+      "$comment": "Values Void ships beyond Appendix I. Listed so the contract is not silently extended (UI-SRC-6).",
+      "font.size.2xs": "11px eyebrow/table-header step",
+      "font.size.sm": "13px dense table step",
+      "font.size.ui": "14px dense portal step",
+      "font.lineHeight.snug": "1.25 — headings",
+      "font.lineHeight.bengali": "1.8 — the value :lang(bn) substitutes into .relaxed",
+      "font.letterSpacing.tighter": "-0.03em — display only",
+      "font.letterSpacing.widest": "0.16em — the uppercase eyebrow/nav/table-header layer",
+      "color.border.control": "≥3:1 boundary of an interactive control, distinct from the decorative default",
+      "color.action.accent.*": "the single accent fill, primary commerce CTA only",
+      "color.accent.*": "signal-orange marking layer: text, fill, on-fill, bg, border",
+      "color.feedback.*.solid / .onSolid": "filled chip and banner roles",
+      "color.commerce.badge.*.bg / .text / .border": "each badge is three roles, not one value",
+      "color.commerce.rating.empty": "unfilled star",
+      "color.bg.sidebar": "portal and admin sidebar ground",
+      "shadow.xs / .overlay / .insetHairline": "extra elevation steps",
+      "radius.xl / .2xl / .3xl / .4xl / .media": "the source theme's own multiplier chain, plus radius.media: 0",
+      "space.05": "2px half-step for chips and dense table padding",
+      "layout.maxWidth.editorial": "1180px storefront measure",
+      "layout.grid.columnsXs / .gutterXs": "the 320px tier",
+      "size.control.*": "control heights and horizontal padding",
+      "chrome.*": "fixed sidebar, topbar and Studio rail dimensions",
+      "motion.duration.editorial": "600ms — product and hero imagery cross-fade only",
+      "blur.panel / .scrim": "the only two transparency uses in the system",
+      "font.lineHeight.none": "1 — single-line controls",
+      "border.width.icon": "1.5px — icon and spinner stroke",
+      "size.spinner": "13px — Button loading spinner",
+      "size.underlineOffset": "3px — link underline offset",
+      "motion.duration.spin": "700ms — indeterminate spinner loop",
+      "opacity.disabled": "0.45 — the disabled treatment",
+      "size.icon.*": "14/16/18/20px — the icon ramp from readme.md",
+      "motion.duration.shimmer": "1400ms — skeleton shimmer loop",
+      "layout.measure.*": "42ch/56ch — measures for short copy",
+      "size.controlBox": "16px — checkbox/radio visual box",
+      "size.switch.*": "32/18/12 and 40/22/16 — switch track and knob",
+      "size.checkGlyph": "10px — checkbox tick",
+      "size.iconButton.*": "32/38/44px — square icon-only control",
+      "size.badge.*": "20/24px and a 5px dot",
+      "size.tag": "28px — filter/attribute pill"
+    },
+    "notes": [
+      "Component code may reference the semantic tier only. The primitive tier exists so semantic tokens have something to point at.",
+      "Every pairing in both schemes is measured in guidelines/contrast-report.md — 100 pairings, 0 failures.",
+      "Compatibility aliases (--background, --primary, --muted, --card, --sidebar-*, --chart-*) are emitted by tokens/colors.css so the shadcn-shaped names from the source theme keep resolving. They are not part of this contract and new code must not use them."
+    ],
+    "$comment": "GENERATED from void-default by packages/tokens/src/make-placeholder.mjs. DELIBERATELY UNBRANDED: greyscale, square corners, system fonts. It exists so structural work can proceed and so the theme-swap gate (UI-SRC-10) has a second, materially different set to render against. It is not a design proposal. Deployment must refuse to activate it in production (UI-SRC-7, rule V12)."
+  },
+  "primitive": {
+    "color": {
+      "neutral": {
+        "0": "oklch(1 0 0)",
+        "50": "oklch(0.985 0 0)",
+        "100": "oklch(0.97 0 0)",
+        "200": "oklch(0.922 0 0)",
+        "300": "oklch(0.87 0 0)",
+        "400": "oklch(0.68 0 0)",
+        "450": "oklch(0.62 0 0)",
+        "500": "oklch(0.58 0 0)",
+        "550": "oklch(0.55 0 0)",
+        "600": "oklch(0.52 0 0)",
+        "650": "oklch(0.46 0 0)",
+        "700": "oklch(0.38 0 0)",
+        "750": "oklch(0.36 0 0)",
+        "800": "oklch(0.30 0 0)",
+        "850": "oklch(0.269 0 0)",
+        "900": "oklch(0.205 0 0)",
+        "925": "oklch(0.16 0 0)",
+        "950": "oklch(0.145 0 0)"
+      },
+      "green": {
+        "100": "oklch(0.96 0 0)",
+        "200": "oklch(0.85 0 0)",
+        "400": "oklch(0.72 0 0)",
+        "450": "oklch(0.80 0 0)",
+        "600": "oklch(0.50 0 0)",
+        "700": "oklch(0.46 0 0)",
+        "900": "oklch(0.40 0 0)",
+        "950": "oklch(0.26 0 0)"
+      },
+      "amber": {
+        "100": "oklch(0.97 0 0)",
+        "200": "oklch(0.86 0 0)",
+        "400": "oklch(0.82 0 0)",
+        "450": "oklch(0.85 0 0)",
+        "500": "oklch(0.80 0 0)",
+        "700": "oklch(0.44 0 0)",
+        "900": "oklch(0.44 0 0)",
+        "950": "oklch(0.28 0 0)"
+      },
+      "red": {
+        "100": "oklch(0.96 0 0)",
+        "200": "oklch(0.85 0 0)",
+        "400": "oklch(0.75 0 0)",
+        "500": "oklch(0.62 0 0)",
+        "600": "oklch(0.50 0 0)",
+        "900": "oklch(0.42 0 0)",
+        "950": "oklch(0.26 0 0)"
+      },
+      "blue": {
+        "100": "oklch(0.96 0 0)",
+        "200": "oklch(0.85 0 0)",
+        "400": "oklch(0.80 0 0)",
+        "500": "oklch(0.62 0 0)",
+        "600": "oklch(0.48 0 0)",
+        "900": "oklch(0.42 0 0)",
+        "950": "oklch(0.26 0 0)"
+      },
+      "signal": {
+        "100": "oklch(0.97 0 0)",
+        "200": "oklch(0.86 0 0)",
+        "500": "oklch(0.66 0 0)",
+        "550": "oklch(0.74 0 0)",
+        "600": "oklch(0.52 0 0)",
+        "650": "oklch(0.78 0 0)",
+        "900": "oklch(0.44 0 0)",
+        "950": "oklch(0.27 0 0)"
+      },
+      "chart": {
+        "1": {
+          "light": "oklch(0.646 0 0)",
+          "dark": "oklch(0.488 0 0)"
+        },
+        "2": {
+          "light": "oklch(0.6 0 0)",
+          "dark": "oklch(0.696 0 0)"
+        },
+        "3": {
+          "light": "oklch(0.398 0 0)",
+          "dark": "oklch(0.769 0 0)"
+        },
+        "4": {
+          "light": "oklch(0.828 0 0)",
+          "dark": "oklch(0.627 0 0)"
+        },
+        "5": {
+          "light": "oklch(0.769 0 0)",
+          "dark": "oklch(0.645 0 0)"
+        },
+        "$comment": "Adjacent-fill data colour only. A chart hue on a button, link, icon or brand surface is a defect."
+      }
+    },
+    "font": {
+      "stack": {
+        "voidSans": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+        "voidMono": "ui-monospace, 'SF Mono', Menlo, Consolas, monospace",
+        "voidBengali": "'Noto Sans Bengali', 'Hind Siliguri', sans-serif"
+      },
+      "face": {
+        "$comment": "No faces. The placeholder uses system stacks only."
+      }
+    },
+    "size": {
+      "$comment": "Raw scale. 4px base with a 2px half-step; the type ramp is fluid from xl up.",
+      "space": {
+        "0": "0",
+        "1": "4px",
+        "2": "8px",
+        "3": "12px",
+        "4": "16px",
+        "5": "20px",
+        "6": "24px",
+        "8": "32px",
+        "10": "40px",
+        "12": "48px",
+        "16": "64px",
+        "20": "80px",
+        "24": "96px",
+        "32": "128px",
+        "05": "2px"
+      },
+      "text": {
+        "2xs": "0.6875rem",
+        "xs": "0.75rem",
+        "sm": "0.8125rem",
+        "ui": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "clamp(1.25rem, calc(1.15rem + 0.5vw), 1.375rem)",
+        "2xl": "clamp(1.5rem, calc(1.3rem + 1vw), 1.75rem)",
+        "3xl": "clamp(1.75rem, calc(1.4rem + 1.75vw), 2.25rem)",
+        "4xl": "clamp(2.25rem, calc(1.6rem + 3.25vw), 3rem)",
+        "5xl": "clamp(2.5rem, calc(1.4rem + 5.5vw), 4.25rem)"
+      },
+      "radiusBase": "0"
+    }
+  },
+  "semantic": {
+    "color": {
+      "bg": {
+        "canvas": {
+          "cssVar": "--bg-canvas",
+          "light": "{primitive.color.neutral.0}",
+          "dark": "{primitive.color.neutral.950}"
+        },
+        "surface": {
+          "cssVar": "--bg-surface",
+          "light": "{primitive.color.neutral.0}",
+          "dark": "{primitive.color.neutral.900}"
+        },
+        "surfaceRaised": {
+          "cssVar": "--bg-surface-raised",
+          "light": "{primitive.color.neutral.0}",
+          "dark": "oklch(0.235 0 0)"
+        },
+        "surfaceSunken": {
+          "cssVar": "--bg-surface-sunken",
+          "light": "{primitive.color.neutral.100}",
+          "dark": "{primitive.color.neutral.850}"
+        },
+        "sidebar": {
+          "cssVar": "--bg-sidebar",
+          "light": "{primitive.color.neutral.50}",
+          "dark": "{primitive.color.neutral.900}"
+        },
+        "overlay": {
+          "cssVar": "--bg-overlay",
+          "light": "oklch(0.145 0 0 / 55%)",
+          "dark": "oklch(0.145 0 0 / 72%)"
+        }
+      },
+      "text": {
+        "primary": {
+          "cssVar": "--fg-primary",
+          "light": "{primitive.color.neutral.950}",
+          "dark": "{primitive.color.neutral.50}"
+        },
+        "secondary": {
+          "cssVar": "--fg-secondary",
+          "light": "{primitive.color.neutral.600}",
+          "dark": "oklch(0.72 0 0)",
+          "measured": {
+            "light": "5.51:1 canvas · 5.05:1 sunken",
+            "dark": "7.98:1 canvas · 6.09:1 sunken"
+          }
+        },
+        "disabled": {
+          "cssVar": "--fg-disabled",
+          "light": "{primitive.color.neutral.400}",
+          "dark": "oklch(0.50 0 0)",
+          "contrastExempt": true
+        },
+        "inverse": {
+          "cssVar": "--fg-inverse",
+          "light": "{primitive.color.neutral.50}",
+          "dark": "{primitive.color.neutral.900}"
+        },
+        "link": {
+          "cssVar": "--fg-link",
+          "light": "{primitive.color.signal.600}",
+          "dark": "{primitive.color.signal.650}",
+          "nonColourCue": "underline, 3px offset"
+        },
+        "linkHover": {
+          "cssVar": "--fg-link-hover",
+          "light": "oklch(0.44 0 0)",
+          "dark": "oklch(0.85 0 0)"
+        }
+      },
+      "border": {
+        "subtle": {
+          "cssVar": "--border-subtle",
+          "light": "{primitive.color.neutral.100}",
+          "dark": "oklch(0.28 0 0)"
+        },
+        "default": {
+          "cssVar": "--border-default",
+          "light": "{primitive.color.neutral.200}",
+          "dark": "{primitive.color.neutral.750}"
+        },
+        "strong": {
+          "cssVar": "--border-strong",
+          "light": "{primitive.color.neutral.300}",
+          "dark": "{primitive.color.neutral.650}"
+        },
+        "control": {
+          "cssVar": "--border-control",
+          "light": "{primitive.color.neutral.450}",
+          "dark": "{primitive.color.neutral.550}",
+          "measured": {
+            "light": "3.64:1 canvas · 3.34:1 sunken",
+            "dark": "4.08:1 canvas · 3.11:1 sunken"
+          }
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "cssVar": "--action-primary-bg",
+            "light": "{primitive.color.neutral.900}",
+            "dark": "oklch(0.922 0 0)"
+          },
+          "text": {
+            "cssVar": "--action-primary-text",
+            "light": "{primitive.color.neutral.50}",
+            "dark": "{primitive.color.neutral.900}"
+          },
+          "hover": {
+            "cssVar": "--action-primary-hover",
+            "light": "{primitive.color.neutral.800}",
+            "dark": "oklch(0.84 0 0)"
+          },
+          "active": {
+            "cssVar": "--action-primary-active",
+            "light": "{primitive.color.neutral.950}",
+            "dark": "{primitive.color.neutral.0}"
+          },
+          "disabled": {
+            "cssVar": "--action-primary-disabled",
+            "light": "{primitive.color.neutral.200}",
+            "dark": "{primitive.color.neutral.750}"
+          }
+        },
+        "secondary": {
+          "bg": {
+            "cssVar": "--action-secondary-bg",
+            "light": "{primitive.color.neutral.100}",
+            "dark": "{primitive.color.neutral.850}"
+          },
+          "text": {
+            "cssVar": "--action-secondary-text",
+            "light": "{primitive.color.neutral.900}",
+            "dark": "{primitive.color.neutral.50}"
+          },
+          "hover": {
+            "cssVar": "--action-secondary-hover",
+            "light": "oklch(0.94 0 0)",
+            "dark": "oklch(0.32 0 0)"
+          },
+          "active": {
+            "cssVar": "--action-secondary-active",
+            "light": "{primitive.color.neutral.200}",
+            "dark": "oklch(0.36 0 0)"
+          },
+          "disabled": {
+            "cssVar": "--action-secondary-disabled",
+            "light": "{primitive.color.neutral.100}",
+            "dark": "{primitive.color.neutral.850}"
+          }
+        },
+        "tertiary": {
+          "bg": {
+            "cssVar": "--action-tertiary-bg",
+            "light": "transparent",
+            "dark": "transparent"
+          },
+          "text": {
+            "cssVar": "--action-tertiary-text",
+            "light": "{primitive.color.neutral.950}",
+            "dark": "{primitive.color.neutral.50}"
+          },
+          "hover": {
+            "cssVar": "--action-tertiary-hover",
+            "light": "{primitive.color.neutral.100}",
+            "dark": "{primitive.color.neutral.850}"
+          },
+          "active": {
+            "cssVar": "--action-tertiary-active",
+            "light": "{primitive.color.neutral.200}",
+            "dark": "oklch(0.32 0 0)"
+          },
+          "disabled": {
+            "cssVar": "--action-tertiary-disabled",
+            "light": "transparent",
+            "dark": "transparent"
+          }
+        },
+        "danger": {
+          "bg": {
+            "cssVar": "--action-danger-bg",
+            "light": "{primitive.color.red.600}",
+            "dark": "{primitive.color.red.500}"
+          },
+          "text": {
+            "cssVar": "--action-danger-text",
+            "light": "{primitive.color.neutral.50}",
+            "dark": "{primitive.color.neutral.925}"
+          },
+          "hover": {
+            "cssVar": "--action-danger-hover",
+            "light": "oklch(0.45 0 0)",
+            "dark": "oklch(0.66 0 0)"
+          },
+          "active": {
+            "cssVar": "--action-danger-active",
+            "light": "oklch(0.41 0 0)",
+            "dark": "oklch(0.70 0 0)"
+          },
+          "disabled": {
+            "cssVar": "--action-danger-disabled",
+            "light": "{primitive.color.red.200}",
+            "dark": "{primitive.color.red.950}"
+          }
+        },
+        "accent": {
+          "$comment": "EXTENSION. One fill per view — the single most important commerce action. Never a second one.",
+          "bg": {
+            "cssVar": "--action-accent-bg",
+            "light": "{primitive.color.signal.500}",
+            "dark": "{primitive.color.signal.550}"
+          },
+          "text": {
+            "cssVar": "--action-accent-text",
+            "light": "{primitive.color.neutral.900}",
+            "dark": "oklch(0.16 0 0)",
+            "measured": "5.39:1 on the fill"
+          },
+          "hover": {
+            "cssVar": "--action-accent-hover",
+            "light": "oklch(0.62 0 0)",
+            "dark": "oklch(0.78 0 0)"
+          },
+          "active": {
+            "cssVar": "--action-accent-active",
+            "light": "oklch(0.58 0 0)",
+            "dark": "oklch(0.82 0 0)"
+          }
+        }
+      },
+      "accent": {
+        "$comment": "EXTENSION. The marking layer. Type uses .text; fills use .fill and carry .onFill. Never white on the fill.",
+        "text": {
+          "cssVar": "--accent-text",
+          "light": "{primitive.color.signal.600}",
+          "dark": "{primitive.color.signal.650}",
+          "measured": "5.94:1 on canvas"
+        },
+        "fill": {
+          "cssVar": "--accent-fill",
+          "light": "{primitive.color.signal.500}",
+          "dark": "{primitive.color.signal.550}"
+        },
+        "onFill": {
+          "cssVar": "--accent-on-fill",
+          "light": "{primitive.color.neutral.900}",
+          "dark": "oklch(0.16 0 0)"
+        },
+        "bg": {
+          "cssVar": "--accent-bg",
+          "light": "{primitive.color.signal.100}",
+          "dark": "{primitive.color.signal.950}"
+        },
+        "border": {
+          "cssVar": "--accent-border",
+          "light": "{primitive.color.signal.200}",
+          "dark": "{primitive.color.signal.900}"
+        }
+      },
+      "focus": {
+        "ring": {
+          "cssVar": "--focus-ring-color",
+          "light": "{primitive.color.neutral.500}",
+          "dark": "oklch(0.72 0 0)",
+          "measured": {
+            "light": "4.28:1 canvas · 3.93:1 input",
+            "dark": "7.98:1 canvas · 6.09:1 sunken"
+          },
+          "composite": "--focus-ring (2px ring, 2px offset), --focus-ring-on-surface"
+        }
+      },
+      "selection": {
+        "bg": {
+          "cssVar": "--selection-bg",
+          "light": "{primitive.color.neutral.950}",
+          "dark": "{primitive.color.neutral.50}"
+        },
+        "text": {
+          "cssVar": "--selection-text",
+          "light": "{primitive.color.neutral.0}",
+          "dark": "{primitive.color.neutral.950}"
+        }
+      },
+      "feedback": {
+        "success": {
+          "text": {
+            "cssVar": "--success-text",
+            "light": "{primitive.color.green.700}",
+            "dark": "{primitive.color.green.450}"
+          },
+          "bg": {
+            "cssVar": "--success-bg",
+            "light": "{primitive.color.green.100}",
+            "dark": "{primitive.color.green.950}"
+          },
+          "border": {
+            "cssVar": "--success-border",
+            "light": "{primitive.color.green.200}",
+            "dark": "{primitive.color.green.900}"
+          },
+          "solid": {
+            "cssVar": "--success-solid",
+            "light": "{primitive.color.green.600}",
+            "dark": "{primitive.color.green.400}"
+          },
+          "onSolid": {
+            "cssVar": "--success-on-solid",
+            "light": "{primitive.color.neutral.50}",
+            "dark": "oklch(0.13 0 0)"
+          }
+        },
+        "warning": {
+          "text": {
+            "cssVar": "--warning-text",
+            "light": "{primitive.color.amber.700}",
+            "dark": "{primitive.color.amber.450}"
+          },
+          "bg": {
+            "cssVar": "--warning-bg",
+            "light": "{primitive.color.amber.100}",
+            "dark": "{primitive.color.amber.950}"
+          },
+          "border": {
+            "cssVar": "--warning-border",
+            "light": "{primitive.color.amber.200}",
+            "dark": "{primitive.color.amber.900}"
+          },
+          "solid": {
+            "cssVar": "--warning-solid",
+            "light": "{primitive.color.amber.500}",
+            "dark": "{primitive.color.amber.400}"
+          },
+          "onSolid": {
+            "cssVar": "--warning-on-solid",
+            "light": "{primitive.color.neutral.900}",
+            "dark": "{primitive.color.neutral.900}",
+            "measured": "9.41:1 — amber fills never carry white type"
+          }
+        },
+        "error": {
+          "text": {
+            "cssVar": "--error-text",
+            "light": "{primitive.color.red.600}",
+            "dark": "{primitive.color.red.400}"
+          },
+          "bg": {
+            "cssVar": "--error-bg",
+            "light": "{primitive.color.red.100}",
+            "dark": "{primitive.color.red.950}"
+          },
+          "border": {
+            "cssVar": "--error-border",
+            "light": "{primitive.color.red.200}",
+            "dark": "{primitive.color.red.900}"
+          },
+          "solid": {
+            "cssVar": "--error-solid",
+            "light": "{primitive.color.red.600}",
+            "dark": "{primitive.color.red.500}"
+          },
+          "onSolid": {
+            "cssVar": "--error-on-solid",
+            "light": "{primitive.color.neutral.50}",
+            "dark": "oklch(0.13 0 0)"
+          }
+        },
+        "info": {
+          "text": {
+            "cssVar": "--info-text",
+            "light": "{primitive.color.blue.600}",
+            "dark": "{primitive.color.blue.400}"
+          },
+          "bg": {
+            "cssVar": "--info-bg",
+            "light": "{primitive.color.blue.100}",
+            "dark": "{primitive.color.blue.950}"
+          },
+          "border": {
+            "cssVar": "--info-border",
+            "light": "{primitive.color.blue.200}",
+            "dark": "{primitive.color.blue.900}"
+          },
+          "solid": {
+            "cssVar": "--info-solid",
+            "light": "{primitive.color.blue.600}",
+            "dark": "{primitive.color.blue.500}"
+          },
+          "onSolid": {
+            "cssVar": "--info-on-solid",
+            "light": "{primitive.color.neutral.50}",
+            "dark": "oklch(0.13 0 0)"
+          }
+        }
+      },
+      "commerce": {
+        "price": {
+          "cssVar": "--commerce-price",
+          "light": "{semantic.color.text.primary}",
+          "dark": "{semantic.color.text.primary}"
+        },
+        "priceSale": {
+          "cssVar": "--commerce-price-sale",
+          "light": "{primitive.color.signal.600}",
+          "dark": "{primitive.color.signal.650}"
+        },
+        "priceOriginal": {
+          "cssVar": "--commerce-price-original",
+          "light": "{semantic.color.text.secondary}",
+          "dark": "{semantic.color.text.secondary}",
+          "nonColourCue": "line-through"
+        },
+        "badge": {
+          "new": {
+            "bg": {
+              "cssVar": "--commerce-badge-new-bg",
+              "light": "{primitive.color.neutral.900}",
+              "dark": "{primitive.color.neutral.50}"
+            },
+            "text": {
+              "cssVar": "--commerce-badge-new-text",
+              "light": "{primitive.color.neutral.50}",
+              "dark": "{primitive.color.neutral.950}"
+            }
+          },
+          "sale": {
+            "bg": {
+              "cssVar": "--commerce-badge-sale-bg",
+              "light": "{primitive.color.signal.500}",
+              "dark": "{primitive.color.signal.550}"
+            },
+            "text": {
+              "cssVar": "--commerce-badge-sale-text",
+              "light": "{primitive.color.neutral.900}",
+              "dark": "oklch(0.16 0 0)"
+            },
+            "border": {
+              "cssVar": "--commerce-badge-sale-border",
+              "light": "{primitive.color.signal.500}",
+              "dark": "{primitive.color.signal.550}"
+            }
+          },
+          "lowstock": {
+            "bg": {
+              "cssVar": "--commerce-badge-lowstock-bg",
+              "light": "{semantic.color.feedback.warning.bg}",
+              "dark": "{semantic.color.feedback.warning.bg}"
+            },
+            "text": {
+              "cssVar": "--commerce-badge-lowstock-text",
+              "light": "{semantic.color.feedback.warning.text}",
+              "dark": "{semantic.color.feedback.warning.text}"
+            },
+            "border": {
+              "cssVar": "--commerce-badge-lowstock-border",
+              "light": "{semantic.color.feedback.warning.border}",
+              "dark": "{semantic.color.feedback.warning.border}"
+            }
+          },
+          "soldout": {
+            "bg": {
+              "cssVar": "--commerce-badge-soldout-bg",
+              "light": "{semantic.color.bg.surfaceSunken}",
+              "dark": "{semantic.color.bg.surfaceSunken}"
+            },
+            "text": {
+              "cssVar": "--commerce-badge-soldout-text",
+              "light": "{semantic.color.text.secondary}",
+              "dark": "{semantic.color.text.secondary}"
+            },
+            "border": {
+              "cssVar": "--commerce-badge-soldout-border",
+              "light": "{semantic.color.border.default}",
+              "dark": "{semantic.color.border.default}"
+            }
+          }
+        },
+        "rating": {
+          "cssVar": "--commerce-rating",
+          "light": "{primitive.color.signal.500}",
+          "dark": "{primitive.color.signal.550}"
+        },
+        "ratingEmpty": {
+          "cssVar": "--commerce-rating-empty",
+          "light": "{semantic.color.border.strong}",
+          "dark": "{semantic.color.border.strong}"
+        },
+        "trust": {
+          "cssVar": "--commerce-trust",
+          "light": "{semantic.color.feedback.success.text}",
+          "dark": "{semantic.color.feedback.success.text}",
+          "disclosedDefault": true
+        }
+      },
+      "indicator": {
+        "active": {
+          "cssVar": "--indicator-active",
+          "light": "{primitive.color.signal.600}",
+          "dark": "{primitive.color.signal.650}"
+        }
+      }
+    },
+    "font": {
+      "family": {
+        "body": {
+          "cssVar": "--font-sans",
+          "value": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+          "bnScope": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        },
+        "heading": {
+          "cssVar": "--font-heading",
+          "value": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+          "bnScope": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        },
+        "bengali": {
+          "cssVar": "--font-bengali",
+          "value": "'Noto Sans Bengali', 'Hind Siliguri', sans-serif"
+        },
+        "mono": {
+          "cssVar": "--font-mono",
+          "value": "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        }
+      },
+      "size": {
+        "2xs": {
+          "cssVar": "--text-2xs",
+          "value": "{primitive.size.text.2xs}",
+          "use": "eyebrows, table headers, chips"
+        },
+        "xs": {
+          "cssVar": "--text-xs",
+          "value": "{primitive.size.text.xs}",
+          "use": "field labels, captions"
+        },
+        "sm": {
+          "cssVar": "--text-sm",
+          "value": "{primitive.size.text.sm}",
+          "use": "dense table cells, tool rails"
+        },
+        "ui": {
+          "cssVar": "--text-ui",
+          "value": "{primitive.size.text.ui}",
+          "use": "dense portal UI"
+        },
+        "base": {
+          "cssVar": "--text-base",
+          "value": "{primitive.size.text.base}",
+          "use": "DEFAULT BODY — 16px, never smaller (V4)"
+        },
+        "lg": {
+          "cssVar": "--text-lg",
+          "value": "{primitive.size.text.lg}"
+        },
+        "xl": {
+          "cssVar": "--text-xl",
+          "value": "{primitive.size.text.xl}",
+          "fluid": true
+        },
+        "2xl": {
+          "cssVar": "--text-2xl",
+          "value": "{primitive.size.text.2xl}",
+          "fluid": true
+        },
+        "3xl": {
+          "cssVar": "--text-3xl",
+          "value": "{primitive.size.text.3xl}",
+          "fluid": true
+        },
+        "4xl": {
+          "cssVar": "--text-4xl",
+          "value": "{primitive.size.text.4xl}",
+          "fluid": true
+        },
+        "5xl": {
+          "cssVar": "--text-5xl",
+          "value": "{primitive.size.text.5xl}",
+          "fluid": true
+        }
+      },
+      "weight": {
+        "regular": {
+          "cssVar": "--weight-regular",
+          "value": 400
+        },
+        "medium": {
+          "cssVar": "--weight-medium",
+          "value": 500
+        },
+        "semibold": {
+          "cssVar": "--weight-medium",
+          "value": 500,
+          "disclosedDefault": "No 600 file is subset or shipped. Resolves to 500 rather than inviting a synthesised faux weight."
+        },
+        "bold": {
+          "cssVar": "--weight-medium",
+          "value": 500,
+          "disclosedDefault": "No 700 file is subset or shipped. Resolves to 500 rather than inviting a synthesised faux weight."
+        }
+      },
+      "lineHeight": {
+        "tight": {
+          "cssVar": "--leading-tight",
+          "value": 1.05
+        },
+        "snug": {
+          "cssVar": "--leading-snug",
+          "value": 1.25
+        },
+        "normal": {
+          "cssVar": "--leading-normal",
+          "value": 1.45,
+          "bnScope": 1.6
+        },
+        "relaxed": {
+          "cssVar": "--leading-relaxed",
+          "value": 1.65,
+          "bnScope": 1.8,
+          "note": "The bn scope value is what satisfies UI-INV-5 for matras and conjuncts."
+        },
+        "bengali": {
+          "cssVar": "--leading-bengali",
+          "value": 1.8
+        },
+        "none": {
+          "cssVar": "--leading-none",
+          "value": 1,
+          "note": "Single-line controls. Named because the token-literal rule (UI-SRC-9) surfaced it as an unnamed literal in Button; the value is the one that already shipped, not a new choice."
+        }
+      },
+      "letterSpacing": {
+        "tighter": {
+          "cssVar": "--tracking-tighter",
+          "value": "-0.03em",
+          "use": "display only"
+        },
+        "tight": {
+          "cssVar": "--tracking-tight",
+          "value": "-0.015em",
+          "use": "headings"
+        },
+        "normal": {
+          "cssVar": "--tracking-normal",
+          "value": "0"
+        },
+        "wide": {
+          "cssVar": "--tracking-wide",
+          "value": "0.06em"
+        },
+        "widest": {
+          "cssVar": "--tracking-widest",
+          "value": "0.16em",
+          "use": "the uppercase eyebrow / nav / table-header layer"
+        }
+      },
+      "role": {
+        "$comment": "Composite shorthands. Component code sets `font:` from these rather than assembling size + weight + leading by hand.",
+        "display": {
+          "cssVar": "--type-display",
+          "value": "var(--weight-medium) var(--text-5xl) / var(--leading-tight) var(--font-heading)"
+        },
+        "h1": {
+          "cssVar": "--type-h1",
+          "value": "var(--weight-medium) var(--text-3xl) / var(--leading-snug) var(--font-heading)"
+        },
+        "h2": {
+          "cssVar": "--type-h2",
+          "value": "var(--weight-medium) var(--text-2xl) / var(--leading-snug) var(--font-heading)"
+        },
+        "h3": {
+          "cssVar": "--type-h3",
+          "value": "var(--weight-medium) var(--text-xl) / var(--leading-snug) var(--font-heading)"
+        },
+        "body": {
+          "cssVar": "--type-body",
+          "value": "var(--weight-regular) var(--text-base) / var(--leading-relaxed) var(--font-sans)"
+        },
+        "ui": {
+          "cssVar": "--type-ui",
+          "value": "var(--weight-regular) var(--text-base) / var(--leading-normal) var(--font-sans)"
+        },
+        "uiDense": {
+          "cssVar": "--type-ui-dense",
+          "value": "var(--weight-regular) var(--text-ui) / var(--leading-normal) var(--font-sans)"
+        },
+        "uiSm": {
+          "cssVar": "--type-ui-sm",
+          "value": "var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-sans)"
+        },
+        "label": {
+          "cssVar": "--type-label",
+          "value": "var(--weight-medium) var(--text-xs) / var(--leading-normal) var(--font-sans)"
+        },
+        "mono": {
+          "cssVar": "--type-mono",
+          "value": "var(--weight-regular) var(--text-sm) / var(--leading-normal) var(--font-mono)"
+        }
+      }
+    },
+    "space": {
+      "0": {
+        "cssVar": "--space-0",
+        "value": "{primitive.size.space.0}"
+      },
+      "1": {
+        "cssVar": "--space-1",
+        "value": "{primitive.size.space.1}"
+      },
+      "2": {
+        "cssVar": "--space-2",
+        "value": "{primitive.size.space.2}"
+      },
+      "3": {
+        "cssVar": "--space-3",
+        "value": "{primitive.size.space.3}"
+      },
+      "4": {
+        "cssVar": "--space-4",
+        "value": "{primitive.size.space.4}"
+      },
+      "5": {
+        "cssVar": "--space-5",
+        "value": "{primitive.size.space.5}"
+      },
+      "6": {
+        "cssVar": "--space-6",
+        "value": "{primitive.size.space.6}"
+      },
+      "8": {
+        "cssVar": "--space-8",
+        "value": "{primitive.size.space.8}"
+      },
+      "10": {
+        "cssVar": "--space-10",
+        "value": "{primitive.size.space.10}"
+      },
+      "12": {
+        "cssVar": "--space-12",
+        "value": "{primitive.size.space.12}"
+      },
+      "16": {
+        "cssVar": "--space-16",
+        "value": "{primitive.size.space.16}"
+      },
+      "20": {
+        "cssVar": "--space-20",
+        "value": "{primitive.size.space.20}"
+      },
+      "24": {
+        "cssVar": "--space-24",
+        "value": "{primitive.size.space.24}"
+      },
+      "32": {
+        "cssVar": "--space-32",
+        "value": "{primitive.size.space.32}"
+      },
+      "05": {
+        "cssVar": "--space-05",
+        "value": "{primitive.size.space.05}"
+      }
+    },
+    "radius": {
+      "none": {
+        "cssVar": "--radius-none",
+        "value": "0",
+        "note": "No custom property is emitted; use 0 directly or radius.media."
+      },
+      "sm": {
+        "cssVar": "--radius-sm",
+        "value": "0",
+        "computed": "6px"
+      },
+      "md": {
+        "cssVar": "--radius-md",
+        "value": "0",
+        "computed": "8px",
+        "use": "controls"
+      },
+      "lg": {
+        "cssVar": "--radius-lg",
+        "value": "0",
+        "computed": "10px",
+        "use": "cards"
+      },
+      "xl": {
+        "cssVar": "--radius-xl",
+        "value": "0",
+        "computed": "14px",
+        "use": "dialogs"
+      },
+      "2xl": {
+        "cssVar": "--radius-2xl",
+        "value": "0",
+        "computed": "18px"
+      },
+      "3xl": {
+        "cssVar": "--radius-3xl",
+        "value": "0",
+        "computed": "22px"
+      },
+      "4xl": {
+        "cssVar": "--radius-4xl",
+        "value": "0",
+        "computed": "26px"
+      },
+      "full": {
+        "cssVar": "--radius-full",
+        "value": "999px",
+        "use": "Tag, Switch, avatars only"
+      },
+      "media": {
+        "cssVar": "--radius-media",
+        "value": "0",
+        "use": "product and editorial imagery — never rounded"
+      }
+    },
+    "shadow": {
+      "$comment": "Never the sole indicator of state. A hairline is always the first choice.",
+      "none": {
+        "cssVar": "--shadow-none",
+        "light": "none",
+        "dark": "none"
+      },
+      "xs": {
+        "cssVar": "--shadow-xs",
+        "light": "0 1px 2px 0 oklch(0.145 0 0 / 5%)",
+        "dark": "0 1px 2px 0 oklch(0 0 0 / 30%)"
+      },
+      "sm": {
+        "cssVar": "--shadow-sm",
+        "light": "0 1px 3px 0 oklch(0.145 0 0 / 8%), 0 1px 2px -1px oklch(0.145 0 0 / 6%)",
+        "dark": "0 1px 3px 0 oklch(0 0 0 / 40%), 0 1px 2px -1px oklch(0 0 0 / 30%)"
+      },
+      "md": {
+        "cssVar": "--shadow-md",
+        "light": "0 4px 10px -2px oklch(0.145 0 0 / 10%), 0 2px 4px -2px oklch(0.145 0 0 / 6%)",
+        "dark": "0 4px 10px -2px oklch(0 0 0 / 45%), 0 2px 4px -2px oklch(0 0 0 / 35%)"
+      },
+      "lg": {
+        "cssVar": "--shadow-lg",
+        "light": "0 12px 28px -6px oklch(0.145 0 0 / 14%), 0 4px 10px -4px oklch(0.145 0 0 / 8%)",
+        "dark": "0 12px 28px -6px oklch(0 0 0 / 55%), 0 4px 10px -4px oklch(0 0 0 / 40%)"
+      },
+      "overlay": {
+        "cssVar": "--shadow-overlay",
+        "light": "0 24px 56px -12px oklch(0.145 0 0 / 22%)",
+        "dark": "0 24px 56px -12px oklch(0 0 0 / 65%)"
+      },
+      "insetHairline": {
+        "cssVar": "--shadow-inset-hairline",
+        "light": "inset 0 0 0 1px {semantic.color.border.default}",
+        "dark": "inset 0 0 0 1px {semantic.color.border.default}"
+      }
+    },
+    "border": {
+      "width": {
+        "thin": {
+          "cssVar": "--border-width-thin",
+          "value": "1px",
+          "note": "The only border width used in the system."
+        },
+        "medium": {
+          "cssVar": "--border-width-medium",
+          "value": "2px",
+          "use": "focus ring, active link underline"
+        },
+        "thick": {
+          "cssVar": "--border-width-thick",
+          "value": "3px"
+        },
+        "icon": {
+          "cssVar": "--stroke-icon",
+          "value": "1.5px",
+          "note": "Icon and spinner stroke on the 24px Lucide grid. Was an unnamed literal in Icon and Button."
+        }
+      }
+    },
+    "layout": {
+      "maxWidth": {
+        "content": {
+          "cssVar": "--layout-max-content",
+          "value": "1440px"
+        },
+        "wide": {
+          "cssVar": "--layout-max-wide",
+          "value": "1680px"
+        },
+        "prose": {
+          "cssVar": "--layout-max-prose",
+          "value": "68ch"
+        },
+        "editorial": {
+          "cssVar": "--layout-max-editorial",
+          "value": "1180px",
+          "use": "storefront measure"
+        }
+      },
+      "grid": {
+        "columns": {
+          "cssVar": "--layout-grid-columns",
+          "value": 12
+        },
+        "columnsXs": {
+          "cssVar": "--layout-grid-columns-xs",
+          "value": 4
+        },
+        "gutter": {
+          "cssVar": "--layout-grid-gutter",
+          "value": "24px"
+        },
+        "gutterXs": {
+          "cssVar": "--layout-grid-gutter-xs",
+          "value": "16px"
+        }
+      },
+      "measure": {
+        "$comment": "EXTENSION. Character-based measures for short copy. Surfaced by the token-literal rule as unnamed 42ch/56ch literals in the reference state components; values preserved, not re-picked. layout.maxWidth.prose (68ch) remains the editorial measure.",
+        "tight": {
+          "cssVar": "--measure-tight",
+          "value": "42ch",
+          "use": "empty-state hint"
+        },
+        "default": {
+          "cssVar": "--measure-default",
+          "value": "56ch",
+          "use": "error body, short explanatory copy"
+        }
+      }
+    },
+    "breakpoint": {
+      "$comment": "Values are theme-supplied; the behaviour at each tier is fixed by SRS §9.4 and does not change with the theme.",
+      "xs": {
+        "cssVar": "--breakpoint-xs",
+        "value": "320px",
+        "behaviour": "single column; bottom-sheet filters; sticky add-to-cart bar"
+      },
+      "sm": {
+        "cssVar": "--breakpoint-sm",
+        "value": "480px",
+        "behaviour": "two-column product grid"
+      },
+      "md": {
+        "cssVar": "--breakpoint-md",
+        "value": "768px",
+        "behaviour": "two-column grid; side navigation drawer"
+      },
+      "lg": {
+        "cssVar": "--breakpoint-lg",
+        "value": "1024px",
+        "behaviour": "three or four column grid; persistent filter sidebar"
+      },
+      "xl": {
+        "cssVar": "--breakpoint-xl",
+        "value": "1440px",
+        "behaviour": "four-column grid at max content width, centred"
+      }
+    },
+    "size": {
+      "touchTarget": {
+        "min": {
+          "cssVar": "--touch-target-min",
+          "value": "44px",
+          "note": "V5. Controls shorter than this expand their hit area via the .void-touch-safe helper in tokens/base.css."
+        }
+      },
+      "control": {
+        "heightSm": {
+          "cssVar": "--control-h-sm",
+          "value": "36px",
+          "note": "NOT a touch size. Allowlisted to pointer-only surfaces, and only with an expanded hit area."
+        },
+        "heightMd": {
+          "cssVar": "--control-h-md",
+          "value": "44px",
+          "note": "Default control height everywhere."
+        },
+        "heightLg": {
+          "cssVar": "--control-h-lg",
+          "value": "52px"
+        },
+        "padXSm": {
+          "cssVar": "--control-pad-x-sm",
+          "value": "{primitive.size.space.3}"
+        },
+        "padXMd": {
+          "cssVar": "--control-pad-x-md",
+          "value": "{primitive.size.space.4}"
+        },
+        "padXLg": {
+          "cssVar": "--control-pad-x-lg",
+          "value": "{primitive.size.space.5}"
+        }
+      },
+      "spinner": {
+        "cssVar": "--spinner-size",
+        "value": "13px",
+        "note": "Button's loading spinner. Value preserved exactly as shipped rather than snapped to the 14/16/20 icon scale, because re-picking it is a design decision (ADR-0007)."
+      },
+      "underlineOffset": {
+        "cssVar": "--underline-offset",
+        "value": "3px",
+        "note": "Link and product-title underline offset, already used by base.css."
+      },
+      "icon": {
+        "$comment": "EXTENSION. readme.md fixes the icon ramp: 14px dense tables, 16px default UI, 18-20px storefront headers and Studio tool rails. Never below 14px. Named so a call site passes a step, not a number — a numeric size prop would be a literal under UI-SRC-9.",
+        "sm": {
+          "cssVar": "--icon-sm",
+          "value": "14px",
+          "use": "dense tables, table headers"
+        },
+        "md": {
+          "cssVar": "--icon-md",
+          "value": "16px",
+          "use": "default UI"
+        },
+        "lg": {
+          "cssVar": "--icon-lg",
+          "value": "18px",
+          "use": "storefront headers"
+        },
+        "xl": {
+          "cssVar": "--icon-xl",
+          "value": "20px",
+          "use": "Studio tool rail"
+        }
+      },
+      "controlBox": {
+        "cssVar": "--control-box",
+        "value": "16px",
+        "note": "Checkbox and radio visual box. The BOX is 16px; the effective target is the label row at --touch-target-min (UI-INV-3)."
+      },
+      "switch": {
+        "$comment": "EXTENSION. Switch track and knob. The reference carried these as bare numbers (32/18/40/22 and a knob derived as h-6); named here with the shipped values preserved.",
+        "trackWidthSm": {
+          "cssVar": "--switch-track-w-sm",
+          "value": "32px"
+        },
+        "trackHeightSm": {
+          "cssVar": "--switch-track-h-sm",
+          "value": "18px"
+        },
+        "knobSm": {
+          "cssVar": "--switch-knob-sm",
+          "value": "12px"
+        },
+        "trackWidthMd": {
+          "cssVar": "--switch-track-w-md",
+          "value": "40px"
+        },
+        "trackHeightMd": {
+          "cssVar": "--switch-track-h-md",
+          "value": "22px"
+        },
+        "knobMd": {
+          "cssVar": "--switch-knob-md",
+          "value": "16px"
+        },
+        "knobInset": {
+          "cssVar": "--switch-knob-inset",
+          "value": "3px"
+        }
+      },
+      "checkGlyph": {
+        "cssVar": "--check-glyph",
+        "value": "10px",
+        "note": "The tick drawn inside a checked box."
+      },
+      "iconButton": {
+        "$comment": "EXTENSION. Square icon-only control. sm and md are BELOW the 44px minimum, so IconButton applies .void-touch-safe to them automatically — the visual size is the design's, the effective target is UI-INV-3's.",
+        "sm": {
+          "cssVar": "--icon-button-sm",
+          "value": "32px",
+          "use": "table row actions, dense toolbars"
+        },
+        "md": {
+          "cssVar": "--icon-button-md",
+          "value": "38px",
+          "use": "portal chrome"
+        },
+        "lg": {
+          "cssVar": "--icon-button-lg",
+          "value": "44px",
+          "use": "storefront, checkout, anything touch"
+        }
+      },
+      "badge": {
+        "$comment": "EXTENSION. Badge is a status label, never interactive, so it is exempt from the touch minimum.",
+        "heightSm": {
+          "cssVar": "--badge-h-sm",
+          "value": "20px"
+        },
+        "heightMd": {
+          "cssVar": "--badge-h-md",
+          "value": "24px"
+        },
+        "dot": {
+          "cssVar": "--badge-dot",
+          "value": "5px",
+          "use": "leading dot for live states"
+        }
+      },
+      "tag": {
+        "cssVar": "--tag-h",
+        "value": "28px",
+        "note": "Pill height. An interactive Tag carries .void-touch-safe, because 28px is not a target."
+      }
+    },
+    "chrome": {
+      "$comment": "EXTENSION. Fixed chrome dimensions. Sidebars and top bars are the only fixed/sticky elements in the system.",
+      "sidebarWidth": {
+        "cssVar": "--sidebar-width",
+        "value": "248px"
+      },
+      "sidebarWidthCollapsed": {
+        "cssVar": "--sidebar-width-collapsed",
+        "value": "64px"
+      },
+      "topbarHeight": {
+        "cssVar": "--topbar-height",
+        "value": "56px"
+      },
+      "studioRailWidth": {
+        "cssVar": "--studio-rail-width",
+        "value": "320px"
+      },
+      "studioToolRailWidth": {
+        "cssVar": "--studio-tool-rail-width",
+        "value": "64px"
+      }
+    },
+    "zIndex": {
+      "$comment": "Strictly increasing, no duplicates (V10). Nothing in the system may declare an ad-hoc z-index.",
+      "base": {
+        "cssVar": "--z-base",
+        "value": 0
+      },
+      "dropdown": {
+        "cssVar": "--z-dropdown",
+        "value": 1000
+      },
+      "sticky": {
+        "cssVar": "--z-sticky",
+        "value": 1100
+      },
+      "drawer": {
+        "cssVar": "--z-drawer",
+        "value": 1200
+      },
+      "modal": {
+        "cssVar": "--z-modal",
+        "value": 1300
+      },
+      "toast": {
+        "cssVar": "--z-toast",
+        "value": 1400
+      }
+    },
+    "motion": {
+      "duration": {
+        "instant": {
+          "cssVar": "--duration-instant",
+          "value": "80ms",
+          "use": "press"
+        },
+        "fast": {
+          "cssVar": "--duration-fast",
+          "value": "140ms",
+          "use": "colour and border changes"
+        },
+        "normal": {
+          "cssVar": "--duration-normal",
+          "value": "200ms",
+          "use": "dialogs, toasts"
+        },
+        "slow": {
+          "cssVar": "--duration-slow",
+          "value": "320ms",
+          "use": "drawers",
+          "note": "V9 ceiling is 800ms."
+        },
+        "editorial": {
+          "cssVar": "--duration-editorial",
+          "value": "600ms",
+          "use": "product and hero imagery cross-fade only"
+        },
+        "spin": {
+          "cssVar": "--duration-spin",
+          "value": "700ms",
+          "use": "indeterminate spinner loop",
+          "note": "Continuous, and killed centrally by prefers-reduced-motion. Under the 800ms V9 ceiling."
+        },
+        "shimmer": {
+          "cssVar": "--duration-shimmer",
+          "value": "1400ms",
+          "use": "skeleton shimmer loop",
+          "note": "Exceeds the 800ms figure quoted in readme.md, and does not breach UI-INV-8: that invariant caps PAGE-TRANSITION motion at 800ms and forbids animation that delays interaction. A continuous loading loop is neither, and prefers-reduced-motion stops it centrally. Value preserved from the reference kit, not re-picked."
+        }
+      },
+      "easing": {
+        "standard": {
+          "cssVar": "--motion-easing-standard",
+          "value": "cubic-bezier(0.2, 0, 0.13, 1)"
+        },
+        "decelerate": {
+          "cssVar": "--motion-easing-decelerate",
+          "value": "cubic-bezier(0, 0, 0.2, 1)"
+        },
+        "accelerate": {
+          "cssVar": "--motion-easing-accelerate",
+          "value": "cubic-bezier(0.4, 0, 1, 1)"
+        }
+      },
+      "reduced": {
+        "cssVar": "--motion-reduced",
+        "value": "0.01ms",
+        "note": "Substituted for every animation and transition duration under prefers-reduced-motion by tokens/base.css."
+      },
+      "pressScale": {
+        "cssVar": "--press-scale",
+        "value": 0.985
+      }
+    },
+    "blur": {
+      "$comment": "EXTENSION. Two uses only: the dialog scrim and sticky storefront headers over imagery. Never on cards, never as decoration.",
+      "panel": {
+        "cssVar": "--blur-panel",
+        "value": "12px"
+      },
+      "scrim": {
+        "cssVar": "--blur-scrim",
+        "value": "2px"
+      }
+    },
+    "opacity": {
+      "$comment": "EXTENSION. Surfaced by the token-literal rule: Button carried 0.45 as an unnamed literal.",
+      "disabled": {
+        "cssVar": "--opacity-disabled",
+        "value": 0.45,
+        "note": "45% plus cursor:not-allowed. No grey-out repaint (readme.md, Disabled)."
+      }
+    }
+  },
+  "composite": {
+    "$comment": "Values assembled FROM semantic tokens: composite shorthands, the focus-ring recipe, and the v1.0 shadcn-shaped aliases the source theme shipped. Emitted after the semantic tier so they inherit a scheme swap without redefinition. Extracted verbatim from the hand-authored tokens/*.css in styles.css @import order — no value re-picked.",
+    "font-void-sans": {
+      "cssVar": "--font-void-sans",
+      "value": "\"Void Sans\", ui-sans-serif, system-ui, \"Helvetica Neue\", Arial, sans-serif"
+    },
+    "font-void-mono": {
+      "cssVar": "--font-void-mono",
+      "value": "\"Void Mono\", ui-monospace, \"SFMono-Regular\", Menlo, monospace"
+    },
+    "font-void-bengali": {
+      "cssVar": "--font-void-bengali",
+      "value": "\"Void Bengali\", \"Void Sans\", \"Noto Sans Bengali\", \"Hind Siliguri\", sans-serif"
+    },
+    "font-geist-sans": {
+      "cssVar": "--font-geist-sans",
+      "value": "var(--font-void-sans)"
+    },
+    "font-geist-mono": {
+      "cssVar": "--font-geist-mono",
+      "value": "var(--font-void-mono)"
+    },
+    "font-bangla": {
+      "cssVar": "--font-bangla",
+      "value": "var(--font-void-bengali)"
+    },
+    "background": {
+      "cssVar": "--background",
+      "value": "var(--bg-canvas)"
+    },
+    "foreground": {
+      "cssVar": "--foreground",
+      "value": "var(--fg-primary)"
+    },
+    "card": {
+      "cssVar": "--card",
+      "value": "var(--bg-surface)"
+    },
+    "card-foreground": {
+      "cssVar": "--card-foreground",
+      "value": "var(--fg-primary)"
+    },
+    "popover": {
+      "cssVar": "--popover",
+      "value": "var(--bg-surface-raised)"
+    },
+    "popover-foreground": {
+      "cssVar": "--popover-foreground",
+      "value": "var(--fg-primary)"
+    },
+    "primary": {
+      "cssVar": "--primary",
+      "value": "var(--action-primary-bg)"
+    },
+    "primary-foreground": {
+      "cssVar": "--primary-foreground",
+      "value": "var(--action-primary-text)"
+    },
+    "secondary": {
+      "cssVar": "--secondary",
+      "value": "var(--action-secondary-bg)"
+    },
+    "secondary-foreground": {
+      "cssVar": "--secondary-foreground",
+      "value": "var(--action-secondary-text)"
+    },
+    "muted": {
+      "cssVar": "--muted",
+      "value": "var(--bg-surface-sunken)"
+    },
+    "muted-foreground": {
+      "cssVar": "--muted-foreground",
+      "value": "var(--fg-secondary)"
+    },
+    "accent": {
+      "cssVar": "--accent",
+      "value": "var(--action-secondary-bg)"
+    },
+    "accent-foreground": {
+      "cssVar": "--accent-foreground",
+      "value": "var(--action-secondary-text)"
+    },
+    "destructive": {
+      "cssVar": "--destructive",
+      "value": "var(--action-danger-bg)"
+    },
+    "destructive-foreground": {
+      "cssVar": "--destructive-foreground",
+      "value": "var(--action-danger-text)"
+    },
+    "border": {
+      "cssVar": "--border",
+      "value": "var(--border-default)"
+    },
+    "input": {
+      "cssVar": "--input",
+      "value": "var(--border-control)"
+    },
+    "ring": {
+      "cssVar": "--ring",
+      "value": "var(--focus-ring-color)"
+    },
+    "text-body": {
+      "cssVar": "--text-body",
+      "value": "var(--fg-primary)"
+    },
+    "text-muted": {
+      "cssVar": "--text-muted",
+      "value": "var(--fg-secondary)"
+    },
+    "text-inverse": {
+      "cssVar": "--text-inverse",
+      "value": "var(--fg-inverse)"
+    },
+    "surface-page": {
+      "cssVar": "--surface-page",
+      "value": "var(--bg-canvas)"
+    },
+    "surface-card": {
+      "cssVar": "--surface-card",
+      "value": "var(--bg-surface)"
+    },
+    "surface-sunken": {
+      "cssVar": "--surface-sunken",
+      "value": "var(--bg-surface-sunken)"
+    },
+    "surface-inverse": {
+      "cssVar": "--surface-inverse",
+      "value": "var(--action-primary-bg)"
+    },
+    "line-hairline": {
+      "cssVar": "--line-hairline",
+      "value": "var(--border-default)"
+    },
+    "line-strong": {
+      "cssVar": "--line-strong",
+      "value": "var(--border-strong)"
+    },
+    "overlay-scrim": {
+      "cssVar": "--overlay-scrim",
+      "value": "var(--bg-overlay)"
+    },
+    "sidebar": {
+      "cssVar": "--sidebar",
+      "value": "var(--bg-sidebar)"
+    },
+    "sidebar-foreground": {
+      "cssVar": "--sidebar-foreground",
+      "value": "var(--fg-primary)"
+    },
+    "sidebar-primary": {
+      "cssVar": "--sidebar-primary",
+      "value": "var(--action-primary-bg)"
+    },
+    "sidebar-primary-foreground": {
+      "cssVar": "--sidebar-primary-foreground",
+      "value": "var(--action-primary-text)"
+    },
+    "sidebar-accent": {
+      "cssVar": "--sidebar-accent",
+      "value": "var(--bg-surface-sunken)"
+    },
+    "sidebar-accent-foreground": {
+      "cssVar": "--sidebar-accent-foreground",
+      "value": "var(--fg-primary)"
+    },
+    "sidebar-border": {
+      "cssVar": "--sidebar-border",
+      "value": "var(--border-default)"
+    },
+    "sidebar-ring": {
+      "cssVar": "--sidebar-ring",
+      "value": "var(--focus-ring-color)"
+    },
+    "success": {
+      "cssVar": "--success",
+      "value": "var(--success-solid)"
+    },
+    "success-foreground": {
+      "cssVar": "--success-foreground",
+      "value": "var(--success-on-solid)"
+    },
+    "warning": {
+      "cssVar": "--warning",
+      "value": "var(--warning-solid)"
+    },
+    "warning-foreground": {
+      "cssVar": "--warning-foreground",
+      "value": "var(--warning-on-solid)"
+    },
+    "text-md": {
+      "cssVar": "--text-md",
+      "value": "var(--text-base)"
+    },
+    "gutter-page": {
+      "cssVar": "--gutter-page",
+      "value": "var(--space-6)"
+    },
+    "gutter-page-lg": {
+      "cssVar": "--gutter-page-lg",
+      "value": "var(--space-10)"
+    },
+    "container-max": {
+      "cssVar": "--container-max",
+      "value": "var(--layout-max-content)"
+    },
+    "container-editorial": {
+      "cssVar": "--container-editorial",
+      "value": "var(--layout-max-editorial)"
+    },
+    "container-prose": {
+      "cssVar": "--container-prose",
+      "value": "var(--layout-max-prose)"
+    },
+    "radius": {
+      "cssVar": "--radius",
+      "value": "0"
+    },
+    "ring-width": {
+      "cssVar": "--ring-width",
+      "value": "var(--border-width-medium)"
+    },
+    "ring-offset": {
+      "cssVar": "--ring-offset",
+      "value": "2px"
+    },
+    "focus-ring": {
+      "cssVar": "--focus-ring",
+      "value": "0 0 0 var(--ring-offset) var(--bg-canvas), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--focus-ring-color)"
+    },
+    "focus-ring-on-surface": {
+      "cssVar": "--focus-ring-on-surface",
+      "value": "0 0 0 var(--ring-offset) var(--bg-surface), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--focus-ring-color)"
+    },
+    "ease-standard": {
+      "cssVar": "--ease-standard",
+      "value": "var(--motion-easing-standard)"
+    },
+    "ease-out": {
+      "cssVar": "--ease-out",
+      "value": "var(--motion-easing-decelerate)"
+    },
+    "ease-in": {
+      "cssVar": "--ease-in",
+      "value": "var(--motion-easing-accelerate)"
+    },
+    "duration-base": {
+      "cssVar": "--duration-base",
+      "value": "var(--duration-normal)"
+    },
+    "transition-control": {
+      "cssVar": "--transition-control",
+      "value": "background-color var(--duration-fast) var(--motion-easing-standard), color var(--duration-fast) var(--motion-easing-standard), border-color var(--duration-fast) var(--motion-easing-standard), box-shadow var(--duration-fast) var(--motion-easing-standard), text-decoration-thickness var(--duration-fast) var(--motion-easing-standard)"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<!-- HISTORY ONLY — superseded 2026-09-05. The palette decision is settled (accent, baked into
+     tokens/accent.css), so this comparison no longer functions: data-palette no longer exists,
+     and both "accent off" columns now render accented. Kept as the record of the rejected
+     greyscale alternative. Deliberately not tagged @dsCard — it must not read as an open
+     decision to anyone consuming this system. -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Void — accent decision</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{padding:var(--space-6) var(--space-6) var(--space-16);background:var(--bg-canvas)}
+.wrap{max-width:1440px;margin-inline:auto}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-6);padding-block-end:var(--space-5);border-block-end:var(--border-width-medium) solid var(--fg-primary)}
+.eyebrow{font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--fg-secondary)}
+.switch{display:flex;gap:var(--space-1)}
+.switch button{min-height:36px;padding-inline:var(--space-4);background:transparent;border:var(--border-width-thin) solid var(--border-control);border-radius:var(--radius-sm);font:var(--type-ui-dense);color:var(--fg-primary);cursor:pointer;white-space:nowrap;transition:var(--transition-control)}
+.switch button[aria-pressed=true]{background:var(--action-primary-bg);border-color:var(--action-primary-bg);color:var(--action-primary-text)}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);padding-block-start:var(--space-6)}
+.cell{display:flex;flex-direction:column;min-width:0;border:var(--border-width-thin) solid var(--border-strong);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-surface)}
+.cell>h2{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-3) var(--space-4);font:var(--type-ui-dense);font-weight:var(--weight-medium);border-block-end:var(--border-width-thin) solid var(--border-default);background:var(--bg-surface-sunken)}
+.cell>h2 code{font-family:var(--font-mono);font-size:var(--text-2xs);font-weight:var(--weight-regular);color:var(--fg-secondary)}
+.cell iframe{width:1440px;height:1180px;border:0;transform:scale(.485);transform-origin:0 0}
+.shot{height:572px;overflow:hidden}
+.note{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);padding-block-start:var(--space-10)}
+.note section{display:flex;flex-direction:column;gap:var(--space-3)}
+.note h3{font:var(--type-h3)}
+.note p{font:var(--type-body);color:var(--fg-secondary);max-width:60ch}
+.note dl{display:grid;grid-template-columns:auto 1fr;margin:0}
+.note dt{font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--fg-secondary);padding-block:var(--space-2);border-block-end:var(--border-width-thin) solid var(--border-subtle)}
+.note dd{margin:0;font:var(--type-ui-dense);text-align:end;font-variant-numeric:tabular-nums;padding-block:var(--space-2);border-block-end:var(--border-width-thin) solid var(--border-subtle)}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="head">
+    <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+      <span class="eyebrow">Open decision · palette</span>
+      <h1 style="font:var(--type-h1)">Greyscale, or one signal accent</h1>
+      <p style="font:var(--type-body);color:var(--fg-secondary);max-width:66ch">Same product, same copy, same components. The only difference between the left and right column is <code style="font-family:var(--font-mono);font-size:var(--text-sm)">data-palette="accent"</code>.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+      <span class="eyebrow">Screen</span>
+      <div class="switch">
+        <button type="button" data-screen="detail" aria-pressed="true">Product detail</button>
+        <button type="button" data-screen="listing" aria-pressed="false">Listing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="quad">
+    <div class="cell"><h2>A · Light, greyscale <code>light</code></h2><div class="shot"><iframe data-cell title="Light greyscale"></iframe></div></div>
+    <div class="cell"><h2>B · Light, accent on <code>light + accent</code></h2><div class="shot"><iframe data-cell title="Light accent"></iframe></div></div>
+    <div class="cell"><h2>C · Dark, greyscale <code>dark</code></h2><div class="shot"><iframe data-cell title="Dark greyscale"></iframe></div></div>
+    <div class="cell"><h2>D · Dark, accent on <code>dark + accent</code></h2><div class="shot"><iframe data-cell title="Dark accent"></iframe></div></div>
+  </div>
+
+  <div class="note">
+    <section>
+      <h3>What accent actually changes</h3>
+      <p>Black stays the primary action colour in both options — accent never takes over the interface. It marks four things and nothing else: the sale price, the sale badge, the rating fill, and the one primary commerce CTA per view. Selected states (size chips, active tab, step marker) move from black to accent so the current choice reads at a glance.</p>
+      <dl>
+        <dt>Accent text on canvas</dt><dd>5.94:1</dd>
+        <dt>Accent fill vs canvas</dt><dd>3.33:1</dd>
+        <dt>Dark text on accent fill</dt><dd>5.39:1</dd>
+        <dt>Hue</dt><dd>Signal orange · 45–52°</dd>
+      </dl>
+    </section>
+    <section>
+      <h3>The trade</h3>
+      <p><strong style="color:var(--fg-primary);font-weight:var(--weight-medium)">Greyscale</strong> is the stricter read of the tactical direction: labelling discipline and alignment carry the structure, and every colour on screen belongs to the garment. Discounts rely on the struck-through original and the outlined SALE badge, which is quieter than most commerce expects.</p>
+      <p><strong style="color:var(--fg-primary);font-weight:var(--weight-medium)">Accent</strong> buys a legible commerce layer — price drops, stock urgency and the buy action separate from the neutral chrome without a second hue entering the system. The risk is that orange reads closer to conventional retail, and on a page of warm-neutral fashion photography it competes more than black does.</p>
+    </section>
+  </div>
+</div>
+<script>
+const cells=[{scheme:'light',palette:'off'},{scheme:'light',palette:'accent'},{scheme:'dark',palette:'off'},{scheme:'dark',palette:'accent'}];
+let screen='detail';
+function load(){document.querySelectorAll('[data-cell]').forEach((f,i)=>{const c=cells[i];f.src=`../templates/storefront/Storefront.dc.html?screen=${screen}&scheme=${c.scheme}&palette=${c.palette}&width=1440&state=populated&chrome=0`;});}
+document.querySelectorAll('[data-screen]').forEach(b=>b.addEventListener('click',()=>{screen=b.dataset.screen;document.querySelectorAll('[data-screen]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));load();}));
+load();
+</script>
+</body></html>

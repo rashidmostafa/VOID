@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Admin dashboard" description="Void back office — sidebar shell, overview dashboard, dense order list, and the eleven operational destinations from customs to design tokens" -->
+<helmet>
+<title>Void — back office</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" href="../../assets/fonts/geist-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/geist-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./admin.css">
+<script>window.VOID_ICON_SPRITE = "../../assets/icons/void-icons.svg"</script>
+<script src="./ds-base.js"></script>
+</helmet>
+<x-import component-from-global-scope="AdminOpsRegistry" from="./AdminOps.jsx" hint-size="0px,0px"></x-import>
+<x-import component-from-global-scope="AdminApp" from="./AdminApp.jsx" page="{{ page }}" scheme="{{ scheme }}" market="{{ market }}" sidebar="{{ sidebar }}" hint-size="100%,900px"></x-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;orders&quot;,&quot;customs&quot;,&quot;returns&quot;,&quot;catalogue&quot;,&quot;vendors&quot;,&quot;designers&quot;,&quot;payouts&quot;,&quot;moderation&quot;,&quot;markets&quot;,&quot;theme&quot;,&quot;help&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;scheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;market&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;all&quot;,&quot;bd&quot;,&quot;in&quot;,&quot;ae&quot;,&quot;uk&quot;],&quot;default&quot;:&quot;all&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;sidebar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;expanded&quot;,&quot;collapsed&quot;],&quot;default&quot;:&quot;expanded&quot;,&quot;tsType&quot;:&quot;\&quot;expanded\&quot; | \&quot;collapsed\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      page: p.page ?? "overview",
+      scheme: p.scheme ?? "light",
+      market: p.market ?? "all",
+      sidebar: p.sidebar ?? "expanded",
+    };
+  }
+}
+</script>
+</body>
+</html>

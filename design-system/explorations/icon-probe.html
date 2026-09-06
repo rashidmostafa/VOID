@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Icon inline probe</title>
+<link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;padding:24px;display:flex;flex-direction:column;gap:16px;background:var(--bg-canvas)}.row{display:flex;align-items:center;gap:12px}.chip{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--radius-sm);font:var(--type-ui)}.dark-chip{background:var(--neutral-950);color:var(--neutral-50)}.light-chip{background:var(--bg-surface);color:var(--fg-primary);border:1px solid var(--border-default)}.accent-chip{background:var(--accent-fill);color:var(--accent-on-fill)}</style>
+</head><body>
+<div class="row" id="out"></div>
+<script>
+const SPRITE = "../assets/icons/void-icons.svg";
+fetch(SPRITE).then(r => r.text()).then(text => {
+  const map = {};
+  const re = /<symbol id="([^"]+)"[^>]*>([\s\S]*?)<\/symbol>/g;
+  let m; while ((m = re.exec(text))) map[m[1]] = m[2];
+  const glyph = (name, size) =>
+    `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none">${map[name]}</svg>`;
+  document.getElementById("out").innerHTML = `
+    <span class="chip light-chip">${glyph("shopping-bag", 16)} Add to bag</span>
+    <span class="chip dark-chip">${glyph("shopping-bag", 16)} Add to bag</span>
+    <span class="chip accent-chip">${glyph("heart", 16)} Saved</span>
+    <span class="chip light-chip">${glyph("search", 20)}${glyph("star", 20)}${glyph("truck", 20)}${glyph("chevron-right", 20)}${glyph("circle-check", 20)}</span>
+    <span class="chip light-chip" style="color:var(--fg-secondary)">${glyph("sliders-horizontal", 24)} inherits colour</span>`;
+});
+</script>
+</body></html>

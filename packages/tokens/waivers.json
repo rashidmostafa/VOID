@@ -1,0 +1,12 @@
+{
+  "$comment": "Validator waivers. Same discipline FR-MKTS-14 applies to a market readiness item: a recorded owner, a reason, and an expiry after which the failure is fatal again. A waived failure is still printed on every run — this file suppresses the exit code, never the finding.",
+  "waivers": [
+    {
+      "rule": "V3",
+      "token": "--commerce-rating on --commerce-rating-empty",
+      "reason": "Genuine WCAG 1.4.11 failure introduced by the 2026-09-05 accent decision and never re-measured: accent.css overrides --commerce-rating to signal orange, but guidelines/contrast-report.md still measures the pre-accent near-black (13.36:1). Actual: 2.24:1 light, 2.84:1 dark. Needs a design decision, not a token nudge — darkening the empty star to the required oklch(0.38) would make it read as a filled dark star. See docs/adr/0009-rating-contrast.md. void-placeholder inherits the same pairing by derivation (removing chroma preserves lightness, and lightness is what contrast depends on), so this waiver is not scoped to one set.",
+      "owner": "Product Owner (design source authority, ADR-0007)",
+      "expires": "2026-12-05"
+    }
+  ]
+}

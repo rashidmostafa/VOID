@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Void Studio" description="Full-viewport garment design surface — tool rail, neutral canvas, properties panel, inline print warnings and a persistent live-price order control" -->
+<helmet>
+<title>Void Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" href="../../assets/fonts/geist-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/geist-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./studio.css">
+<script>window.VOID_ICON_SPRITE = "../../assets/icons/void-icons.svg"</script>
+<script src="./ds-base.js"></script>
+</helmet>
+<x-import component-from-global-scope="StudioApp" from="./StudioApp.jsx" layout="{{ layout }}" scheme="{{ scheme }}" walkthrough="{{ walkthrough }}" connection="{{ connection }}" hint-size="100%,900px"></x-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;layout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;\&quot;desktop\&quot; | \&quot;mobile\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;scheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;walkthrough&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Harness&quot;},&quot;connection&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;online&quot;,&quot;offline&quot;],&quot;default&quot;:&quot;online&quot;,&quot;tsType&quot;:&quot;\&quot;online\&quot; | \&quot;offline\&quot;&quot;,&quot;section&quot;:&quot;Harness&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      layout: p.layout ?? "desktop",
+      scheme: p.scheme ?? "light",
+      walkthrough: p.walkthrough ?? false,
+      connection: p.connection ?? "online",
+    };
+  }
+}
+</script>
+</body>
+</html>

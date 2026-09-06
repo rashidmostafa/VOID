@@ -1,0 +1,206 @@
+<!-- HISTORY ONLY — superseded 2026-09-05, twice over: first by accent-decision.html, then by
+     the decision itself. The greyscale column no longer renders greyscale. Deliberately not
+     tagged @dsCard. -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Void — palette decision</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{padding:var(--space-8) var(--space-6);background:var(--bg-canvas)}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-8);max-width:1480px;margin-inline:auto;padding-block-end:var(--space-6);border-block-end:var(--border-width-thin) solid var(--border-default)}
+.eyebrow{font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--fg-secondary)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);max-width:1480px;margin-inline:auto;padding-block-start:var(--space-8)}
+.col{display:flex;flex-direction:column;gap:var(--space-6);min-width:0}
+.colhead{display:flex;align-items:baseline;gap:var(--space-3);padding-block-end:var(--space-3);border-block-end:var(--border-width-medium) solid var(--fg-primary)}
+.colhead h2{font:var(--type-h3)}
+.screen{display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-5);background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-lg)}
+.screen>.eyebrow{padding-block-end:var(--space-3);border-block-end:var(--border-width-thin) solid var(--border-subtle)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+.plate{aspect-ratio:3/4;background:var(--bg-surface-sunken);position:relative}
+.plate span{position:absolute;inset-block-start:var(--space-2);inset-inline-start:var(--space-2);display:inline-flex;align-items:center;height:22px;padding-inline:var(--space-2);border:var(--border-width-thin) solid;font-size:var(--text-2xs);font-weight:var(--weight-medium);text-transform:uppercase;letter-spacing:var(--tracking-wide)}
+.plate em{position:absolute;inset-block-end:var(--space-2);inset-inline-end:var(--space-2);font-family:var(--font-mono);font-style:normal;font-size:var(--text-2xs);color:var(--fg-secondary)}
+.b-new{background:var(--commerce-badge-new-bg);color:var(--commerce-badge-new-text);border-color:transparent}
+.b-sale{background:var(--commerce-badge-sale-bg);color:var(--commerce-badge-sale-text);border-color:var(--commerce-badge-sale-border)}
+.b-low{background:var(--commerce-badge-lowstock-bg);color:var(--commerce-badge-lowstock-text);border-color:var(--commerce-badge-lowstock-border)}
+.b-out{background:var(--commerce-badge-soldout-bg);color:var(--commerce-badge-soldout-text);border-color:var(--commerce-badge-soldout-border)}
+.tile{display:flex;flex-direction:column;gap:var(--space-1);min-width:0}
+.tile .row{display:flex;justify-content:space-between;gap:var(--space-2);font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--fg-secondary)}
+.tile .name{font-size:var(--text-base);line-height:var(--leading-snug)}
+.price{display:flex;align-items:baseline;gap:var(--space-2);font-variant-numeric:tabular-nums}
+.price b{font-weight:var(--weight-medium);color:var(--commerce-price)}
+.price .sale{color:var(--commerce-price-sale)}
+.price s{color:var(--commerce-price-original);font-size:var(--text-ui)}
+.rate{display:flex;align-items:center;gap:var(--space-2);margin-block-start:var(--space-1)}
+.bar{position:relative;width:56px;height:3px;background:var(--commerce-rating-empty)}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--commerce-rating)}
+.meta{font-size:var(--text-2xs);color:var(--fg-secondary);font-variant-numeric:tabular-nums}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:var(--space-1) var(--space-5)}
+.spec dt{font-size:var(--text-2xs);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--fg-secondary);padding-block:var(--space-2);border-block-end:var(--border-width-thin) solid var(--border-subtle)}
+.spec dd{margin:0;font-size:var(--text-ui);padding-block:var(--space-2);border-block-end:var(--border-width-thin) solid var(--border-subtle);text-align:end;font-variant-numeric:tabular-nums}
+.sizes{display:flex;gap:var(--space-2);flex-wrap:wrap}
+.sizes button{min-width:var(--touch-target-min);height:var(--touch-target-min);padding-inline:var(--space-3);background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-control);color:var(--fg-primary);font-size:var(--text-ui);font-weight:var(--weight-medium);cursor:pointer;transition:var(--transition-control)}
+.sizes button[aria-pressed=true]{background:var(--indicator-active);border-color:var(--indicator-active);color:var(--action-primary-text)}
+.sizes button:disabled{color:var(--fg-disabled);border-color:var(--border-default);cursor:not-allowed;text-decoration:line-through}
+.cta{display:flex;gap:var(--space-3)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:var(--control-h-md);padding-inline:var(--space-5);border-radius:var(--radius-md);font-size:var(--text-base);font-weight:var(--weight-medium);letter-spacing:var(--tracking-tight);cursor:pointer;transition:var(--transition-control);border:var(--border-width-thin) solid}
+.btn-accent{flex:1;background:var(--action-accent-bg);color:var(--action-accent-text);border-color:var(--action-accent-bg)}
+.btn-accent:hover{background:var(--action-accent-hover);border-color:var(--action-accent-hover)}
+.btn-outline{background:transparent;color:var(--fg-primary);border-color:var(--border-control)}
+.btn-outline:hover{background:var(--action-tertiary-hover);border-color:var(--fg-primary)}
+.trust{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-3) var(--space-4);background:var(--bg-surface-sunken);font-size:var(--text-ui)}
+.trust b{color:var(--commerce-trust);font-weight:var(--weight-medium)}
+.chips{display:flex;gap:var(--space-2);flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:var(--space-2);height:24px;padding-inline:var(--space-2);border:var(--border-width-thin) solid;border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:var(--weight-medium)}
+.c-ok{background:var(--success-bg);color:var(--success-text);border-color:var(--success-border)}
+.c-warn{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-border)}
+.c-err{background:var(--error-bg);color:var(--error-text);border-color:var(--error-border)}
+.c-info{background:var(--info-bg);color:var(--info-text);border-color:var(--info-border)}
+.notice{display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-3) var(--space-4);background:var(--warning-bg);border-inline-start:var(--border-width-thick) solid var(--warning-solid);font-size:var(--text-ui);color:var(--warning-text)}
+.sum{display:grid;grid-template-columns:1fr auto;gap:var(--space-2) var(--space-4);font-size:var(--text-ui);font-variant-numeric:tabular-nums}
+.sum .tot{padding-block-start:var(--space-3);border-block-start:var(--border-width-thin) solid var(--border-strong);font-weight:var(--weight-medium);font-size:var(--text-base)}
+.link{color:var(--fg-link)}
+.toggle{display:flex;gap:2px;padding:2px;background:var(--bg-surface-sunken);border-radius:var(--radius-md)}
+.toggle button{height:36px;min-width:76px;padding-inline:var(--space-3);border:none;background:transparent;color:var(--fg-secondary);font-size:var(--text-ui);font-weight:var(--weight-medium);border-radius:var(--radius-sm);cursor:pointer}
+.toggle button[aria-pressed=true]{background:var(--bg-surface);color:var(--fg-primary);box-shadow:var(--shadow-xs)}
+.note{max-width:1480px;margin:var(--space-10) auto 0;padding-block-start:var(--space-6);border-block-start:var(--border-width-thin) solid var(--border-default);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);font-size:var(--text-ui);color:var(--fg-secondary)}
+.note h3{font-size:var(--text-base);color:var(--fg-primary);margin-block-end:var(--space-2)}
+.note ul{margin:0;padding-inline-start:var(--space-5);display:flex;flex-direction:column;gap:var(--space-1)}
+.note code{font-size:var(--text-sm);color:var(--fg-primary)}
+</style></head><body>
+
+<div class="head">
+  <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+    <span class="eyebrow">Decision required · palette</span>
+    <h1 style="font:var(--type-h2)">Greyscale, or one accent</h1>
+    <p style="max-width:64ch;color:var(--fg-secondary)">Identical markup in both columns — the right column is the same DOM with <code style="font-size:var(--text-sm)">data-palette="accent"</code> on it. Nothing else differs, so anything you see is the palette doing it.</p>
+  </div>
+  <div class="toggle" role="group" aria-label="Colour scheme">
+    <button type="button" data-scheme="light" aria-pressed="true">Light</button>
+    <button type="button" data-scheme="dark" aria-pressed="false">Dark</button>
+  </div>
+</div>
+
+<template id="screens">
+  <section class="screen">
+    <span class="eyebrow">Product listing · Dhaka · BDT</span>
+    <div class="grid2">
+      <div class="tile">
+        <div class="plate"><span class="b-new">New in</span><em>KRT-0421</em></div>
+        <div class="row"><span>Rahnuma Atelier</span><span style="font-family:var(--font-mono);letter-spacing:var(--tracking-normal)">3/4</span></div>
+        <span class="name">Handloom cotton kurta</span>
+        <span class="price"><b>৳2,450</b></span>
+        <span class="rate"><span class="bar"><i style="width:92%"></i></span><span class="meta">4.6 · 128</span></span>
+      </div>
+      <div class="tile">
+        <div class="plate"><span class="b-sale">Sale</span><em>SAR-1180</em></div>
+        <div class="row"><span>Studio Nokshi</span><span style="font-family:var(--font-mono);letter-spacing:var(--tracking-normal)">3/4</span></div>
+        <span class="name">Block-print wrap saree</span>
+        <span class="price"><b class="sale">৳4,130</b><s>৳5,900</s></span>
+        <span class="rate"><span class="bar"><i style="width:84%"></i></span><span class="meta">4.2 · 41</span></span>
+      </div>
+    </div>
+    <div class="chips">
+      <span class="chip b-low">Low stock · 3 left</span>
+      <span class="chip b-out">Sold out</span>
+      <span class="chip c-info">Ships from Dhaka</span>
+    </div>
+  </section>
+
+  <section class="screen">
+    <span class="eyebrow">Product detail · buy panel</span>
+    <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+      <span class="eyebrow">Rahnuma Atelier</span>
+      <h2 style="font:var(--type-h2)">Handloom cotton kurta</h2>
+      <span class="price" style="font-size:var(--text-xl)"><b class="sale">৳4,130</b><s>৳5,900</s><span class="meta">incl. VAT</span></span>
+    </div>
+    <dl class="spec">
+      <dt>SKU</dt><dd style="font-family:var(--font-mono)">VD-KRT-0421-M</dd>
+      <dt>Fabric</dt><dd>100% handloom cotton, 140 gsm</dd>
+      <dt>Ships from</dt><dd>Bangladesh · Dhaka</dd>
+      <dt>Seller of record</dt><dd>Void Commerce Ltd</dd>
+      <dt>Delivery</dt><dd>12–14 Oct · ৳60</dd>
+      <dt>Returns</dt><dd>14 days, eligible</dd>
+    </dl>
+    <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+      <span class="eyebrow">Size · <a class="link" href="#">size guide</a></span>
+      <div class="sizes">
+        <button type="button" aria-pressed="false">S</button>
+        <button type="button" aria-pressed="true">M</button>
+        <button type="button" aria-pressed="false">L</button>
+        <button type="button" aria-pressed="false">XL</button>
+        <button type="button" disabled>XXL</button>
+      </div>
+    </div>
+    <div class="cta">
+      <button type="button" class="btn btn-accent">Add to bag</button>
+      <button type="button" class="btn btn-outline">Customise in Studio</button>
+    </div>
+    <div class="trust"><span><b>Secure checkout</b> · bKash, Nagad, card</span><span class="meta">Void protects every order</span></div>
+  </section>
+
+  <section class="screen">
+    <span class="eyebrow">Checkout · order summary and states</span>
+    <div class="sum">
+      <span>Goods</span><span>৳4,130</span>
+      <span>Shipping</span><span>৳60</span>
+      <span>Duty &amp; import tax</span><span>৳0</span>
+      <span class="tot">Total due</span><span class="tot">৳4,190</span>
+    </div>
+    <div class="notice"><strong style="font-weight:var(--weight-medium)">Delivered duty paid</strong><span>Duty and tax are collected now. Nothing further is due on delivery.</span></div>
+    <div class="chips">
+      <span class="chip c-ok">Payment captured</span>
+      <span class="chip c-warn">Awaiting review</span>
+      <span class="chip c-err">Payment failed</span>
+      <span class="chip c-info">Withdrawal right applies</span>
+    </div>
+  </section>
+</template>
+
+<div class="cols">
+  <div class="col" id="colA">
+    <div class="colhead"><h2>A · Greyscale</h2><span class="eyebrow">as built</span></div>
+  </div>
+  <div class="col" id="colB" data-palette="accent">
+    <div class="colhead"><h2>B · Signal orange</h2><span class="eyebrow">proposal</span></div>
+  </div>
+</div>
+
+<div class="note">
+  <div>
+    <h3>What B changes, and only this</h3>
+    <ul>
+      <li><code>--fg-link</code> · links carry the accent, keep the underline</li>
+      <li><code>--commerce-price-sale</code> · discounted price only; standard price stays neutral</li>
+      <li><code>--commerce-badge-sale-*</code> · SALE becomes a fill; NEW stays black</li>
+      <li><code>--commerce-rating</code> · rating bar fill</li>
+      <li><code>--indicator-active</code> · selected size, active tab rule</li>
+      <li><code>--action-accent-*</code> · one fill per view, on the primary commerce action</li>
+    </ul>
+    <p style="margin-block-start:var(--space-3)">Black stays the action colour everywhere else, feedback tones are untouched, and no chart hue moves. Accent coverage is roughly 2% of pixels by design.</p>
+  </div>
+  <div>
+    <h3>The case for each</h3>
+    <ul>
+      <li><strong style="color:var(--fg-primary);font-weight:var(--weight-medium)">A</strong> — merchandise is the only colour on screen, which is the one aesthetic principle your spec keeps (UI-INV-12). Sale, rating and selection read by position, weight and strike-through instead of hue. Costs nothing in accessibility and never fights a photograph.</li>
+      <li><strong style="color:var(--fg-primary);font-weight:var(--weight-medium)">B</strong> — signal orange is the marking colour of technical equipment, not of uniforms: hi-vis, instrument dials, tool marking. It gives the data layer a second channel, so a discount or a selected size is legible before you read it. Risk: on a warm-toned garment photo it competes, so it is kept off imagery entirely.</li>
+      <li>Accent values: text <code>oklch(0.52 0.19 45)</code> at 5.94:1 on white; fill <code>oklch(0.66 0.20 50)</code> at 3.33:1 against the page carrying near-black type at 5.39:1. Both clear the gate.</li>
+      <li>If you want the direction but not the hue, the swap is one file: blueprint blue <code>oklch(0.48 0.15 250)</code> reads as engineering drawing rather than equipment.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const tpl=document.getElementById('screens');
+for(const id of ['colA','colB'])document.getElementById(id).appendChild(tpl.content.cloneNode(true));
+document.querySelectorAll('[data-scheme]').forEach(b=>b.addEventListener('click',()=>{
+  const dark=b.dataset.scheme==='dark';
+  document.documentElement.classList.toggle('dark',dark);
+  document.querySelectorAll('[data-scheme]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.scheme===b.dataset.scheme)));
+  localStorage.setItem('void-palette-scheme',b.dataset.scheme);
+}));
+document.querySelectorAll('.sizes').forEach(g=>g.addEventListener('click',e=>{
+  const t=e.target.closest('button');if(!t||t.disabled)return;
+  g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===t)));
+}));
+const saved=localStorage.getItem('void-palette-scheme');
+if(saved==='dark')document.querySelector('[data-scheme="dark"]').click();
+</script>
+</body></html>

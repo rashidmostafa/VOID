@@ -1,0 +1,12 @@
+{
+  "set": "void-placeholder",
+  "version": "1.1.0-placeholder",
+  "isPlaceholder": true,
+  "tokenCount": 232,
+  "schemes": [
+    "light",
+    "dark"
+  ],
+  "criticalPathFonts": [],
+  "allFonts": []
+}

@@ -1,0 +1,14 @@
+/* Tailwind's utility engine, then Void's @theme mapping.
+
+   The runtime custom properties are NOT imported here. They are served as a
+   static stylesheet from /theme/tokens.css and linked from the root layout, for
+   two reasons: the bundler would inline and reorder them, which makes the
+   ADR-0001 critical-path budget unmeasurable; and the theme has to be swappable
+   at runtime from a database-held token set, which a build-time import forecloses. */
+@import "tailwindcss";
+@import "../../../packages/tokens/dist/tailwind.css";
+
+/* Tailwind v4 scans for utilities from the CSS file's directory by default,
+   which would miss the component package. */
+@source "../../../packages/ui/src";
+@source "../app";
