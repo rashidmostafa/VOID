@@ -122,7 +122,10 @@
       "under": "Under {price}",
       "between": "{min} – {max}",
       "over": "Over {price}"
-    }
+    },
+    "searchLabel": "Search",
+    "searchNote": "Searching titles and designers. Full search across descriptions, materials and tags comes with the search module.",
+    "searchEmpty": "Nothing matches “{q}”."
   },
   "errors": {
     "notFound": {
@@ -134,7 +137,10 @@
       "title": "Something on our side failed.",
       "body": "The page could not be built. Try again, or contact support with the reference below.",
       "action": "Try again"
-    }
+    },
+    "search": "Search",
+    "searchPlaceholder": "Search pieces",
+    "orBrowse": "Or go to"
   },
   "bag": {
     "title": "Bag",
@@ -230,5 +236,32 @@
     "cancelled": "Cancelled",
     "failed": "Failed",
     "returned": "Returned"
+  },
+  "account": {
+    "title": "Your account",
+    "orders": "Orders",
+    "returns": "Returns",
+    "addresses": "Addresses",
+    "payment": "Payment methods",
+    "designs": "Your designs",
+    "wishlist": "Wishlist",
+    "credits": "Credits",
+    "preferences": "Preferences",
+    "security": "Security",
+    "notBuilt": "Not built yet.",
+    "noOrders": "No orders yet.",
+    "noOrdersHint": "Anything you buy will appear here.",
+    "viewOrder": "View order {reference}"
+  },
+  "returns": {
+    "title": "Return or exchange",
+    "commercialTitle": "Return under our policy",
+    "commercialBody": "{days} days from delivery, unworn, with tags on. You pay return postage.",
+    "commercialAction": "Start a return",
+    "statutoryTitle": "Withdraw from the purchase",
+    "statutoryBody": "This is a separate legal right, not our policy. Within {days} days of delivery you may withdraw without giving a reason. You bear the cost of returning the goods.",
+    "statutoryAction": "Withdraw from this purchase",
+    "statutoryNone": "This market grants no statutory withdrawal right, so only our returns policy applies.",
+    "customExcluded": "A piece customised in Void Studio is made to order and is excluded from both paths."
   }
 }

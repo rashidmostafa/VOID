@@ -53,6 +53,7 @@ export default async function Listing({
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const size = one(sp.size);
   const band = one(sp.band);
+  const q = one(sp.q)?.trim();
   // `state` is a fixture affordance so all four branches are reachable and
   // reviewable; a real listing derives it from the query result.
   const forced = one(sp.state);
@@ -64,14 +65,24 @@ export default async function Listing({
   const inMarket = availableInMarket(CATALOGUE, market).filter(
     (piece) => displayPrice(piece.priceBdt, market, now) !== null
   );
-  const filtered = applyFilters(inMarket, { size, band });
+  /* A substring match over title and designer. FR-SRCH-1 wants full text across
+     descriptions, materials and tags at 300ms for 95% of queries — that is the
+     search module (build step 9) behind an interface, per NFR-MAINT-10. This is
+     a fixture, labelled as one on the page, and it exists so UI-GLOB-6's search
+     form leads somewhere real rather than being decorative. */
+  const searched = q
+    ? inMarket.filter((p) =>
+        `${p.title} ${p.designer}`.toLowerCase().includes(q.toLowerCase())
+      )
+    : inMarket;
+  const filtered = applyFilters(searched, { size, band });
 
   const here = `/c/${slug}`;
   const qs = (next: Record<string, string | undefined>) => {
-    const q = new URLSearchParams();
-    for (const [k, v] of Object.entries({ size, band, ...next })) if (v) q.set(k, v);
-    const s = q.toString();
-    return marketPath(code, locale, here) + (s ? `?${s}` : "");
+    const params = new URLSearchParams();
+    for (const [k, v] of Object.entries({ size, band, q, ...next })) if (v) params.set(k, v);
+    const str = params.toString();
+    return marketPath(code, locale, here) + (str ? `?${str}` : "");
   };
 
   const state: AsyncState<Piece[]> =
@@ -96,6 +107,11 @@ export default async function Listing({
 
       <header style={{ paddingBlock: "var(--space-8) var(--space-6)" }}>
         <h1 style={{ font: "var(--type-h1)" }}>{t("listing.title")}</h1>
+        {q ? (
+          <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)", marginBlockStart: "var(--space-2)" }}>
+            {t("listing.searchNote")}
+          </p>
+        ) : null}
         <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)", marginBlockStart: "var(--space-2)" }}>
           {t("listing.resultCount", { count: filtered.length })}
         </p>
@@ -159,7 +175,7 @@ export default async function Listing({
             label={t("listing.loadingLabel")}
             skeleton={<Grid>{Array.from({ length: 6 }, (_, i) => <TileSkeleton key={i} />)}</Grid>}
             empty={{
-              title: t("listing.empty.title"),
+              title: q ? t("listing.searchEmpty", { q }) : t("listing.empty.title"),
               hint: t("listing.empty.hint", { count: inMarket.length }),
               action: (
                 <Button as="a" href={marketPath(code, locale, here)} variant="outline">

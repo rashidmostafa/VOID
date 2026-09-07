@@ -157,6 +157,80 @@ export default async function OrderPage({
             </p>
           </section>
 
+          {/* UI-ACC-3: "Return and exchange initiation shall be reachable in at
+              most two interactions from the order, with any statutory withdrawal
+              path clearly distinguished from the commercial return path."
+
+              They are separate rights with different bases and different terms,
+              and collapsing them into one "Return" button is the common failure:
+              a shopper exercising a statutory right should not be routed through
+              a policy that is more restrictive than the law allows. So they are
+              two blocks, and the statutory one says plainly that it is a legal
+              right rather than our policy. Both are one interaction from here. */}
+          <section aria-labelledby="ret">
+            <h2 id="ret" style={EYEBROW}>{t("returns.title")}</h2>
+            <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginBlockStart: "var(--space-4)" }}>
+              <div
+                style={{
+                  flex: "1 1 var(--measure-tight)",
+                  minInlineSize: 0,
+                  padding: "var(--space-4)",
+                  border: "var(--border-width-thin) solid var(--border-default)",
+                  borderRadius: "var(--radius-lg)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "var(--space-2)",
+                }}
+              >
+                <h3 style={{ font: "var(--type-ui)", fontWeight: "var(--weight-medium)" }}>
+                  {t("returns.commercialTitle")}
+                </h3>
+                <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)" }}>
+                  {t("returns.commercialBody", { days: 14 })}
+                </p>
+                <p style={{ marginBlockStart: "var(--space-2)" }}>
+                  <Button variant="outline" disabled>{t("returns.commercialAction")}</Button>
+                </p>
+              </div>
+
+              {order.withdrawalRight ? (
+                <div
+                  style={{
+                    flex: "1 1 var(--measure-tight)",
+                    minInlineSize: 0,
+                    padding: "var(--space-4)",
+                    /* Distinguished by treatment, not only by wording: a
+                       statutory right is not our policy and must not read as it. */
+                    border: "var(--border-width-medium) solid var(--border-strong)",
+                    borderRadius: "var(--radius-lg)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "var(--space-2)",
+                  }}
+                >
+                  <h3 style={{ font: "var(--type-ui)", fontWeight: "var(--weight-medium)" }}>
+                    {t("returns.statutoryTitle")}
+                  </h3>
+                  <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)" }}>
+                    {t("returns.statutoryBody", { days: order.withdrawalRight.days })}
+                  </p>
+                  <p style={{ marginBlockStart: "var(--space-2)" }}>
+                    <Button variant="outline" disabled>{t("returns.statutoryAction")}</Button>
+                  </p>
+                </div>
+              ) : (
+                <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)", flex: "1 1 var(--measure-tight)" }}>
+                  {t("returns.statutoryNone")}
+                </p>
+              )}
+            </div>
+            {order.withdrawalRight?.excludesCustomised ? (
+              <p style={{ font: "var(--type-ui-sm)", color: "var(--fg-secondary)", marginBlockStart: "var(--space-3)" }}>
+                {t("returns.customExcluded")}
+              </p>
+            ) : null}
+          </section>
+
           {/* UI-CHK-4: one-click account creation for guests. Offered AFTER the
               order, and explicitly not a condition of it — making an account a
               gate on completing a purchase is the dark pattern UI-INV-11 rules
